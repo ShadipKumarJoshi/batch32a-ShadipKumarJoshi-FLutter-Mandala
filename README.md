@@ -1,6 +1,6 @@
 # final_assignment
 
-A new Flutter project.
+The name of this mobile application is "MANDALA T-On-Line Prints"
 
 ## Getting Started
 
