@@ -1,3 +1,4 @@
+import 'package:final_assignment/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -8,8 +9,9 @@ class App extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       // themes
-      
+
       // home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }
