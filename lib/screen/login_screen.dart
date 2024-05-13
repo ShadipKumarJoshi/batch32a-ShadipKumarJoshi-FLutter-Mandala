@@ -139,7 +139,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               onPressed: () {
                                 print("Login button pressed");
                               },
-                              style: ElevatedButton.styleFrom(),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                              ),
                               child: const Text(
                                 'Login',
                                 style: TextStyle(
@@ -147,6 +149,30 @@ class _LoginScreenState extends State<LoginScreen> {
                                   color: Colors.white,
                                 ),
                               ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment
+                                  .spaceEvenly, // Evenly space the icons
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    // Add your Facebook login logic here
+                                  },
+                                  icon: Image.asset(
+                                    'assets/icons/iconFb.ico',
+                                    width: 24,
+                                    height: 24,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Image.asset(
+                                    'assets/icons/iconGoogle.ico',
+                                    width: 24,
+                                    height: 24,
+                                  ),
+                                ),
+                              ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
