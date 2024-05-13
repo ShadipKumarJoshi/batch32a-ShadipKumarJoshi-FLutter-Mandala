@@ -11,7 +11,11 @@ class App extends StatelessWidget {
       // themes
 
       // home: SplashScreen(),
-      home: LoginScreen(),
+      home: LoginScreen() ,
+      // routes: {
+      //       'login': (context) => LoginScreen(),
+            // 'register': (context) => RegisterScreen(),
+    // },
     );
   }
 }
