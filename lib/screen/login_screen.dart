@@ -18,18 +18,21 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          title: const Text(
-            'Login',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 50,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(100),
+          child: AppBar(
+            title: const Text(
+              'Login',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 50,
+              ),
             ),
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            elevation: 10,
           ),
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          elevation: 10,
         ),
         body: Stack(
           children: [
