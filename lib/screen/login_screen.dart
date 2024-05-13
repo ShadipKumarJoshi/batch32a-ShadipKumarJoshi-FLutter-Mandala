@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 fontSize: 50,
               ),
             ),
-            backgroundColor: Colors.transparent,
+            backgroundColor: const Color(0xFFFFD700),
             centerTitle: true,
             elevation: 10,
           ),
@@ -38,20 +38,34 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             // Container(),
             Container(
-              padding: const EdgeInsets.only(left: 35, top: 130),
-              child: const Text(
-                'Hi!\nWelcome',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 33,
-                  fontWeight: FontWeight.bold,
-                ),
+              padding: const EdgeInsets.all(10),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Hi!\nWelcome.',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 70,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10), // Add some space between texts
+                  Text(
+                    'Please enter your credentials to login!',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.5),
+                    top: MediaQuery.of(context).size.height * 0.3),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
