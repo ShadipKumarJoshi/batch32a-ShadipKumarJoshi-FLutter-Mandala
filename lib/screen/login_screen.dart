@@ -113,18 +113,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, 'register');
-                                  },
-                                  style: const ButtonStyle(),
-                                  child: const Text(
-                                    'Remember Me!',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                    ),
+                                const Text(
+                                  'Remember Me!',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Color(0xff4c505b),
                                   ),
                                 ),
                                 TextButton(
@@ -137,6 +131,31 @@ class _LoginScreenState extends State<LoginScreen> {
                                       style: TextStyle(
                                         decoration: TextDecoration.underline,
                                         color: Color(0xff4c505b),
+                                      ),
+                                    )),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  "Don't have an account?",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xff4c505b),
+                                  ),
+                                ),
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, 'register');
+                                    },
+                                    child: const Text(
+                                      'Create an account1',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        decoration: TextDecoration.underline,
+                                        color: Colors.blue,
                                       ),
                                     )),
                               ],
