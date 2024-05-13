@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
             image: AssetImage('assets/images/dashboard_bg.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
-      backgroundColor: const Color(0xFFFFD700),
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: const Text(
           'Login',
