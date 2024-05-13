@@ -84,60 +84,32 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ]),
                       child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(20.0),
                         child: Column(
                           children: [
-                            TextField(
+                            TextFormField(
                               style: const TextStyle(color: Colors.black),
                               decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
-                                  hintText: "Email",
+                                  labelText: "Email or Mobile Number",
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
                             ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            TextField(
+                            const SizedBox(height: 10),
+                            TextFormField(
                               style: const TextStyle(),
                               obscureText: true,
                               decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
-                                  hintText: "Password",
+                                  labelText: "Password",
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
                             ),
-                            const SizedBox(
-                              height: 40,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Login',
-                                  style: TextStyle(
-                                      fontSize: 27,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                CircleAvatar(
-                                  radius: 30,
-                                  backgroundColor: const Color(0xff4c505b),
-                                  child: IconButton(
-                                      color: Colors.white,
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.arrow_forward,
-                                      )),
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 40,
-                            ),
+                            const SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -147,22 +119,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                   },
                                   style: const ButtonStyle(),
                                   child: const Text(
-                                    'Sign Up',
+                                    'Remember Me!',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        color: Color(0xff4c505b),
-                                        fontSize: 18),
+                                      decoration: TextDecoration.underline,
+                                      color: Color(0xff4c505b),
+                                    ),
                                   ),
                                 ),
                                 TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, 'resetPassword');
+                                    },
                                     child: const Text(
-                                      'Forgot Password',
+                                      'Forgot Password?',
                                       style: TextStyle(
                                         decoration: TextDecoration.underline,
                                         color: Color(0xff4c505b),
-                                        fontSize: 18,
                                       ),
                                     )),
                               ],
