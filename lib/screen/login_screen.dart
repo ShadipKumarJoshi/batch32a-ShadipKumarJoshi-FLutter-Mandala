@@ -18,14 +18,31 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: const Text(
+            'Login',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 50,
+            ),
+          ),
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          elevation: 10,
+        ),
         body: Stack(
           children: [
-            Container(),
+            // Container(),
             Container(
               padding: const EdgeInsets.only(left: 35, top: 130),
               child: const Text(
-                'Welcome\nBack',
-                style: TextStyle(color: Colors.white, fontSize: 33),
+                'Hi!\nWelcome',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 33,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SingleChildScrollView(
