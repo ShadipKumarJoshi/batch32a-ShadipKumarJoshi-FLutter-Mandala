@@ -10,7 +10,12 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('assets/images/dashboard_bg.jpg'), fit: BoxFit.cover),
+      ),
+      child: Scaffold(
       backgroundColor: const Color(0xFFFFD700),
       appBar: AppBar(
         title: const Text(
@@ -57,5 +62,21 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
+    ),
+    
+    
   }
 }
+
+
+
+
+
+
+
+
+// gold
+//  backgroundColor: const Color(0xFFFFD700),
+
+
+
