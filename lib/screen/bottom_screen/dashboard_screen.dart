@@ -1,9 +1,9 @@
 // Primary Screen
 
-import 'package:first_app/screen/bottom_screen/about_screen.dart';
-import 'package:first_app/screen/bottom_screen/cart_screen.dart';
-import 'package:first_app/screen/bottom_screen/home_screen.dart';
-import 'package:first_app/screen/bottom_screen/profile_screen.dart';
+import 'package:final_assignment/screen/bottom_screen/about_screen.dart';
+import 'package:final_assignment/screen/bottom_screen/cart_screen.dart';
+import 'package:final_assignment/screen/bottom_screen/home_screen.dart';
+import 'package:final_assignment/screen/bottom_screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -37,7 +37,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
       body: lstBottomScreen[_selectedIndex],
       // Bottom Navigation Bar
-      
+
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed, // for more than 3 bottom icons
           items: const [
