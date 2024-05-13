@@ -8,6 +8,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool? isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,89 +72,152 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(left: 35, right: 35),
-                      child: Column(
-                        children: [
-                          TextField(
-                            style: const TextStyle(color: Colors.black),
-                            decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
-                                hintText: "Email",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
+                      margin: const EdgeInsets.all(20),
+                      decoration: const BoxDecoration(
+                          color: Color(0xFFFFD700),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
                           ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          TextField(
-                            style: const TextStyle(),
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
-                                hintText: "Password",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 5,
+                              color: Colors.grey,
+                              spreadRadius: 10,
+                            ),
+                          ]),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              style: const TextStyle(color: Colors.black),
+                              decoration: InputDecoration(
+                                  fillColor: Colors.grey.shade100,
+                                  filled: true,
+                                  labelText: "Email or Mobile Number",
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  )),
+                            ),
+                            const SizedBox(height: 10),
+                            TextFormField(
+                              style: const TextStyle(),
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                  fillColor: Colors.grey.shade100,
+                                  filled: true,
+                                  labelText: "Password",
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  )),
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Checkbox(
+                                      value: isChecked,
+                                      activeColor: Colors.blue,
+                                      onChanged: (newBool) {
+                                        isChecked = newBool;
+                                      },
+                                    ),
+                                    const Text(
+                                      'Remember Me!',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        color: Color(0xff4c505b),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, 'resetPassword');
+                                    },
+                                    child: const Text(
+                                      'Forgot Password?',
+                                      style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        color: Color(0xff4c505b),
+                                      ),
+                                    )),
+                              ],
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                print("Login button pressed");
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                              ),
+                              child: const Text(
                                 'Login',
                                 style: TextStyle(
-                                    fontSize: 27, fontWeight: FontWeight.w700),
-                              ),
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundColor: const Color(0xff4c505b),
-                                child: IconButton(
-                                    color: Colors.white,
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.arrow_forward,
-                                    )),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, 'register');
-                                },
-                                style: const ButtonStyle(),
-                                child: const Text(
-                                  'Sign Up',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18),
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
                                 ),
                               ),
-                              TextButton(
-                                  onPressed: () {},
-                                  child: const Text(
-                                    'Forgot Password',
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18,
-                                    ),
-                                  )),
-                            ],
-                          )
-                        ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment
+                                  .spaceEvenly, // Evenly space the icons
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    //fb login logic
+                                    print('Login from fb pressed');
+                                  },
+                                  icon: Image.asset(
+                                    'assets/icons/iconFb.ico',
+                                    width: 24,
+                                    height: 24,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    //google login logic
+                                    print('Login from google pressed');
+                                  },
+                                  icon: Image.asset(
+                                    'assets/icons/iconGoogle.ico',
+                                    width: 24,
+                                    height: 24,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  "Don't have an account?",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xff4c505b),
+                                  ),
+                                ),
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, 'register');
+                                    },
+                                    child: const Text(
+                                      'Create an account1',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        decoration: TextDecoration.underline,
+                                        color: Colors.blue,
+                                      ),
+                                    )),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],
