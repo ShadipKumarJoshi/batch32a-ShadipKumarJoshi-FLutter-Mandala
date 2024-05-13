@@ -1,6 +1,6 @@
 // SubScreen
 
-import 'package:first_app/model/item_model.dart';
+import 'package:final_assignment/model/item_model.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
