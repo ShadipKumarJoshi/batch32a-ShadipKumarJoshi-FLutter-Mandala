@@ -135,6 +135,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                     )),
                               ],
                             ),
+                            ElevatedButton(
+                              onPressed: () {
+                                print("Login button pressed");
+                              },
+                              style: ElevatedButton.styleFrom(),
+                              child: const Text(
+                                'Login',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
