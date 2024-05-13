@@ -8,6 +8,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool? isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -113,13 +115,24 @@ class _LoginScreenState extends State<LoginScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
-                                  'Remember Me!',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Color(0xff4c505b),
-                                  ),
+                                Row(
+                                  children: [
+                                    Checkbox(
+                                      value: isChecked,
+                                      activeColor: Colors.blue,
+                                      onChanged: (newBool) {
+                                        isChecked = newBool;
+                                      },
+                                    ),
+                                    const Text(
+                                      'Remember Me!',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        color: Color(0xff4c505b),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                                 TextButton(
                                     onPressed: () {
@@ -156,7 +169,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               children: [
                                 IconButton(
                                   onPressed: () {
-                                    // Add your Facebook login logic here
+                                    //fb login logic
+                                    print('Login from fb pressed');
                                   },
                                   icon: Image.asset(
                                     'assets/icons/iconFb.ico',
@@ -165,7 +179,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    //google login logic
+                                    print('Login from google pressed');
+                                  },
                                   icon: Image.asset(
                                     'assets/icons/iconGoogle.ico',
                                     width: 24,
