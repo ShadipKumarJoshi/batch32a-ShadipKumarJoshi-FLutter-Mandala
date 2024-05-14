@@ -197,6 +197,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ),
                             const SizedBox(height: 10),
+                            const Divider(color: Colors.green),
                             const Text(
                               "Or\nRegister with",
                               textAlign: TextAlign.center,
@@ -233,6 +234,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                               ],
                             ),
+                            const Divider(color: Colors.green),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
