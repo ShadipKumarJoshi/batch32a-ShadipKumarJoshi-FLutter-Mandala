@@ -1,5 +1,6 @@
 import 'package:final_assignment/model/onboarding_content_model.dart';
 import 'package:final_assignment/screen/login_screen.dart';
+import 'package:final_assignment/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class OnbordingScreen extends StatefulWidget {
@@ -59,6 +60,7 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                           style: const TextStyle(
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
+                            color: goldColor,
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -67,7 +69,7 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 18,
-                            color: Colors.grey,
+                            color: Colors.black,
                           ),
                         )
                       ],
@@ -84,30 +86,61 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
               (index) => buildDot(index, context),
             ),
           ),
-          Container(
-            height: 60,
-            margin: const EdgeInsets.all(40),
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                if (currentIndex == contents.length - 1) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const LoginScreen(),
+          Padding(
+            padding: const EdgeInsets.all(40),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Skip Button
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const LoginScreen(),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: goldColor,
+                  ),
+                  child: const Text(
+                    "Skip",
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
-                  );
-                } else {
-                  _controller.nextPage(
-                    duration: const Duration(milliseconds: 100),
-                    curve: Curves.bounceIn,
-                  );
-                }
-              },
-              child: Text(
-                  currentIndex == contents.length - 1 ? "Continue" : "Next"),
+                  ),
+                ),
+                // Next/Continue Button
+                ElevatedButton(
+                  onPressed: () {
+                    if (currentIndex == contents.length - 1) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const LoginScreen(),
+                        ),
+                      );
+                    } else {
+                      _controller.nextPage(
+                        duration: const Duration(milliseconds: 100),
+                        curve: Curves.bounceIn,
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                  ),
+                  child: Text(
+                    currentIndex == contents.length - 1 ? "Continue" : "Next",
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -115,12 +148,12 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
 
   Container buildDot(int index, BuildContext context) {
     return Container(
-      height: 10,
-      width: currentIndex == index ? 25 : 10,
-      margin: const EdgeInsets.only(right: 5),
+      height: 10, // Fixed height for all dots
+      width: currentIndex == index ? 25 : 10, // Wider dot for the current page
+      margin: const EdgeInsets.only(right: 5), // Spacing between dots
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.circular(20), // Rounded edges
+        color: goldColor,
       ),
     );
   }
