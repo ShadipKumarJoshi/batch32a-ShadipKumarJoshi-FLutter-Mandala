@@ -163,6 +163,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                             ),
+                            const SizedBox(height: 10),
+                            const Text(
+                              "Or\nLogin with",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff4c505b),
+                              ),
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment
                                   .spaceEvenly, // Evenly space the icons
