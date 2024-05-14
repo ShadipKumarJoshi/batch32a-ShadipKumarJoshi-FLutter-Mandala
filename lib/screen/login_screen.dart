@@ -22,18 +22,18 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
-          child: AppBar(
-            title: const Text(
-              'Login',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 50,
+          child: Container(
+            color: const Color(0xFFFFD700),
+            child: const Center(
+              child: Text(
+                'Login',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50,
+                ),
               ),
             ),
-            backgroundColor: const Color(0xFFFFD700),
-            centerTitle: true,
-            elevation: 10,
           ),
         ),
         body: Stack(
