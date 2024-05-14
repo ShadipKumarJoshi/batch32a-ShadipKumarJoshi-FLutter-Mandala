@@ -228,7 +228,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Text(
-                                  "Don't have an account?",
+                                  "Already have an account?",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -240,7 +240,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       Navigator.pushNamed(context, 'register');
                                     },
                                     child: const Text(
-                                      'Create an account1',
+                                      'Login here!',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         decoration: TextDecoration.underline,
