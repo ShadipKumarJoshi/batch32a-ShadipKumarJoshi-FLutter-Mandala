@@ -164,6 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             const SizedBox(height: 10),
+                            const Divider(color: Colors.green),
                             const Text(
                               "Or\nLogin with",
                               textAlign: TextAlign.center,
@@ -200,6 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ],
                             ),
+                            const Divider(color: Colors.green),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
