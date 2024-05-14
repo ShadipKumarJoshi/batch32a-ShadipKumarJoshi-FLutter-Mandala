@@ -170,7 +170,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       },
                                     ),
                                     const Text(
-                                      'Remember Me!',
+                                      'I agree to the User Agreement.',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         decoration: TextDecoration.underline,
@@ -179,29 +179,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     ),
                                   ],
                                 ),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.pushNamed(
-                                          context, 'resetPassword');
-                                    },
-                                    child: const Text(
-                                      'Forgot Password?',
-                                      style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        color: Colors.red,
-                                      ),
-                                    )),
                               ],
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                print("Login button pressed");
+                                print("Register button pressed");
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue,
                               ),
                               child: const Text(
-                                'Login',
+                                'Register',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
@@ -215,7 +203,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 IconButton(
                                   onPressed: () {
                                     //fb login logic
-                                    print('Login from fb pressed');
+                                    print('Register from fb pressed');
                                   },
                                   icon: Image.asset(
                                     'assets/icons/iconFb.ico',
@@ -226,7 +214,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 IconButton(
                                   onPressed: () {
                                     //google login logic
-                                    print('Login from google pressed');
+                                    print('Register from google pressed');
                                   },
                                   icon: Image.asset(
                                     'assets/icons/iconGoogle.ico',
