@@ -1,3 +1,4 @@
+import 'package:final_assignment/screen/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -8,8 +9,15 @@ class App extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       // themes
-      
+
       // home: SplashScreen(),
+      // home: LoginScreen(),
+      // home: RegisterScreen(),
+      home: OnboardingScreen(),
+      // routes: {
+      //       'login': (context) => LoginScreen(),
+      // 'register': (context) => RegisterScreen(),
+      // },
     );
   }
 }
