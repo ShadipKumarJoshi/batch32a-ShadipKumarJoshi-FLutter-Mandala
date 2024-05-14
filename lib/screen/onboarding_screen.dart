@@ -27,6 +27,9 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Using MediaQuery within the build method to get the height of the screen
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Column(
         children: [
@@ -40,43 +43,45 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                 });
               },
               itemBuilder: (_, i) {
-                return Padding(
-                  padding: const EdgeInsets.all(40),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        contents[i].image,
-                        height: 300,
-                      ),
-                      Text(
-                        contents[i].title,
-                        style: const TextStyle(
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
+                return Container(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      top: screenHeight * 0.3,
+                    ),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          contents[i].image,
+                          height: 300,
                         ),
-                      ),
-                      const SizedBox(height: 20),
-                      Text(
-                        contents[i].description,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          color: Colors.grey,
+                        Text(
+                          contents[i].title,
+                          style: const TextStyle(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      )
-                    ],
+                        const SizedBox(height: 20),
+                        Text(
+                          contents[i].description,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.grey,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 );
               },
             ),
           ),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                contents.length,
-                (index) => buildDot(index, context),
-              ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              contents.length,
+              (index) => buildDot(index, context),
             ),
           ),
           Container(
