@@ -13,7 +13,7 @@ class App extends StatelessWidget {
       // home: SplashScreen(),
       // home: LoginScreen(),
       // home: RegisterScreen(),
-      home: OnboardingScreen(),
+      home: OnbordingScreen(),
       // routes: {
       //       'login': (context) => LoginScreen(),
       // 'register': (context) => RegisterScreen(),

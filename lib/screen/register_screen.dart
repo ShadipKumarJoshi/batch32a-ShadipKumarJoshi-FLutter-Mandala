@@ -206,43 +206,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             const SizedBox(height: 10),
                             const Divider(color: Colors.green),
-                            const Text(
-                              "Or\nRegister with",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xff4c505b),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .spaceEvenly, // Evenly space the icons
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    //fb login logic
-                                    print('Register from fb pressed');
-                                  },
-                                  icon: Image.asset(
-                                    'assets/icons/iconFb.ico',
-                                    width: 24,
-                                    height: 24,
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    //google login logic
-                                    print('Register from google pressed');
-                                  },
-                                  icon: Image.asset(
-                                    'assets/icons/iconGoogle.ico',
-                                    width: 24,
-                                    height: 24,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Divider(color: Colors.green),
+                            
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
