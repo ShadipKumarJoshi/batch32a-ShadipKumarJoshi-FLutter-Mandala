@@ -95,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Email or Mobile Number",
+                                  prefixIcon: const Icon(Icons.email),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
@@ -107,6 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Password",
+                                  prefixIcon: const Icon(Icons.lock),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
@@ -121,7 +123,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       value: isChecked,
                                       activeColor: Colors.blue,
                                       onChanged: (newBool) {
-                                        isChecked = newBool;
+                                        setState(() {
+                                          isChecked = newBool;
+                                        });
                                       },
                                     ),
                                     const Text(
@@ -218,7 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       Navigator.pushNamed(context, 'register');
                                     },
                                     child: const Text(
-                                      'Create an account1',
+                                      'Create an account!',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         decoration: TextDecoration.underline,

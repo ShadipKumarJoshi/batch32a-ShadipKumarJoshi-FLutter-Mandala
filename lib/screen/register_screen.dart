@@ -95,6 +95,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Full Name",
+                                  prefixIcon: const Icon(Icons.person),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
@@ -106,6 +107,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Username",
+                                  prefixIcon: const Icon(Icons.person),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
@@ -117,6 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Phone Number",
+                                  prefixIcon: const Icon(Icons.phone),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
@@ -128,6 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Email",
+                                  prefixIcon: const Icon(Icons.email),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
@@ -140,6 +144,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Password",
+                                  prefixIcon: const Icon(Icons.lock),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
@@ -152,6 +157,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Confirm Password",
+                                  prefixIcon: const Icon(Icons.lock),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
@@ -166,7 +172,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       value: isChecked,
                                       activeColor: Colors.blue,
                                       onChanged: (newBool) {
-                                        isChecked = newBool;
+                                        setState(() {
+                                          isChecked = newBool;
+                                        });
                                       },
                                     ),
                                     const Text(
