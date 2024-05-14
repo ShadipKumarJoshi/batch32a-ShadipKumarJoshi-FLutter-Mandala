@@ -22,18 +22,18 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
-          child: AppBar(
-            title: const Text(
-              'Login',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 50,
+          child: Container(
+            color: const Color(0xFFFFD700),
+            child: const Center(
+              child: Text(
+                'Login',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50,
+                ),
               ),
             ),
-            backgroundColor: const Color(0xFFFFD700),
-            centerTitle: true,
-            elevation: 10,
           ),
         ),
         body: Stack(
@@ -164,6 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             const SizedBox(height: 10),
+                            const Divider(color: Colors.green),
                             const Text(
                               "Or\nLogin with",
                               textAlign: TextAlign.center,
@@ -200,6 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ],
                             ),
+                            const Divider(color: Colors.green),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
