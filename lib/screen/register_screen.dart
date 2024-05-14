@@ -196,6 +196,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                               ),
                             ),
+                            const SizedBox(height: 10),
+                            const Text(
+                              "Or\nRegister with",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff4c505b),
+                              ),
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment
                                   .spaceEvenly, // Evenly space the icons
