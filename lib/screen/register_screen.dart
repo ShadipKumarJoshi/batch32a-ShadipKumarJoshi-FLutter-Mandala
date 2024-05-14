@@ -1,3 +1,4 @@
+import 'package:final_assignment/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -31,7 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 fontSize: 50,
               ),
             ),
-            backgroundColor: const Color(0xFFFFD700),
+            backgroundColor: goldColor,
             centerTitle: true,
             elevation: 10,
           ),
@@ -74,7 +75,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Container(
                       margin: const EdgeInsets.all(20),
                       decoration: const BoxDecoration(
-                          color: Color(0xFFFFD700),
+                          color: goldColor,
                           borderRadius: BorderRadius.all(
                             Radius.circular(20),
                           ),
@@ -206,7 +207,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             const SizedBox(height: 10),
                             const Divider(color: Colors.green),
-                            
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -253,7 +253,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
 
 // gold
-//  backgroundColor: const Color(0xFFFFD700),
+//  backgroundColor: const goldColor,
 
 
 
