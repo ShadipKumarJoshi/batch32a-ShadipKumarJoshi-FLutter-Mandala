@@ -1,4 +1,4 @@
-import 'package:final_assignment/screen/login_screen.dart';
+import 'package:final_assignment/screen/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -11,8 +11,9 @@ class App extends StatelessWidget {
       // themes
 
       // home: SplashScreen(),
-      home: LoginScreen(),
+      // home: LoginScreen(),
       // home: RegisterScreen(),
+      home: OnboardingScreen(),
       // routes: {
       //       'login': (context) => LoginScreen(),
       // 'register': (context) => RegisterScreen(),
