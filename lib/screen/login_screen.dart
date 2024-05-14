@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 5,
-                              color: Colors.grey,
+                              color: Colors.green,
                               spreadRadius: 10,
                             ),
                           ]),
@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       'Forgot Password?',
                                       style: TextStyle(
                                         decoration: TextDecoration.underline,
-                                        color: Color(0xff4c505b),
+                                        color: Colors.red,
                                       ),
                                     )),
                               ],
