@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+class MenuScreen extends StatelessWidget {
+  const MenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const SizedBox.expand(
       child: Center(
-        child: Text('Cart Screen'),
+        child: Text('Menu Screen'),
       ),
     );
   }

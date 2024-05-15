@@ -4,6 +4,7 @@ import 'package:final_assignment/screen/bottom_screen/cart_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/design_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/favorite_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/home_screen.dart';
+import 'package:final_assignment/screen/bottom_screen/menu_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -23,6 +24,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     const DesignScreen(),
     const FavoriteScreen(),
     const CartScreen(),
+    const MenuScreen()
   ];
 
   @override
@@ -56,6 +58,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
             BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart),
               label: 'Cart',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.menu),
+              label: 'Menu',
             ),
           ],
 
