@@ -40,9 +40,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
               icon: const Icon(Icons.person),
             ),
-            Image.asset(
-              'assets/images/logo.png',
-              height: 40.0,
+            Expanded(
+              child: Center(
+                child: Image.asset(
+                  'assets/images/logo_navbar.png',
+                  height: 40.0,
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
             Stack(
               children: [
