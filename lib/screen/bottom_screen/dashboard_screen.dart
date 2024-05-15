@@ -1,9 +1,9 @@
 // Primary Screen
 
 import 'package:final_assignment/screen/bottom_screen/about_screen.dart';
-import 'package:final_assignment/screen/bottom_screen/cart_screen.dart';
+import 'package:final_assignment/screen/bottom_screen/design_screen.dart';
+import 'package:final_assignment/screen/bottom_screen/favorite_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/home_screen.dart';
-import 'package:final_assignment/screen/bottom_screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -20,8 +20,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
 // list creastion for highlighting screen icon
   List<Widget> lstBottomScreen = [
     const HomeScreen(),
-    const CartScreen(),
-    const ProfileScreen(),
+    const DesignScreen(),
+    const FavoriteScreen(),
     const AboutScreen(),
   ];
 
@@ -46,12 +46,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag),
-              label: 'Cart',
+              icon: Icon(Icons.format_paint),
+              label: 'Design',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
+              icon: Icon(Icons.favorite),
+              label: 'Favorite',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.help),

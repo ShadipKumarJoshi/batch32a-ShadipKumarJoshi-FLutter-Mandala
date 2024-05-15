@@ -3,14 +3,14 @@
 import 'package:final_assignment/model/item_model.dart';
 import 'package:flutter/material.dart';
 
-class CartScreen extends StatefulWidget {
-  const CartScreen({super.key});
+class DesignScreen extends StatefulWidget {
+  const DesignScreen({super.key});
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
+  State<DesignScreen> createState() => _DesignScreenState();
 }
 
-class _CartScreenState extends State<CartScreen> {
+class _DesignScreenState extends State<DesignScreen> {
   // manual items list
   List<Item> lstItems = [
     Item(
