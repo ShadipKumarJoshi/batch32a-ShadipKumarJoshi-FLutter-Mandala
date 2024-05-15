@@ -1,6 +1,6 @@
 // Primary Screen
 
-import 'package:final_assignment/screen/bottom_screen/about_screen.dart';
+import 'package:final_assignment/screen/bottom_screen/cart_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/design_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/favorite_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/home_screen.dart';
@@ -22,7 +22,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     const HomeScreen(),
     const DesignScreen(),
     const FavoriteScreen(),
-    const AboutScreen(),
+    const CartScreen(),
   ];
 
   @override
@@ -54,8 +54,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               label: 'Favorite',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.help),
-              label: 'About',
+              icon: Icon(Icons.shopping_cart),
+              label: 'Cart',
             ),
           ],
 
