@@ -5,6 +5,7 @@ import 'package:final_assignment/screen/bottom_screen/design_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/favorite_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/home_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/menu_screen.dart';
+import 'package:final_assignment/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -31,8 +32,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
-        backgroundColor: Colors.green,
+        backgroundColor: goldColor,
         centerTitle: true,
         elevation: 0,
       ),
