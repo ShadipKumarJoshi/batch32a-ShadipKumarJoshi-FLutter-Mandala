@@ -1,5 +1,3 @@
-// Primary Screen
-
 import 'package:final_assignment/screen/bottom_screen/cart_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/design_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/favorite_screen.dart';
@@ -19,7 +17,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   // to highlight the navbar
   int _selectedIndex = 0;
 
-// list creastion for highlighting screen icon
+  // list creation for highlighting screen icon
   List<Widget> lstBottomScreen = [
     const HomeScreen(),
     const DesignScreen(),
@@ -33,6 +31,54 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: goldColor,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                // Profile button action
+              },
+              icon: const Icon(Icons.person),
+            ),
+            Image.asset(
+              'assets/images/logo.png',
+              height: 40.0,
+            ),
+            Stack(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    // Notification button action
+                  },
+                  icon: const Icon(Icons.notifications),
+                ),
+                Positioned(
+                  right: 8,
+                  top: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(1),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    constraints: const BoxConstraints(
+                      minWidth: 12,
+                      minHeight: 12,
+                    ),
+                    child: const Text(
+                      '1', // This could be a dynamic value
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
         centerTitle: true,
         elevation: 0,
       ),
@@ -41,42 +87,43 @@ class _DashboardScreenState extends State<DashboardScreen> {
       // Bottom Navigation Bar
 
       bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed, // for more than 3 bottom icons
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.format_paint),
-              label: 'Design',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: 'Favorite',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
-              label: 'Cart',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu),
-              label: 'Menu',
-            ),
-          ],
+        type: BottomNavigationBarType.fixed, // for more than 3 bottom icons
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.format_paint),
+            label: 'Design',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorite',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu),
+            label: 'Menu',
+          ),
+        ],
 
-          // color change on Tap
-          backgroundColor: Colors.amber,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.black,
+        // color change on Tap
+        backgroundColor: Colors.amber,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
 
-          // current index from list
-          currentIndex: _selectedIndex,
-          onTap: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          }),
+        // current index from list
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
     );
   }
 }
