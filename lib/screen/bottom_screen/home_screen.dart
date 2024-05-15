@@ -10,7 +10,10 @@ class HomeScreen extends StatelessWidget {
     return const SizedBox.expand(
       // no scaffold.. use sizedbox
       child: Center(
-        child: Text('Home Screen'),
+        child: Text(
+          'Welcome Guest to Mandala T-On-Line Prints',
+          style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
