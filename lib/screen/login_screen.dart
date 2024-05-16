@@ -1,6 +1,7 @@
 import 'package:final_assignment/screen/bottom_screen/dashboard_screen.dart';
 import 'package:final_assignment/screen/register_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
+import 'package:final_assignment/utils/validation.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,6 +13,16 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool? isChecked = false;
+  final _formKey = GlobalKey<FormState>();
+  final _emailOrPhoneController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailOrPhoneController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,189 +98,203 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Container(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.3),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.all(20),
-                      decoration: const BoxDecoration(
-                          color: Color(0xFFFFD700),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 5,
-                              color: Colors.green,
-                              spreadRadius: 10,
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.all(20),
+                        decoration: const BoxDecoration(
+                            color: Color(0xFFFFD700),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
                             ),
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          children: [
-                            TextFormField(
-                              style: const TextStyle(color: Colors.black),
-                              decoration: InputDecoration(
-                                  fillColor: Colors.grey.shade100,
-                                  filled: true,
-                                  labelText: "Email or Mobile Number",
-                                  prefixIcon: const Icon(Icons.email),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(50),
-                                  )),
-                            ),
-                            const SizedBox(height: 10),
-                            TextFormField(
-                              style: const TextStyle(),
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  fillColor: Colors.grey.shade100,
-                                  filled: true,
-                                  labelText: "Password",
-                                  prefixIcon: const Icon(Icons.lock),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(50),
-                                  )),
-                            ),
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Checkbox(
-                                      value: isChecked,
-                                      activeColor: Colors.blue,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isChecked = newBool;
-                                        });
-                                      },
-                                    ),
-                                    const Text(
-                                      'Remember Me!',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        fontSize: 10,
-                                        color: Color(0xff4c505b),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.pushNamed(
-                                          context, 'resetPassword');
-                                    },
-                                    child: const Text(
-                                      'Forgot Password?',
-                                      style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        fontSize: 10,
-                                        color: Colors.red,
-                                      ),
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 5,
+                                color: Colors.green,
+                                spreadRadius: 10,
+                              ),
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                controller: _emailOrPhoneController,
+                                style: const TextStyle(color: Colors.black),
+                                decoration: InputDecoration(
+                                    fillColor: Colors.grey.shade100,
+                                    filled: true,
+                                    labelText: "Email or Mobile Number",
+                                    prefixIcon: const Icon(Icons.email),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(50),
                                     )),
-                              ],
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) => const DashboardScreen(),
-                                  ),
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue,
+                                validator: (value) =>
+                                    validateEmailOrPhone(value ?? ''),
                               ),
-                              child: const Text(
-                                'Login',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: _passwordController,
+                                style: const TextStyle(),
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                    fillColor: Colors.grey.shade100,
+                                    filled: true,
+                                    labelText: "Password",
+                                    prefixIcon: const Icon(Icons.lock),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(50),
+                                    )),
+                                validator: (value) =>
+                                    validatePassword(value ?? ''),
                               ),
-                            ),
-                            const SizedBox(height: 10),
-                            const Divider(color: Colors.green),
-                            const Text(
-                              "Or\nLogin with",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xff4c505b),
+                              const SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Checkbox(
+                                        value: isChecked,
+                                        activeColor: Colors.blue,
+                                        onChanged: (newBool) {
+                                          setState(() {
+                                            isChecked = newBool;
+                                          });
+                                        },
+                                      ),
+                                      const Text(
+                                        'Remember Me!',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          fontSize: 10,
+                                          color: Color(0xff4c505b),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                            context, 'resetPassword');
+                                      },
+                                      child: const Text(
+                                        'Forgot Password?',
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          fontSize: 10,
+                                          color: Colors.red,
+                                        ),
+                                      )),
+                                ],
                               ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .spaceEvenly, // Evenly space the icons
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    //fb login logic
-                                    print('Login from fb pressed');
-                                  },
-                                  icon: Image.asset(
-                                    'assets/icons/iconFb.ico',
-                                    width: 24,
-                                    height: 24,
-                                  ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  if (_formKey.currentState?.validate() ??
+                                      false) {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => const DashboardScreen(),
+                                      ),
+                                    );
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
                                 ),
-                                IconButton(
-                                  onPressed: () {
-                                    //google login logic
-                                    print('Login from google pressed');
-                                  },
-                                  icon: Image.asset(
-                                    'assets/icons/iconGoogle.ico',
-                                    width: 24,
-                                    height: 24,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Divider(color: Colors.green),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                const Text(
-                                  "Don't have an account?",
-                                  textAlign: TextAlign.left,
+                                child: const Text(
+                                  'Login',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 10,
-                                    color: Color(0xff4c505b),
+                                    color: Colors.white,
                                   ),
                                 ),
-                                TextButton(
+                              ),
+                              const SizedBox(height: 10),
+                              const Divider(color: Colors.green),
+                              const Text(
+                                "Or\nLogin with",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xff4c505b),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceEvenly, // Evenly space the icons
+                                children: [
+                                  IconButton(
                                     onPressed: () {
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) =>
-                                              const RegisterScreen(),
-                                        ),
-                                      );
+                                      //fb login logic
+                                      print('Login from fb pressed');
                                     },
-                                    child: const Text(
-                                      'Create an account!',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 10,
-                                        decoration: TextDecoration.underline,
-                                        color: Colors.blue,
-                                      ),
-                                    )),
-                              ],
-                            )
-                          ],
+                                    icon: Image.asset(
+                                      'assets/icons/iconFb.ico',
+                                      width: 24,
+                                      height: 24,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      //google login logic
+                                      print('Login from google pressed');
+                                    },
+                                    icon: Image.asset(
+                                      'assets/icons/iconGoogle.ico',
+                                      width: 24,
+                                      height: 24,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const Divider(color: Colors.green),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  const Text(
+                                    "Don't have an account?",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10,
+                                      color: Color(0xff4c505b),
+                                    ),
+                                  ),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) =>
+                                                const RegisterScreen(),
+                                          ),
+                                        );
+                                      },
+                                      child: const Text(
+                                        'Create an account!',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 10,
+                                          decoration: TextDecoration.underline,
+                                          color: Colors.blue,
+                                        ),
+                                      )),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -279,14 +304,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-
-
-
-
-
-// gold
-//  backgroundColor: const Color(0xFFFFD700),
-
-
-

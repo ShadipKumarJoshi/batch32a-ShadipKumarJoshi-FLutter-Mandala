@@ -1,6 +1,8 @@
 import 'package:final_assignment/screen/login_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
+import 'package:final_assignment/utils/validation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -11,14 +13,33 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   bool? isChecked = false;
+  final _formKey = GlobalKey<FormState>();
+  final _fullNameController = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _fullNameController.dispose();
+    _usernameController.dispose();
+    _phoneNumberController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/dashboard_bg.jpg'),
-            fit: BoxFit.cover),
+          image: AssetImage('assets/images/dashboard_bg.jpg'),
+          fit: BoxFit.cover,
+        ),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -26,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           preferredSize: const Size.fromHeight(100),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), // Rounded edges
+              borderRadius: BorderRadius.circular(20),
               color: goldColor,
             ),
             child: const Center(
@@ -50,7 +71,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
         body: Stack(
           children: [
-            // Container(),
             Container(
               padding: const EdgeInsets.all(10),
               child: const Column(
@@ -67,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10), // Add some space between texts
+                  SizedBox(height: 10),
                   Center(
                     child: Text(
                       'Please enter your details to register!',
@@ -84,13 +104,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.3),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.all(20),
-                      decoration: const BoxDecoration(
+                  top: MediaQuery.of(context).size.height * 0.3,
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.all(20),
+                        decoration: const BoxDecoration(
                           color: goldColor,
                           borderRadius: BorderRadius.all(
                             Radius.circular(20),
@@ -101,145 +124,208 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               color: Colors.green,
                               spreadRadius: 10,
                             ),
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          children: [
-                            TextFormField(
-                              style: const TextStyle(color: Colors.black),
-                              decoration: InputDecoration(
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                controller: _fullNameController,
+                                style: const TextStyle(color: Colors.black),
+                                decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Full Name",
                                   prefixIcon: const Icon(Icons.person),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
-                                  )),
-                            ),
-                            const SizedBox(height: 10),
-                            TextFormField(
-                              style: const TextStyle(color: Colors.black),
-                              decoration: InputDecoration(
+                                  ),
+                                ),
+                                validator: (value) =>
+                                    validateFullName(value ?? ''),
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: _usernameController,
+                                style: const TextStyle(color: Colors.black),
+                                decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Username",
                                   prefixIcon: const Icon(Icons.person),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
-                                  )),
-                            ),
-                            const SizedBox(height: 10),
-                            TextFormField(
-                              style: const TextStyle(color: Colors.black),
-                              decoration: InputDecoration(
+                                  ),
+                                ),
+                                validator: (value) =>
+                                    validateUsername(value ?? ''),
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: _phoneNumberController,
+                                style: const TextStyle(color: Colors.black),
+                                keyboardType: TextInputType.phone,
+                                inputFormatters: <TextInputFormatter>[
+                                  FilteringTextInputFormatter.digitsOnly,
+                                ],
+                                decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Phone Number",
                                   prefixIcon: const Icon(Icons.phone),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
-                                  )),
-                            ),
-                            const SizedBox(height: 10),
-                            TextFormField(
-                              style: const TextStyle(color: Colors.black),
-                              decoration: InputDecoration(
+                                  ),
+                                ),
+                                validator: (value) =>
+                                    isPhoneNumberValid(value ?? '')
+                                        ? null
+                                        : 'Please enter a valid phone number!',
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: _emailController,
+                                style: const TextStyle(color: Colors.black),
+                                decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Email",
                                   prefixIcon: const Icon(Icons.email),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
-                                  )),
-                            ),
-                            const SizedBox(height: 10),
-                            TextFormField(
-                              style: const TextStyle(),
-                              obscureText: true,
-                              decoration: InputDecoration(
+                                  ),
+                                ),
+                                validator: (value) => isEmailValid(value ?? '')
+                                    ? null
+                                    : 'Please enter a valid email!',
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: _passwordController,
+                                style: const TextStyle(),
+                                obscureText: true,
+                                decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Password",
                                   prefixIcon: const Icon(Icons.lock),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
-                                  )),
-                            ),
-                            const SizedBox(height: 10),
-                            TextFormField(
-                              style: const TextStyle(),
-                              obscureText: true,
-                              decoration: InputDecoration(
+                                  ),
+                                ),
+                                validator: (value) =>
+                                    validatePassword(value ?? ''),
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                controller: _confirmPasswordController,
+                                style: const TextStyle(),
+                                obscureText: true,
+                                decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Confirm Password",
                                   prefixIcon: const Icon(Icons.lock),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
-                                  )),
-                            ),
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Transform.scale(
-                                      scale: 0.8,
-                                      child: Checkbox(
-                                        value: isChecked,
-                                        activeColor: Colors.blue,
-                                        onChanged: (newBool) {
-                                          setState(() {
-                                            isChecked = newBool;
-                                          });
-                                        },
-                                      ),
-                                    ),
-                                    const Text(
-                                      'I agree to the User Agreement.',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        fontSize: 10,
-                                        color: Color(0xff4c505b),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                print("Register button pressed");
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue,
-                              ),
-                              child: const Text(
-                                'Register',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            const Divider(color: Colors.green),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text(
-                                  "Already have an account?",
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10,
-                                    color: Color(0xff4c505b),
                                   ),
                                 ),
-                                TextButton(
+                                validator: (value) => validateConfirmPassword(
+                                    _passwordController.text, value ?? ''),
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale: 0.8,
+                                        child: Checkbox(
+                                          value: isChecked,
+                                          activeColor: Colors.blue,
+                                          onChanged: (newBool) {
+                                            setState(() {
+                                              isChecked = newBool;
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      const Text(
+                                        'I agree to the User Agreement.',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          fontSize: 10,
+                                          color: Color(0xff4c505b),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  if (_formKey.currentState?.validate() ??
+                                      false) {
+                                    if (isChecked == true) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                              'Congratulation! Your account is successfully created. Login again to access your account.'),
+                                          backgroundColor: Colors.green,
+                                        ),
+                                      );
+                                      Future.delayed(const Duration(seconds: 1),
+                                          () {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) => const LoginScreen(),
+                                          ),
+                                        );
+                                      });
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                              'Please agree to the User Agreement.'),
+                                          backgroundColor: Colors.red,
+                                        ),
+                                      );
+                                    }
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                ),
+                                child: const Text(
+                                  'Register',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              const Divider(color: Colors.green),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    "Already have an account?",
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10,
+                                      color: Color(0xff4c505b),
+                                    ),
+                                  ),
+                                  TextButton(
                                     onPressed: () {
                                       Navigator.pushReplacement(
                                         context,
@@ -256,14 +342,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         decoration: TextDecoration.underline,
                                         color: Colors.blue,
                                       ),
-                                    )),
-                              ],
-                            )
-                          ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -273,14 +361,3 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
-
-
-
-
-
-
-// gold
-//  backgroundColor: const goldColor,
-
-
-
