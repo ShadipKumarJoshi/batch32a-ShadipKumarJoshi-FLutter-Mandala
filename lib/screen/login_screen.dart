@@ -1,4 +1,3 @@
-import 'package:final_assignment/screen/register_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +24,10 @@ class _LoginScreenState extends State<LoginScreen> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
           child: Container(
-            color: goldColor,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20), // Rounded edges
+              color: goldColor,
+            ),
             child: const Center(
               child: Text(
                 'Login',
@@ -33,6 +35,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 50,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(2.0, 2.0),
+                      blurRadius: 3.0,
+                      color: Colors.black,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -76,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       margin: const EdgeInsets.all(20),
                       decoration: const BoxDecoration(
-                          color: goldColor,
+                          color: Color(0xFFFFD700),
                           borderRadius: BorderRadius.all(
                             Radius.circular(20),
                           ),
@@ -156,12 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const RegisterScreen(),
-                        ),
-                      );
+                                print("Login button pressed");
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue,
@@ -252,3 +256,14 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
+
+
+
+
+
+// gold
+//  backgroundColor: const Color(0xFFFFD700),
+
+
+
