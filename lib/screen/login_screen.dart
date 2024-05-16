@@ -1,3 +1,5 @@
+import 'package:final_assignment/screen/register_screen.dart';
+import 'package:final_assignment/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -23,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
           child: Container(
-            color: const Color(0xFFFFD700),
+            color: goldColor,
             child: const Center(
               child: Text(
                 'Login',
@@ -74,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       margin: const EdgeInsets.all(20),
                       decoration: const BoxDecoration(
-                          color: Color(0xFFFFD700),
+                          color: goldColor,
                           borderRadius: BorderRadius.all(
                             Radius.circular(20),
                           ),
@@ -154,7 +156,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                print("Login button pressed");
+                                Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const RegisterScreen(),
+                        ),
+                      );
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue,
@@ -245,14 +252,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-
-
-
-
-
-// gold
-//  backgroundColor: const Color(0xFFFFD700),
-
-
-
