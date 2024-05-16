@@ -51,17 +51,17 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                   });
                 },
                 itemBuilder: (_, i) {
-                  return Container(
+                  return SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.only(
-                        top: screenHeight * 0.2,
+                        top: screenHeight * 0.1,
                       ),
                       child: Column(
                         children: [
                           Text(
                             contents[i].title,
                             style: const TextStyle(
-                              fontSize: 50,
+                              fontSize: 32,
                               fontWeight: FontWeight.bold,
                               color: goldColor,
                               shadows: [
@@ -73,18 +73,22 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                               ],
                             ),
                           ),
+                          const SizedBox(height: 10),
                           Image.asset(
                             contents[i].image,
                             height: 400,
                           ),
-                          const SizedBox(height: 20),
-                          Text(
-                            contents[i].description,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
+                          const SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.all(11.0),
+                            child: Text(
+                              contents[i].description,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           )
                         ],
