@@ -1,3 +1,4 @@
+import 'package:final_assignment/screen/bottom_screen/dashboard_screen.dart';
 import 'package:final_assignment/screen/register_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -166,7 +167,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                print("Login button pressed");
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const DashboardScreen(),
+                                  ),
+                                );
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue,
