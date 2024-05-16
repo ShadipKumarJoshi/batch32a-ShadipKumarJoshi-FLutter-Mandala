@@ -1,3 +1,4 @@
+import 'package:final_assignment/screen/bottom_screen/dashboard_screen.dart';
 import 'package:final_assignment/screen/register_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:final_assignment/utils/validation.dart';
@@ -199,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (_) => const RegisterScreen(),
+                                        builder: (_) => const DashboardScreen(),
                                       ),
                                     );
                                   }
