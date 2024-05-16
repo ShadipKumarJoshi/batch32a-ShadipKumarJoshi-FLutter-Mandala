@@ -118,6 +118,13 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: goldColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0),
+                        side: const BorderSide(
+                            color: Colors.black), // Black border
+                      ),
+                      shadowColor: Colors.black,
+                      elevation: 5, // Elevation to apply shadow
                     ),
                     child: const Text(
                       "Skip",
@@ -152,6 +159,13 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0),
+                        side: const BorderSide(
+                            color: Colors.black), // Black border
+                      ),
+                      shadowColor: Colors.black,
+                      elevation: 5, // Elevation to apply shadow
                     ),
                     child: Text(
                       currentIndex == contents.length - 1 ? "Continue" : "Next",
@@ -184,6 +198,10 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20), // Rounded edges
         color: goldColor,
+        border: Border.all(
+          color: Colors.black, // Black border
+          width: 1.0, // Border width
+        ),
       ),
     );
   }
