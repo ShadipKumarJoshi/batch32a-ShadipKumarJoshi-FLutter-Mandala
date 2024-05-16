@@ -31,15 +31,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: goldColor,
+        elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              onPressed: () {
-                // Profile button action
-              },
-              icon: const Icon(Icons.person),
+            // First Container with person icon
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/nav_bg.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: IconButton(
+                onPressed: () {
+                  // Profile button action
+                },
+                icon: const Icon(Icons.person),
+              ),
             ),
+
+            // Second Container with dashboard logo
             Expanded(
               child: Center(
                 child: Image.asset(
@@ -49,13 +61,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
               ),
             ),
+
+            // Third Container with notification icon
             Stack(
               children: [
-                IconButton(
-                  onPressed: () {
-                    // Notification button action
-                  },
-                  icon: const Icon(Icons.notifications),
+                Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/nav_bg.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      // Notification button action
+                    },
+                    icon: const Icon(Icons.notifications),
+                  ),
                 ),
                 Positioned(
                   right: 8,
@@ -85,12 +107,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
         centerTitle: true,
-        elevation: 0,
       ),
 
       body: lstBottomScreen[_selectedIndex],
-      // Bottom Navigation Bar
 
+      // Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed, // for more than 3 bottom icons
         items: const [
