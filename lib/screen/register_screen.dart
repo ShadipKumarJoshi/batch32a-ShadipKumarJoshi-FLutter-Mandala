@@ -266,18 +266,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   if (_formKey.currentState?.validate() ??
                                       false) {
                                     if (isChecked == true) {
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) => const LoginScreen(),
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                              'Congratulation! Your account is successfully created. Login again to access your account.'),
+                                          backgroundColor: Colors.green,
                                         ),
-                                      ).then((value) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                                'Congratulation! Your account is successfully created. Login again to access your account.'),
-                                            backgroundColor: Colors.green,
+                                      );
+                                      Future.delayed(const Duration(seconds: 1),
+                                          () {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) => const LoginScreen(),
                                           ),
                                         );
                                       });
