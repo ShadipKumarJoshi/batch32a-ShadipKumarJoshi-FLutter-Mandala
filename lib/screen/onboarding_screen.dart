@@ -58,25 +58,33 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                       ),
                       child: Column(
                         children: [
-                          Image.asset(
-                            contents[i].image,
-                            height: 400,
-                          ),
                           Text(
                             contents[i].title,
                             style: const TextStyle(
-                              fontSize: 35,
+                              fontSize: 50,
                               fontWeight: FontWeight.bold,
                               color: goldColor,
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(2.0, 2.0),
+                                  blurRadius: 3.0,
+                                  color: Colors.black,
+                                ),
+                              ],
                             ),
+                          ),
+                          Image.asset(
+                            contents[i].image,
+                            height: 400,
                           ),
                           const SizedBox(height: 20),
                           Text(
                             contents[i].description,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
-                              fontSize: 18,
+                              fontSize: 20,
                               color: Colors.black,
+                              fontWeight: FontWeight.bold,
                             ),
                           )
                         ],
@@ -115,6 +123,13 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                       "Skip",
                       style: TextStyle(
                         color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 3.0,
+                            color: Colors.black,
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -142,6 +157,13 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                       currentIndex == contents.length - 1 ? "Continue" : "Next",
                       style: const TextStyle(
                         color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 3.0,
+                            color: Colors.black,
+                          ),
+                        ],
                       ),
                     ),
                   ),
