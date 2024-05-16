@@ -44,7 +44,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Center(
                 child: Image.asset(
                   'assets/images/logo_navbar.png',
-                  height: 40.0,
+                  height: 230.0,
                   fit: BoxFit.contain,
                 ),
               ),
