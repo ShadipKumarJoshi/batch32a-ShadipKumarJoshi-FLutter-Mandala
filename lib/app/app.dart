@@ -1,4 +1,4 @@
-import 'package:final_assignment/screen/bottom_screen/dashboard_screen.dart';
+import 'package:final_assignment/screen/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -13,11 +13,11 @@ class App extends StatelessWidget {
       // home: SplashScreen(),
       // home: LoginScreen(),
       // home: RegisterScreen(),
-      // home: OnbordingScreen(),
+      home: OnbordingScreen(),
       // routes: {
       //       'login': (context) => LoginScreen(),
       // 'register': (context) => RegisterScreen(),
-      home: DashboardScreen(),
+      // home: DashboardScreen(),
       // },
     );
   }
