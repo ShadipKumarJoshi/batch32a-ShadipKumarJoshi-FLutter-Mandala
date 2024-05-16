@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class MenuScreen extends StatelessWidget {
+  const MenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const SizedBox.expand(
       child: Center(
-        child: Text('Profile Screen'),
+        child: Text('Menu Screen'),
       ),
     );
   }
