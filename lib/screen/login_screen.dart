@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 50,
+                  fontSize: 40,
                   shadows: [
                     Shadow(
                       offset: Offset(2.0, 2.0),
@@ -57,21 +57,27 @@ class _LoginScreenState extends State<LoginScreen> {
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Hi!\nWelcome.',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 70,
-                      fontWeight: FontWeight.bold,
+                  Center(
+                    child: Text(
+                      'Hi!\nWelcome.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   SizedBox(height: 10), // Add some space between texts
-                  Text(
-                    'Please enter your credentials to login!',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  Center(
+                    child: Text(
+                      'Please enter your credentials to login!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
