@@ -24,18 +24,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
-          child: AppBar(
-            title: const Text(
-              'Register',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 50,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20), // Rounded edges
+              color: goldColor,
+            ),
+            child: const Center(
+              child: Text(
+                'Register',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(2.0, 2.0),
+                      blurRadius: 3.0,
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
               ),
             ),
-            backgroundColor: goldColor,
-            centerTitle: true,
-            elevation: 10,
           ),
         ),
         body: Stack(
