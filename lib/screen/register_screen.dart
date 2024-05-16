@@ -265,7 +265,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 onPressed: () {
                                   if (_formKey.currentState?.validate() ??
                                       false) {
-                                    print("Register button pressed");
+                                    if (isChecked == true) {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => const LoginScreen(),
+                                        ),
+                                      ).then((value) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                                'Congratulation! Your account is successfully created. Login again to access your account.'),
+                                            backgroundColor: Colors.green,
+                                          ),
+                                        );
+                                      });
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                              'Please agree to the User Agreement.'),
+                                          backgroundColor: Colors.red,
+                                        ),
+                                      );
+                                    }
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
