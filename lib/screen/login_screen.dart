@@ -1,3 +1,4 @@
+import 'package:final_assignment/screen/bottom_screen/dashboard_screen.dart';
 import 'package:final_assignment/screen/register_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool? isChecked = false;
-  // Form key for validation
-  final _formKey = GlobalKey<FormState>();
-  // State variable to track password visibility
-  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -114,51 +111,23 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextFormField(
                               style: const TextStyle(color: Colors.black),
                               decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
-                                labelText: "Email or Mobile Number",
-                                prefixIcon: const Icon(Icons.email),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter your email or mobile number';
-                                } else if (RegExp(
-                                        r'^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$')
-                                    .hasMatch(value)) {
-                                  return null; // Valid email
-                                } else if (RegExp(r'^[9]\d{9}$')
-                                    .hasMatch(value)) {
-                                  return null; // Valid mobile number
-                                } else {
-                                  return 'Please enter a valid email or 10-digit mobile number starting with 9';
-                                }
-                              },
+                                  fillColor: Colors.grey.shade100,
+                                  filled: true,
+                                  labelText: "Email or Mobile Number",
+                                  prefixIcon: const Icon(Icons.email),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  )),
                             ),
                             const SizedBox(height: 10),
                             TextFormField(
                               style: const TextStyle(),
-                              obscureText: !_isPasswordVisible,
+                              obscureText: true,
                               decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Password",
                                   prefixIcon: const Icon(Icons.lock),
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _isPasswordVisible =
-                                            !_isPasswordVisible;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      _isPasswordVisible
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,
-                                    ),
-                                  ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
@@ -206,16 +175,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                print('login pressed');
-                                // Navigator.pushReplacement(
-                                // context,
-                                // MaterialPageRoute(
-                                //   builder: (_) => const DashboardScreen(),
-                                // ),
-                                // );
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const DashboardScreen(),
+                                  ),
+                                );
                               },
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blue),
+                                backgroundColor: Colors.blue,
+                              ),
                               child: const Text(
                                 'Login',
                                 style: TextStyle(
