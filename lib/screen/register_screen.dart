@@ -2,6 +2,7 @@ import 'package:final_assignment/screen/login_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:final_assignment/utils/validation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -164,6 +165,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               TextFormField(
                                 controller: _phoneNumberController,
                                 style: const TextStyle(color: Colors.black),
+                                keyboardType: TextInputType.phone,
+                                inputFormatters: <TextInputFormatter>[
+                                  FilteringTextInputFormatter.digitsOnly,
+                                ],
                                 decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
