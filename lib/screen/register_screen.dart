@@ -1,3 +1,4 @@
+import 'package:final_assignment/screen/login_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -220,7 +221,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                      Navigator.pushNamed(context, 'register');
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => const LoginScreen(),
+                                        ),
+                                      );
                                     },
                                     child: const Text(
                                       'Login here!',

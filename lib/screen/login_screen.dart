@@ -1,3 +1,4 @@
+import 'package:final_assignment/screen/register_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -230,7 +231,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                      Navigator.pushNamed(context, 'register');
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) =>
+                                              const RegisterScreen(),
+                                        ),
+                                      );
                                     },
                                     child: const Text(
                                       'Create an account!',
