@@ -152,6 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         decoration: TextDecoration.underline,
+                                        fontSize: 10,
                                         color: Color(0xff4c505b),
                                       ),
                                     ),
@@ -166,6 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       'Forgot Password?',
                                       style: TextStyle(
                                         decoration: TextDecoration.underline,
+                                        fontSize: 10,
                                         color: Colors.red,
                                       ),
                                     )),
@@ -231,13 +233,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             const Divider(color: Colors.green),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 const Text(
                                   "Don't have an account?",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 10,
                                     color: Color(0xff4c505b),
                                   ),
                                 ),
@@ -255,6 +258,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       'Create an account!',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
+                                        fontSize: 10,
                                         decoration: TextDecoration.underline,
                                         color: Colors.blue,
                                       ),
