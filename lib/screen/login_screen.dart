@@ -1,4 +1,3 @@
-import 'package:final_assignment/screen/bottom_screen/dashboard_screen.dart';
 import 'package:final_assignment/screen/register_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool? isChecked = false;
   // Form key for validation
   final _formKey = GlobalKey<FormState>();
+  // State variable to track password visibility
+  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -139,12 +140,25 @@ class _LoginScreenState extends State<LoginScreen> {
                             const SizedBox(height: 10),
                             TextFormField(
                               style: const TextStyle(),
-                              obscureText: true,
+                              obscureText: !_isPasswordVisible,
                               decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Password",
                                   prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      _isPasswordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                  ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   )),
@@ -194,15 +208,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               onPressed: () {
                                 print('login pressed');
                                 // Navigator.pushReplacement(
-                                  // context,
-                                  // MaterialPageRoute(
-                                  //   builder: (_) => const DashboardScreen(),
-                                  // ),
+                                // context,
+                                // MaterialPageRoute(
+                                //   builder: (_) => const DashboardScreen(),
+                                // ),
                                 // );
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue
-                              ),
+                                  backgroundColor: Colors.blue),
                               child: const Text(
                                 'Login',
                                 style: TextStyle(
