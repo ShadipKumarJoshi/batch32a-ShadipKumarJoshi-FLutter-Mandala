@@ -35,7 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 50,
+                  fontSize: 40,
                   shadows: [
                     Shadow(
                       offset: Offset(2.0, 2.0),
@@ -56,21 +56,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Hi!\nWelcome.',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 70,
-                      fontWeight: FontWeight.bold,
+                  Center(
+                    child: Text(
+                      'Hi!\nWelcome.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   SizedBox(height: 10), // Add some space between texts
-                  Text(
-                    'Please enter your details to register!',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  Center(
+                    child: Text(
+                      'Please enter your details to register!',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -180,20 +185,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               children: [
                                 Row(
                                   children: [
-                                    Checkbox(
-                                      value: isChecked,
-                                      activeColor: Colors.blue,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isChecked = newBool;
-                                        });
-                                      },
+                                    Transform.scale(
+                                      scale: 0.8,
+                                      child: Checkbox(
+                                        value: isChecked,
+                                        activeColor: Colors.blue,
+                                        onChanged: (newBool) {
+                                          setState(() {
+                                            isChecked = newBool;
+                                          });
+                                        },
+                                      ),
                                     ),
                                     const Text(
                                       'I agree to the User Agreement.',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         decoration: TextDecoration.underline,
+                                        fontSize: 10,
                                         color: Color(0xff4c505b),
                                       ),
                                     ),
@@ -226,6 +235,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 10,
                                     color: Color(0xff4c505b),
                                   ),
                                 ),
@@ -242,6 +252,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       'Login here!',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
+                                        fontSize: 10,
                                         decoration: TextDecoration.underline,
                                         color: Colors.blue,
                                       ),
