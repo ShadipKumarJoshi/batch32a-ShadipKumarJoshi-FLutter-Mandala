@@ -13,6 +13,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool? isChecked = false;
+  bool _passwordVisible = false;
+  
   final _formKey = GlobalKey<FormState>();
   final _emailOrPhoneController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -139,12 +141,24 @@ class _LoginScreenState extends State<LoginScreen> {
                               TextFormField(
                                 controller: _passwordController,
                                 style: const TextStyle(),
-                                obscureText: true,
+                                obscureText: !_passwordVisible,
                                 decoration: InputDecoration(
                                     fillColor: Colors.grey.shade100,
                                     filled: true,
                                     labelText: "Password",
                                     prefixIcon: const Icon(Icons.lock),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        _passwordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _passwordVisible = !_passwordVisible;
+                                        });
+                                      },
+                                    ),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(50),
                                     )),

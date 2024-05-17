@@ -1,5 +1,6 @@
 import 'package:final_assignment/screen/login_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
+import 'package:final_assignment/utils/user_agreement.dart';
 import 'package:final_assignment/utils/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +14,9 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   bool? isChecked = false;
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
   final _formKey = GlobalKey<FormState>();
   final _fullNameController = TextEditingController();
   final _usernameController = TextEditingController();
@@ -30,6 +34,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     super.dispose();
+  }
+
+  void _showUserAgreementDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("User Agreement"),
+          content: const SingleChildScrollView(
+            child: Column(
+              children: [
+                Text(userAgreement),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  isChecked = true;
+                });
+                Navigator.of(context).pop();
+              },
+              child: const Text(
+                "I have read the User Agreement",
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -204,12 +240,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               TextFormField(
                                 controller: _passwordController,
                                 style: const TextStyle(),
-                                obscureText: true,
+                                obscureText: !_isPasswordVisible,
                                 decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Password",
                                   prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _isPasswordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
+                                  ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),
@@ -221,12 +270,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               TextFormField(
                                 controller: _confirmPasswordController,
                                 style: const TextStyle(),
-                                obscureText: true,
+                                obscureText: !_isConfirmPasswordVisible,
                                 decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Confirm Password",
                                   prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _isConfirmPasswordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isConfirmPasswordVisible =
+                                            !_isConfirmPasswordVisible;
+                                      });
+                                    },
+                                  ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),
@@ -253,13 +315,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           },
                                         ),
                                       ),
-                                      const Text(
-                                        'I agree to the User Agreement.',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          fontSize: 10,
-                                          color: Color(0xff4c505b),
+                                      GestureDetector(
+                                        onTap: _showUserAgreementDialog,
+                                        child: const Text(
+                                          'I agree to the User Agreement.',
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            fontSize: 10,
+                                            color: Colors.green,
+                                          ),
                                         ),
                                       ),
                                     ],
