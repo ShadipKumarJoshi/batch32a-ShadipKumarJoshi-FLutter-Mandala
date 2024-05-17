@@ -1,104 +1,36 @@
 const String userAgreement = '''
-User Agreement
+Welcome to Mandala T-On-Line T-Shirts, an online platform ("the Platform") provided by Mandala Prints Pvt. Ltd. ("Mandala Prints", "we", "us", or "our"). These terms of use (the "User Agreement") govern your use of the Platform, whether you are a user browsing the Platform ("User", "you", and "your") or an artist selling designs on the Platform ("Artist", "Seller").
 
-1. Acceptance of Terms
-2. Description of Service
-3. User Responsibilities
-4. Account Registration
-5. User Conduct
-6. Privacy Policy
-7. Intellectual Property Rights
-8. License and Access
-9. Restrictions on Use
-10. Prohibited Activities
-11. User-Generated Content
-12. Monitoring and Enforcement
-13. Termination of Access
-14. Disclaimer of Warranties
-15. Limitation of Liability
-16. Indemnification
-17. Governing Law
-18. Dispute Resolution
-19. Changes to the Agreement
-20. Contact Information
-21. Entire Agreement
-22. Severability
-23. Waiver
-24. Assignment
-25. Third-Party Links
-26. Advertisements
-27. Feedback and Suggestions
-28. Support Services
-29. Subscription and Billing
-30. Free Trials
-31. Cancellations and Refunds
-32. Account Security
-33. Service Interruptions
-34. Data Security
-35. Cookies and Tracking Technologies
-36. Use of Personal Data
-37. Children's Privacy
-38. User Interactions
-39. Community Guidelines
-40. Prohibited Content
-41. Content Ownership
-42. Content License
-43. Reporting Violations
-44. Suspension and Termination
-45. Changes to Service
-46. Service Availability
-47. Third-Party Services
-48. Liability for Third-Party Services
-49. External Links
-50. Disclaimer of Endorsements
-51. User Disputes
-52. Content Removal
-53. Account Deactivation
-54. Reactivation of Account
-55. Account Transfer
-56. Data Retention
-57. Data Backup
-58. Notification of Changes
-59. User Communications
-60. Consent to Communications
-61. Communication Preferences
-62. Customer Support
-63. Service Modifications
-64. No Resale of Service
-65. Compliance with Laws
-66. Legal Requests
-67. Force Majeure
-68. Governing Jurisdiction
-69. Class Action Waiver
-70. Arbitration Agreement
-71. Right to Opt-Out
-72. Notice Requirements
-73. Rights and Remedies
-74. Equitable Relief
-75. Survival of Terms
-76. Waiver of Jury Trial
-77. Limitation on Time to File Claims
-78. Export Control
-79. Government Use
-80. Law Enforcement
-81. Investigations
-82. Account Termination
-83. Refund Policy
-84. Account Reinstatement
-85. Service Upgrades
-86. Content Updates
-87. Unauthorized Use
-88. Misuse of Services
-89. Automated Systems
-90. Accessing the Service
-91. Third-Party Content
-92. User Content
-93. Service Termination
-94. Contacting Us
-95. Updating Your Information
-96. Consent to Use Data
-97. Changes to Policy
-98. Effective Date
-99. User Acknowledgement
-100. Agreement Acceptance
+By accessing or using the Platform, you agree to be bound by the terms of this User Agreement. If you do not agree to these terms, you may not use the Platform.
+
+I. General Terms for All Users
+
+Eligibility
+The Platform is only available to individuals who can form legally binding contracts under applicable law. By using the Platform, you represent and warrant that you are at least 18 years old. Minors are not permitted to use the Platform unless supervised by a parent or legal guardian.
+
+Amendments
+Mandala Prints reserves the right to amend this User Agreement at any time in its sole discretion. We will make reasonable efforts to notify users of material changes. Your continued use of the Platform after such changes constitutes your acceptance of the revised User Agreement.
+
+Account Management
+When creating an account on the Platform, you must provide accurate and complete information. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must notify Mandala Prints immediately of any unauthorized use of your account or any other breach of security. Mandala Prints reserves the right to suspend or terminate your account if you provide false information or violate any terms of this User Agreement.
+
+II. Special Terms for Buyers
+
+- Buyers must ensure that they provide accurate shipping information to Mandala Prints.
+- Buyers are responsible for any customs duties or taxes associated with their purchases.
+- Buyers may only use the Platform for lawful purposes and may not engage in any fraudulent or illegal activities.
+
+III. Special Terms for Artists
+
+- Artists retain ownership of the designs they upload to the Platform.
+- By uploading designs, artists grant Mandala Prints a non-exclusive, worldwide, royalty-free license to use, display, and reproduce their designs for the purpose of promoting and selling products on the Platform.
+- Artists are responsible for ensuring that their designs comply with copyright and intellectual property laws. Mandala Prints reserves the right to remove any designs that violate these laws or our content guidelines.
+- Artists are entitled to receive royalties for each sale of products featuring their designs, as specified in our royalty policy.
+
+IV. Dispute Resolution
+Any dispute arising out of or relating to this User Agreement or your use of the Platform shall be resolved exclusively through arbitration in accordance with the rules of the [Arbitration Institution]. The arbitration shall be conducted by a single arbitrator appointed in accordance with those rules. You waive any right to participate in a class action lawsuit or class-wide arbitration.
+
+By using the Platform, you acknowledge and agree to abide by the terms of this User Agreement.
+
+This User Agreement is effective as of 2024-01-11.
 ''';
