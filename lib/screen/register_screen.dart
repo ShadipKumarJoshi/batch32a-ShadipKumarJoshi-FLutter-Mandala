@@ -13,6 +13,9 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   bool? isChecked = false;
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
   final _formKey = GlobalKey<FormState>();
   final _fullNameController = TextEditingController();
   final _usernameController = TextEditingController();
@@ -204,12 +207,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               TextFormField(
                                 controller: _passwordController,
                                 style: const TextStyle(),
-                                obscureText: true,
+                                obscureText: !_isPasswordVisible,
                                 decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Password",
                                   prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _isPasswordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
+                                  ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),
@@ -221,12 +237,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               TextFormField(
                                 controller: _confirmPasswordController,
                                 style: const TextStyle(),
-                                obscureText: true,
+                                obscureText: !_isConfirmPasswordVisible,
                                 decoration: InputDecoration(
                                   fillColor: Colors.grey.shade100,
                                   filled: true,
                                   labelText: "Confirm Password",
                                   prefixIcon: const Icon(Icons.lock),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _isConfirmPasswordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isConfirmPasswordVisible =
+                                            !_isConfirmPasswordVisible;
+                                      });
+                                    },
+                                  ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),
