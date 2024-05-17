@@ -1,5 +1,6 @@
 import 'package:final_assignment/screen/login_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
+import 'package:final_assignment/utils/user_agreement.dart';
 import 'package:final_assignment/utils/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,6 +34,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     super.dispose();
+  }
+
+  void _showUserAgreementDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("User Agreement"),
+          content: const SingleChildScrollView(
+            child: Column(
+              children: [
+                Text(userAgreement),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  isChecked = true;
+                });
+                Navigator.of(context).pop();
+              },
+              child: const Text(
+                "I have read the User Agreement",
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -282,13 +315,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           },
                                         ),
                                       ),
-                                      const Text(
-                                        'I agree to the User Agreement.',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          fontSize: 10,
-                                          color: Color(0xff4c505b),
+                                      GestureDetector(
+                                        onTap: _showUserAgreementDialog,
+                                        child: const Text(
+                                          'I agree to the User Agreement.',
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            fontSize: 10,
+                                            color: Colors.green,
+                                          ),
                                         ),
                                       ),
                                     ],
