@@ -229,9 +229,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   ),
                                 ),
                                 validator: (value) =>
-                                    isPhoneNumberValid(value ?? '')
-                                        ? null
-                                        : 'Please enter a valid phone number!',
+                                    validatePhone(value ?? ''),
                               ),
                               const SizedBox(height: 10),
                               TextFormField(
@@ -246,9 +244,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     borderRadius: BorderRadius.circular(50),
                                   ),
                                 ),
-                                validator: (value) => isEmailValid(value ?? '')
-                                    ? null
-                                    : 'Please enter a valid email!',
+                                validator: (value) =>
+                                    validateEmail(value ?? ''),
                               ),
                               const SizedBox(height: 10),
                               TextFormField(

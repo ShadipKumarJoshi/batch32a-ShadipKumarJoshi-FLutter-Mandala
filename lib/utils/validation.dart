@@ -21,6 +21,24 @@ String? validateEmailOrPhone(String value) {
   return null;
 }
 
+String? validateEmail(String value) {
+  if (value.isEmpty) {
+    return 'Please enter email!';
+  } else if (!isEmailValid(value)) {
+    return 'Please enter a valid email!';
+  }
+  return null;
+}
+
+String? validatePhone(String value) {
+  if (value.isEmpty) {
+    return 'Please enter phone number!';
+  } else if (!isPhoneNumberValid(value)) {
+    return 'Please enter a phone number!';
+  }
+  return null;
+}
+
 String? validatePassword(String value) {
   if (value.isEmpty) {
     return 'Please enter password!';
@@ -37,7 +55,7 @@ String? validateFullName(String value) {
   if (value.isEmpty) {
     return 'Please enter your full name!';
   } else if (!nameRegExp.hasMatch(value)) {
-    return 'Please enter a valid full name! Eg: Alex Gott';
+    return 'Please enter a valid full name!\nEg: Alex Gott';
   }
   return null;
 }
