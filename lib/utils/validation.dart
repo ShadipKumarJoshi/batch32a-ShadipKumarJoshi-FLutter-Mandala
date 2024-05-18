@@ -14,7 +14,7 @@ bool isPhoneNumberValid(String phone) {
 
 String? validateEmailOrPhone(String value) {
   if (value.isEmpty) {
-    return 'Please enter email or phone number!';
+    return 'Please enter your email or phone number!';
   } else if (!isEmailValid(value) && !isPhoneNumberValid(value)) {
     return 'Please enter a valid email or a phone number!';
   }
@@ -23,7 +23,7 @@ String? validateEmailOrPhone(String value) {
 
 String? validateEmail(String value) {
   if (value.isEmpty) {
-    return 'Please enter email!';
+    return 'Please enter your email!';
   } else if (!isEmailValid(value)) {
     return 'Please enter a valid email!';
   }
@@ -32,18 +32,9 @@ String? validateEmail(String value) {
 
 String? validatePhone(String value) {
   if (value.isEmpty) {
-    return 'Please enter phone number!';
+    return 'Please enter your phone number!';
   } else if (!isPhoneNumberValid(value)) {
-    return 'Please enter a phone number!';
-  }
-  return null;
-}
-
-String? validatePassword(String value) {
-  if (value.isEmpty) {
-    return 'Please enter password!';
-  } else if (value.length < 8) {
-    return 'Password must be at least 8 characters long!';
+    return 'Please enter a valid phone number!\nEg: 9xxxxxxxxx';
   }
   return null;
 }
@@ -65,9 +56,18 @@ String? validateUsername(String value) {
     r'^[a-zA-Z0-9]+$',
   );
   if (value.isEmpty) {
-    return 'Please enter a username!';
+    return 'Please enter your username!';
   } else if (!usernameRegExp.hasMatch(value)) {
     return 'Username can only contain alphabets and numbers!';
+  }
+  return null;
+}
+
+String? validatePassword(String value) {
+  if (value.isEmpty) {
+    return 'Please enter your password!';
+  } else if (value.length < 8) {
+    return 'Password must be at least 8 characters long!';
   }
   return null;
 }
