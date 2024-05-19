@@ -1,4 +1,5 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:final_assignment/screen/bottom_screen/cart_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/design_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/favorite_screen.dart';
@@ -19,13 +20,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
 
   // list creation for highlighting screen icon
-  List<Widget> lstBottomScreen = [
+  final List<Widget> lstBottomScreen = [
     const HomeScreen(),
     const DesignScreen(),
     const FavoriteScreen(),
     const CartScreen(),
     const MenuScreen()
   ];
+
+  // Method to get the color of the icon based on the selected index
+  Color _getIconColor(int index) {
+    return _selectedIndex == index ? Colors.black : Colors.white;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,19 +118,34 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
       body: lstBottomScreen[_selectedIndex],
 
-      // Bottom Navigation Bar
+      // Curved Navigation Bar
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        buttonBackgroundColor: goldColor,
-        color: goldColor,
-        animationDuration: const Duration(milliseconds: 300),
-        items: const <Widget>[
-          Icon(Icons.home, size: 26, color: Colors.white),
-          Icon(Icons.format_paint, size: 26, color: Colors.white),
-          Icon(Icons.favorite, size: 26, color: Colors.white),
-          Icon(Icons.shopping_cart, size: 26, color: Colors.white),
-          Icon(Icons.menu, size: 26, color: Colors.white),
+        color: goldColor, // Set the navigation bar color to gold
+        items: [
+          CurvedNavigationBarItem(
+            child: Icon(Icons.home, color: _getIconColor(0)),
+            label: 'Home',
+          ),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.format_paint, color: _getIconColor(1)),
+            label: 'Design',
+          ),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.favorite, color: _getIconColor(2)),
+            label: 'Favorite',
+          ),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.shopping_cart, color: _getIconColor(3)),
+            label: 'Cart',
+          ),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.menu, color: _getIconColor(4)),
+            label: 'Menu',
+          ),
         ],
+
+        // Handle button tap
         onTap: (index) {
           setState(() {
             _selectedIndex = index;
