@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:final_assignment/screen/bottom_screen/cart_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/design_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/favorite_screen.dart';
@@ -112,38 +113,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: lstBottomScreen[_selectedIndex],
 
       // Bottom Navigation Bar
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // for more than 3 bottom icons
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.format_paint),
-            label: 'Design',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorite',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
-            label: 'Menu',
-          ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.transparent,
+        buttonBackgroundColor: goldColor,
+        color: goldColor,
+        animationDuration: const Duration(milliseconds: 300),
+        items: const <Widget>[
+          Icon(Icons.home, size: 26, color: Colors.white),
+          Icon(Icons.format_paint, size: 26, color: Colors.white),
+          Icon(Icons.favorite, size: 26, color: Colors.white),
+          Icon(Icons.shopping_cart, size: 26, color: Colors.white),
+          Icon(Icons.menu, size: 26, color: Colors.white),
         ],
-
-        // color change on Tap
-        backgroundColor: Colors.amber,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.black,
-
-        // current index from list
-        currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
             _selectedIndex = index;
