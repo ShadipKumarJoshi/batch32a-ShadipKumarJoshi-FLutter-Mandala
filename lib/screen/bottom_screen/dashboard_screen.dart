@@ -115,26 +115,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
       // Curved Navigation Bar
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: goldColor,
+        backgroundColor: Colors.transparent,
+        color: goldColor, // Set the navigation bar color to green
         items: const [
           CurvedNavigationBarItem(
-            child: Icon(Icons.home_outlined),
+            child: Icon(Icons.home_outlined, color: Colors.white),
             label: 'Home',
           ),
           CurvedNavigationBarItem(
-            child: Icon(Icons.format_paint),
+            child: Icon(Icons.format_paint, color: Colors.white),
             label: 'Design',
           ),
           CurvedNavigationBarItem(
-            child: Icon(Icons.favorite),
+            child: Icon(Icons.favorite, color: Colors.white),
             label: 'Favorite',
           ),
           CurvedNavigationBarItem(
-            child: Icon(Icons.shopping_cart),
+            child: Icon(Icons.shopping_cart, color: Colors.white),
             label: 'Cart',
           ),
           CurvedNavigationBarItem(
-            child: Icon(Icons.menu),
+            child: Icon(Icons.menu, color: Colors.white),
             label: 'Menu',
           ),
         ],
