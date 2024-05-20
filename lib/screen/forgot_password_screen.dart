@@ -19,7 +19,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       // Handle the form submission logic here
       // For example, send a password reset request to your backend
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Password reset link has been sent!')),
+        const SnackBar(
+          content: Text('OTP has been sent to your contact medium!'),
+          backgroundColor: Colors.green,
+        ),
       );
     }
   }
@@ -59,7 +62,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             ),
             centerTitle: true,
             title: const Text(
-              'Forgot Password?',
+              'Reset Password',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
