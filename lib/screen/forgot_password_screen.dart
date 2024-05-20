@@ -16,11 +16,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
-      // Handle the form submission logic here
-      // For example, send a password reset request to your backend
+      final contactMedium = _emailOrPhoneController.text;
+
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('OTP has been sent to your contact medium!'),
+        SnackBar(
+          content: Text('OTP has been sent to $contactMedium'),
           backgroundColor: Colors.green,
         ),
       );
