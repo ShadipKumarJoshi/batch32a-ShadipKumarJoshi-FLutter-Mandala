@@ -88,10 +88,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           children: [
             Container(
               padding: const EdgeInsets.all(10),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
+                    child: Image.asset(
+                      'assets/images/reset_password.png',
+                      height: 150,
+                    ),
+                  ),
+                  const Center(
                     child: Text(
                       'Oh, NO!\nI forgot!.',
                       textAlign: TextAlign.center,
@@ -102,8 +108,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Center(
+                  const SizedBox(height: 10),
+                  const Center(
                     child: Text(
                       'Please enter your email or phone number to reset your password!',
                       style: TextStyle(
