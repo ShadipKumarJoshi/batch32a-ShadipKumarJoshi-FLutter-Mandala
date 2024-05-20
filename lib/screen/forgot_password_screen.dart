@@ -16,10 +16,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
-      // Handle the form submission logic here
-      // For example, send a password reset request to your backend
+      final contactMedium = _emailOrPhoneController.text;
+
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Password reset link has been sent!')),
+        SnackBar(
+          content: Text('OTP has been sent to $contactMedium'),
+          backgroundColor: Colors.green,
+        ),
       );
     }
   }
@@ -59,7 +62,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             ),
             centerTitle: true,
             title: const Text(
-              'Forgot Password?',
+              'Reset Password',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -85,10 +88,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           children: [
             Container(
               padding: const EdgeInsets.all(10),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
+                    child: Image.asset(
+                      'assets/images/reset_password.png',
+                      height: 150,
+                    ),
+                  ),
+                  const Center(
                     child: Text(
                       'Oh, NO!\nI forgot!.',
                       textAlign: TextAlign.center,
@@ -99,8 +108,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Center(
+                  const SizedBox(height: 10),
+                  const Center(
                     child: Text(
                       'Please enter your email or phone number to reset your password!',
                       style: TextStyle(
@@ -116,7 +125,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.3,
+                  top: MediaQuery.of(context).size.height * 0.5,
                 ),
                 child: Form(
                   key: _formKey,
