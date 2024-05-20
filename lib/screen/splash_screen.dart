@@ -26,27 +26,35 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Column(
-              children: [
-                Image.asset(
-                  'assets/images/splash.gif',
-                ),
-                const SizedBox(height: 50),
-                const Text(
-                  'v. 1.00',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: Expanded(
+                      child: Image.asset(
+                        'assets/images/splash.gif',
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 50),
+                  const Text(
+                    'v. 1.00',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
