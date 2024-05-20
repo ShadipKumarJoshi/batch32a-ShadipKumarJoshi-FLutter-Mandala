@@ -123,10 +123,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
           children: [
             Container(
               padding: const EdgeInsets.all(10),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
+                    child: Image.asset(
+                      'assets/images/register.png',
+                      height: 150,
+                    ),
+                  ),
+                  const Center(
                     child: Text(
                       'Hi!\nWelcome.',
                       textAlign: TextAlign.center,
@@ -137,8 +143,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Center(
+                  const SizedBox(height: 10),
+                  const Center(
                     child: Text(
                       'Please enter your details to register!',
                       style: TextStyle(

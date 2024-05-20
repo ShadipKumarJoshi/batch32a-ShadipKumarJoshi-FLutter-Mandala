@@ -68,10 +68,16 @@ class _LoginScreenState extends State<LoginScreen> {
             // Container(),
             Container(
               padding: const EdgeInsets.all(10),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
+                    child: Image.asset(
+                      'assets/images/login.png',
+                      height: 150,
+                    ),
+                  ),
+                  const Center(
                     child: Text(
                       'Hi!\nWelcome.',
                       textAlign: TextAlign.center,
@@ -82,8 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10), // Add some space between texts
-                  Center(
+                  const SizedBox(height: 10), // Add some space between texts
+                  const Center(
                     child: Text(
                       'Please enter your credentials to login!',
                       textAlign: TextAlign.center,
