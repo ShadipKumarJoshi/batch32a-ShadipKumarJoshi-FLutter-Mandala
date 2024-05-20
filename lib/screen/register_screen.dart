@@ -160,7 +160,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.3,
+                  top: MediaQuery.of(context).size.height * 0.5,
                 ),
                 child: Form(
                   key: _formKey,

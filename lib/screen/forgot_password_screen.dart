@@ -125,7 +125,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.3,
+                  top: MediaQuery.of(context).size.height * 0.5,
                 ),
                 child: Form(
                   key: _formKey,
