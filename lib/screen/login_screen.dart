@@ -1,4 +1,5 @@
 import 'package:final_assignment/screen/bottom_screen/dashboard_screen.dart';
+import 'package:final_assignment/screen/forgot_password_screen.dart';
 import 'package:final_assignment/screen/register_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:final_assignment/utils/validation.dart';
@@ -14,7 +15,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool? isChecked = false;
   bool _passwordVisible = false;
-  
+
   final _formKey = GlobalKey<FormState>();
   final _emailOrPhoneController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -194,8 +195,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   TextButton(
                                       onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, 'resetPassword');
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) =>
+                                                const ForgotPasswordScreen(),
+                                          ),
+                                        );
                                       },
                                       child: const Text(
                                         'Forgot Password?',
