@@ -38,11 +38,15 @@ class _SplashScreenState extends State<SplashScreen> {
                         top: MediaQuery.of(context).size.height * 0.2),
                     child: SizedBox(
                       height: 400,
-                      child: Expanded(
-                        child: Image.asset(
-                          'assets/images/splash.gif',
-                          fit: BoxFit.contain,
-                        ),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Image.asset(
+                              'assets/images/splash.gif',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
