@@ -1,0 +1,5 @@
+class HiveTableConstant {
+  HiveTableConstant._();
+
+ 
+}
