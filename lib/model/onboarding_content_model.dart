@@ -20,7 +20,7 @@ List<UnbordingContent> contents = [
       title: 'Submit Your Art',
       image: 'assets/images/onboard2.png',
       description:
-          "Art you an artist. Submit your own art for others to choose from. Share your unique style with the world!"),
+          "Are you an artist. Submit your own art for others to choose from. Share your unique style with the world!"),
   UnbordingContent(
       title: 'Earn Royalty',
       image: 'assets/images/onboard3.png',
