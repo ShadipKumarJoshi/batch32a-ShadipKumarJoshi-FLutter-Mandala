@@ -1,23 +1,18 @@
-
-import 'package:final_assignment/app/navigator_key/navigator_key.dart';
-import 'package:final_assignment/app/themes/app_theme.dart';
+import 'package:final_assignment/screen/splash_screen.dart';
+import 'package:final_assignment/theme/theme_data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class App extends ConsumerWidget {
+class App extends StatelessWidget {
   const App({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      navigatorKey: AppNavigator.navigatorKey,
-      title: 'Mandala T-On-Line Prints',
-      theme: AppTheme.getApplicationTheme(false),
-      home: const SplashView(),
-      
-      // --- routes
-      // home: SplashScreen(),
+      theme: getApplicationTheme(),
+      // themes
+
+      home: SplashScreen(),
       // home: LoginScreen(),
       // home: RegisterScreen(),
       // home: OnbordingScreen(),
