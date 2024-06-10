@@ -1,6 +1,4 @@
 import 'package:final_assignment/features/auth/presentation/viewmodel/login_view_model.dart';
-import 'package:final_assignment/screen/bottom_screen/dashboard_screen.dart';
-import 'package:final_assignment/screen/forgot_password_screen.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:final_assignment/utils/validation.dart';
 import 'package:flutter/material.dart';
@@ -205,13 +203,14 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                     ),
                                     TextButton(
                                         onPressed: () {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (_) =>
-                                                  const ForgotPasswordScreen(),
-                                            ),
-                                          );
+                                         ref.read(loginViewModelProvider.notifier).openForgotPasswordView();
+                                          // Navigator.pushReplacement(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (_) =>
+                                          //         const ForgotPasswordView(),
+                                          //   ),
+                                          // );
                                         },
                                         child: const Text(
                                           'Forgot Password?',
@@ -228,13 +227,15 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                   onPressed: () {
                                     if (_formKey.currentState?.validate() ??
                                         false) {
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) =>
-                                              const DashboardScreen(),
-                                        ),
-                                      );
+                                      ref
+                                          .read(loginViewModelProvider.notifier)
+                                          .openDashboardView();
+                                      // Navigator.pushReplacement(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (_) => const DashboardView(),
+                                      //   ),
+                                      // );
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(

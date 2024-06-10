@@ -1,9 +1,13 @@
-import 'package:final_assignment/features/auth/presentation/navigator/login_navigator.dart';
+import 'package:final_assignment/features/onboarding/presentation/navigator/onboarding_navigator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final splashViewNavigatorProvider = Provider <SplashViewNavigator> ((ref)=> SplashViewNavigator());
+final splashViewNavigatorProvider =
+    Provider<SplashViewNavigator>((ref) => SplashViewNavigator());
 
 //this class will be used to navigate to LoginView
-class SplashViewNavigator with LoginViewRoute{}
+class SplashViewNavigator with OnboardingViewRoute {}
 
-mixin SplashViewRoute{}
+// direct login code here
+// LoginViewRoute
+
+mixin SplashViewRoute {}
