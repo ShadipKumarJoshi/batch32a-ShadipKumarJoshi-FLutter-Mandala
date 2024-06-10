@@ -1,5 +1,0 @@
-class HiveTableConstant {
-  HiveTableConstant._();
-
- 
-}

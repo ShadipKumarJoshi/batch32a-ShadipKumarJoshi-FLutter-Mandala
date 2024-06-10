@@ -1,5 +1,0 @@
-class ApiEndpoints {
-  ApiEndpoints._();
-
-  
-}
