@@ -1,4 +1,4 @@
-// import 'package:final_assignment/features/auth/presentation/viewmodel/login_view_model.dart';
+// import 'package:final_assignment/features/auth/presentation/view/login_view.dart';
 // import 'package:final_assignment/model/onboarding_content_model.dart';
 // import 'package:final_assignment/utils/colors.dart';
 // import 'package:flutter/material.dart';
