@@ -41,7 +41,7 @@ class _DesignScreenState extends State<DesignScreen> {
       child: DataTable(
 
           // Color fill in column heading
-          headingRowColor: MaterialStateColor.resolveWith(
+          headingRowColor: WidgetStateColor.resolveWith(
             (states) => Colors.amber,
           ),
           border: TableBorder.all(

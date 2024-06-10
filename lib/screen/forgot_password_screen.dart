@@ -1,4 +1,4 @@
-import 'package:final_assignment/screen/login_screen.dart';
+import 'package:final_assignment/features/auth/presentation/view/login_view.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:final_assignment/utils/validation.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +55,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const LoginScreen(),
+                    builder: (_) => const LoginView(),
                   ),
                 );
               },
