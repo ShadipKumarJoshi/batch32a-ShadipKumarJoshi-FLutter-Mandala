@@ -1,18 +1,19 @@
-import 'package:final_assignment/features/auth/presentation/view/login_view.dart';
+import 'package:final_assignment/features/auth/presentation/viewmodel/register_view_model.dart';
 import 'package:final_assignment/utils/colors.dart';
 import 'package:final_assignment/utils/user_agreement.dart';
 import 'package:final_assignment/utils/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RegisterView extends StatefulWidget {
+class RegisterView extends ConsumerStatefulWidget {
   const RegisterView({super.key});
 
   @override
-  State<RegisterView> createState() => _RegisterViewState();
+  ConsumerState<RegisterView> createState() => _RegisterViewState();
 }
 
-class _RegisterViewState extends State<RegisterView> {
+class _RegisterViewState extends ConsumerState<RegisterView> {
   bool? isChecked = false;
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
@@ -87,12 +88,13 @@ class _RegisterViewState extends State<RegisterView> {
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const LoginView(),
-                  ),
-                );
+                ref.read(registerViewModelProvider.notifier).openLoginView();
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (_) => const LoginView(),
+                //   ),
+                // );
               },
             ),
             centerTitle: true,
@@ -365,13 +367,17 @@ class _RegisterViewState extends State<RegisterView> {
                                         );
                                         Future.delayed(
                                             const Duration(seconds: 1), () {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (_) =>
-                                                  const LoginView(),
-                                            ),
-                                          );
+                                          ref
+                                              .read(registerViewModelProvider
+                                                  .notifier)
+                                              .openLoginView();
+                                          // Navigator.pushReplacement(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (_) =>
+                                          //         const LoginView(),
+                                          //   ),
+                                          // );
                                         });
                                       } else {
                                         ScaffoldMessenger.of(context)
@@ -412,12 +418,16 @@ class _RegisterViewState extends State<RegisterView> {
                                     ),
                                     TextButton(
                                       onPressed: () {
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (_) => const LoginView(),
-                                          ),
-                                        );
+                                        ref
+                                            .read(registerViewModelProvider
+                                                .notifier)
+                                            .openLoginView();
+                                        // Navigator.pushReplacement(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //     builder: (_) => const LoginView(),
+                                        //   ),
+                                        // );
                                       },
                                       child: const Text(
                                         'Login here!',
