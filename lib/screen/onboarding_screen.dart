@@ -31,117 +31,165 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
     // Using MediaQuery within the build method to get the height of the screen
     double screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView.builder(
-              controller: _controller,
-              itemCount: contents.length,
-              onPageChanged: (int index) {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
-              itemBuilder: (_, i) {
-                return Container(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      top: screenHeight * 0.3,
-                    ),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          contents[i].image,
-                          height: 300,
-                        ),
-                        Text(
-                          contents[i].title,
-                          style: const TextStyle(
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                            color: goldColor,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          contents[i].description,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              contents.length,
-              (index) => buildDot(index, context),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(40),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Skip Button
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const LoginScreen(),
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('assets/images/onboarding_bg.jpg'),
+            fit: BoxFit.cover),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Column(
+          children: [
+            Expanded(
+              child: PageView.builder(
+                controller: _controller,
+                itemCount: contents.length,
+                onPageChanged: (int index) {
+                  setState(() {
+                    currentIndex = index;
+                  });
+                },
+                itemBuilder: (_, i) {
+                  return SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        top: screenHeight * 0.1,
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: goldColor,
-                  ),
-                  child: const Text(
-                    "Skip",
-                    style: TextStyle(
-                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          Text(
+                            contents[i].title,
+                            style: const TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                              color: goldColor,
+                              shadows: [
+                                Shadow(
+                                  offset: Offset(2.0, 2.0),
+                                  blurRadius: 3.0,
+                                  color: Colors.black,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Image.asset(
+                            contents[i].image,
+                            height: 400,
+                          ),
+                          const SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.all(11.0),
+                            child: Text(
+                              contents[i].description,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ),
-                // Next/Continue Button
-                ElevatedButton(
-                  onPressed: () {
-                    if (currentIndex == contents.length - 1) {
+                  );
+                },
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                contents.length,
+                (index) => buildDot(index, context),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(40),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Skip Button
+                  ElevatedButton(
+                    onPressed: () {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (_) => const LoginScreen(),
                         ),
                       );
-                    } else {
-                      _controller.nextPage(
-                        duration: const Duration(milliseconds: 100),
-                        curve: Curves.bounceIn,
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  ),
-                  child: Text(
-                    currentIndex == contents.length - 1 ? "Continue" : "Next",
-                    style: const TextStyle(
-                      color: Colors.white,
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: goldColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0),
+                        side: const BorderSide(
+                            color: Colors.black), // Black border
+                      ),
+                      shadowColor: Colors.black,
+                      elevation: 5, // Elevation to apply shadow
+                    ),
+                    child: const Text(
+                      "Skip",
+                      style: TextStyle(
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 3.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  // Next/Continue Button
+                  ElevatedButton(
+                    onPressed: () {
+                      if (currentIndex == contents.length - 1) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const LoginScreen(),
+                          ),
+                        );
+                      } else {
+                        _controller.nextPage(
+                          duration: const Duration(milliseconds: 100),
+                          curve: Curves.bounceIn,
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0),
+                        side: const BorderSide(
+                            color: Colors.black), // Black border
+                      ),
+                      shadowColor: Colors.black,
+                      elevation: 5, // Elevation to apply shadow
+                    ),
+                    child: Text(
+                      currentIndex == contents.length - 1 ? "Continue" : "Next",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 3.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -154,6 +202,10 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20), // Rounded edges
         color: goldColor,
+        border: Border.all(
+          color: Colors.black, // Black border
+          width: 1.0, // Border width
+        ),
       ),
     );
   }

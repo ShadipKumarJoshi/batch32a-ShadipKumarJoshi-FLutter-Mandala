@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
       child: Center(
         child: Text(
           'Welcome Guest to Mandala T-On-Line Prints',
-          style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
         ),
       ),
     );

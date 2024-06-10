@@ -1,3 +1,5 @@
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:final_assignment/screen/bottom_screen/cart_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/design_screen.dart';
 import 'package:final_assignment/screen/bottom_screen/favorite_screen.dart';
@@ -18,7 +20,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
 
   // list creation for highlighting screen icon
-  List<Widget> lstBottomScreen = [
+  final List<Widget> lstBottomScreen = [
     const HomeScreen(),
     const DesignScreen(),
     const FavoriteScreen(),
@@ -26,20 +28,37 @@ class _DashboardScreenState extends State<DashboardScreen> {
     const MenuScreen()
   ];
 
+  // Method to get the color of the icon based on the selected index
+  Color _getIconColor(int index) {
+    return _selectedIndex == index ? Colors.black : Colors.white;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: goldColor,
+        elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              onPressed: () {
-                // Profile button action
-              },
-              icon: const Icon(Icons.person),
+            // First Container with person icon
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/nav_bg.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: IconButton(
+                onPressed: () {
+                  // Profile button action
+                },
+                icon: const Icon(Icons.person),
+              ),
             ),
+
+            // Second Container with dashboard logo
             Expanded(
               child: Center(
                 child: Image.asset(
@@ -49,13 +68,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
               ),
             ),
+
+            // Third Container with notification icon
             Stack(
               children: [
-                IconButton(
-                  onPressed: () {
-                    // Notification button action
-                  },
-                  icon: const Icon(Icons.notifications),
+                Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/nav_bg.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      // Notification button action
+                    },
+                    icon: const Icon(Icons.notifications),
+                  ),
                 ),
                 Positioned(
                   right: 8,
@@ -85,44 +114,38 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
         centerTitle: true,
-        elevation: 0,
       ),
 
       body: lstBottomScreen[_selectedIndex],
-      // Bottom Navigation Bar
 
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // for more than 3 bottom icons
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+      // Curved Navigation Bar
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.transparent,
+        color: goldColor, // Set the navigation bar color to gold
+        items: [
+          CurvedNavigationBarItem(
+            child: Icon(Icons.home, color: _getIconColor(0)),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.format_paint),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.format_paint, color: _getIconColor(1)),
             label: 'Design',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.favorite, color: _getIconColor(2)),
             label: 'Favorite',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.shopping_cart, color: _getIconColor(3)),
             label: 'Cart',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
+          CurvedNavigationBarItem(
+            child: Icon(Icons.menu, color: _getIconColor(4)),
             label: 'Menu',
           ),
         ],
 
-        // color change on Tap
-        backgroundColor: Colors.amber,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.black,
-
-        // current index from list
-        currentIndex: _selectedIndex,
+        // Handle button tap
         onTap: (index) {
           setState(() {
             _selectedIndex = index;
