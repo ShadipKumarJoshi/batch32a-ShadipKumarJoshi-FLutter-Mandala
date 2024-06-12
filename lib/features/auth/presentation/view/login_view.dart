@@ -203,7 +203,10 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                     ),
                                     TextButton(
                                         onPressed: () {
-                                         ref.read(loginViewModelProvider.notifier).openForgotPasswordView();
+                                          ref
+                                              .read(loginViewModelProvider
+                                                  .notifier)
+                                              .openForgotPasswordView();
                                           // Navigator.pushReplacement(
                                           //   context,
                                           //   MaterialPageRoute(

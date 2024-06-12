@@ -17,7 +17,11 @@ class LoginViewModel extends StateNotifier<void> {
     navigator.openRegisterView();
   }
 
-  void openDashboardView() {}
+  void openDashboardView() {
+    navigator.openDashboardView();
+  }
 
-  void openForgotPasswordView() {}
+  void openForgotPasswordView() {
+    navigator.openForgotPasswordView();
+  }
 }
