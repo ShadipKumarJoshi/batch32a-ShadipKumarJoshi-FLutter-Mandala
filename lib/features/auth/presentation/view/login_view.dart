@@ -1,6 +1,7 @@
+import 'package:final_assignment/common_widget/colors.dart';
+import 'package:final_assignment/core/utils/validation.dart';
+import 'package:final_assignment/features/auth/presentation/viewmodel/auth_view_model.dart';
 import 'package:final_assignment/features/auth/presentation/viewmodel/login_view_model.dart';
-import 'package:final_assignment/utils/colors.dart';
-import 'package:final_assignment/utils/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,7 +32,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/dashboard_bg.jpg'),
+            image: AssetImage('assets/images/dashboard_bg.png'),
             fit: BoxFit.cover),
       ),
       child: Scaffold(
@@ -231,8 +232,12 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                     if (_formKey.currentState?.validate() ??
                                         false) {
                                       ref
-                                          .read(loginViewModelProvider.notifier)
-                                          .openDashboardView();
+                                          .read(authViewModelProvider.notifier)
+                                          .loginUser(
+                                            _emailOrPhoneController.text,
+                                            _passwordController.text,
+                                          );
+
                                       // Navigator.pushReplacement(
                                       //   context,
                                       //   MaterialPageRoute(

@@ -7,7 +7,7 @@ import 'package:final_assignment/features/dashboard/presentation/view/bottom_vie
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/favorite_view.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/home_view.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/menu_view.dart';
-import 'package:final_assignment/utils/colors.dart';
+import 'package:final_assignment/common_widget/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
