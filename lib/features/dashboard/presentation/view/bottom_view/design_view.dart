@@ -1,6 +1,6 @@
 // SubScreen
 
-import 'package:final_assignment/model/item_model.dart';
+import 'package:final_assignment/features/onboarding/presentation/widgets/item_model.dart';
 import 'package:flutter/material.dart';
 
 class DesignView extends StatefulWidget {

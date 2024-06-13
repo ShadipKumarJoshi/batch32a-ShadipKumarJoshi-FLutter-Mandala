@@ -1,7 +1,9 @@
+import 'package:final_assignment/common_widget/colors.dart';
+import 'package:final_assignment/core/utils/validation.dart';
+import 'package:final_assignment/features/auth/domain/entity/auth_entity.dart';
+import 'package:final_assignment/features/auth/presentation/viewmodel/auth_view_model.dart';
 import 'package:final_assignment/features/auth/presentation/viewmodel/register_view_model.dart';
-import 'package:final_assignment/utils/colors.dart';
-import 'package:final_assignment/utils/user_agreement.dart';
-import 'package:final_assignment/utils/validation.dart';
+import 'package:final_assignment/features/auth/presentation/widgets/user_agreement.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,6 +19,8 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
   bool? isChecked = false;
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
+
+  final _key = GlobalKey<FormState>();
 
   final _formKey = GlobalKey<FormState>();
   final _fullNameController = TextEditingController();
@@ -74,7 +78,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/dashboard_bg.jpg'),
+          image: AssetImage('assets/images/dashboard_bg.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -88,7 +92,20 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
-                ref.read(registerViewModelProvider.notifier).openLoginView();
+                // AuthEntity auth=AuthEntity(fullname: fullname, username: username, phone: phone, email: email, password: password)
+                // ref.read(registerViewModelProvider.notifier).openLoginView();
+
+                if (_key.currentState!.validate()) {
+                  var user = AuthEntity(
+                    fullname: _fullNameController.text,
+                    username: _usernameController.text,
+                    phone: _phoneNumberController.text,
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                  );
+
+                  ref.read(authViewModelProvider.notifier).registerUser(user);
+                }
                 // Navigator.pushReplacement(
                 //   context,
                 //   MaterialPageRoute(

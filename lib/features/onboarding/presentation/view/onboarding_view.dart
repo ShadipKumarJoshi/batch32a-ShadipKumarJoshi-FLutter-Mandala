@@ -1,6 +1,6 @@
+import 'package:final_assignment/common_widget/colors.dart';
 import 'package:final_assignment/features/onboarding/presentation/viewmodel/onboarding_view_model.dart';
-import 'package:final_assignment/model/onboarding_content_model.dart';
-import 'package:final_assignment/utils/colors.dart';
+import 'package:final_assignment/features/onboarding/presentation/widgets/onboarding_content_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -36,7 +36,7 @@ class _OnboardingViewState extends ConsumerState<OnboardingView> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/onboarding_bg.jpg'),
+            image: AssetImage('assets/images/onboarding_bg.png'),
             fit: BoxFit.cover),
       ),
       child: Scaffold(
