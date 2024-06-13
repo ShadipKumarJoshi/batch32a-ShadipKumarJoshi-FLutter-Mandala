@@ -95,17 +95,9 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                 // AuthEntity auth=AuthEntity(fullname: fullname, username: username, phone: phone, email: email, password: password)
                 // ref.read(registerViewModelProvider.notifier).openLoginView();
 
-                if (_key.currentState!.validate()) {
-                  var user = AuthEntity(
-                    fullname: _fullNameController.text,
-                    username: _usernameController.text,
-                    phone: _phoneNumberController.text,
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                  );
+                ref.read(registerViewModelProvider.notifier).openLoginView();
+                //----------------------
 
-                  ref.read(authViewModelProvider.notifier).registerUser(user);
-                }
                 // Navigator.pushReplacement(
                 //   context,
                 //   MaterialPageRoute(
@@ -374,6 +366,19 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                                     if (_formKey.currentState?.validate() ??
                                         false) {
                                       if (isChecked == true) {
+                                        var user = AuthEntity(
+                                          fullname: _fullNameController.text,
+                                          username: _usernameController.text,
+                                          phone: _phoneNumberController.text,
+                                          email: _emailController.text,
+                                          password: _passwordController.text,
+                                        );
+
+                                        ref
+                                            .read(
+                                                authViewModelProvider.notifier)
+                                            .registerUser(user);
+
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           const SnackBar(
