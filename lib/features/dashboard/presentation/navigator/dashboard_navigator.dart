@@ -1,5 +1,4 @@
 import 'package:final_assignment/app/navigator/navigator.dart';
-import 'package:final_assignment/features/auth/presentation/navigator/register_navigator.dart';
 import 'package:final_assignment/features/dashboard/presentation/navigator/bottom_navigator/cart_navigator.dart';
 import 'package:final_assignment/features/dashboard/presentation/navigator/bottom_navigator/design_navigator.dart';
 import 'package:final_assignment/features/dashboard/presentation/navigator/bottom_navigator/favorite_navigator.dart';

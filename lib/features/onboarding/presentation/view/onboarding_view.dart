@@ -1,4 +1,4 @@
-import 'package:final_assignment/common_widget/colors.dart';
+import 'package:final_assignment/core/common/colors.dart';
 import 'package:final_assignment/features/onboarding/presentation/viewmodel/onboarding_view_model.dart';
 import 'package:final_assignment/features/onboarding/presentation/widgets/onboarding_content_model.dart';
 import 'package:flutter/material.dart';

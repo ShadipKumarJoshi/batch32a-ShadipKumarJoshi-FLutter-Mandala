@@ -2,7 +2,7 @@
 
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
-import 'package:final_assignment/common_widget/colors.dart';
+import 'package:final_assignment/core/common/colors.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/cart_view.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/design_view.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/favorite_view.dart';

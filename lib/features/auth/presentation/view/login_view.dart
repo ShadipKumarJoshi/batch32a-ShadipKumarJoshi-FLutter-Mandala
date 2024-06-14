@@ -1,4 +1,4 @@
-import 'package:final_assignment/common_widget/colors.dart';
+import 'package:final_assignment/core/common/colors.dart';
 import 'package:final_assignment/core/utils/validation.dart';
 import 'package:final_assignment/features/auth/presentation/viewmodel/auth_view_model.dart';
 import 'package:final_assignment/features/auth/presentation/viewmodel/login_view_model.dart';
