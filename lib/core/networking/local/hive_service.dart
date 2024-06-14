@@ -82,7 +82,7 @@ class HiveService {
       );
     }
     // Check if the login attempt is with a phone number
-    else if (phone != null) {
+    else {
       // Try to find a user with the matching phone and password
       user = box.values.firstWhere(
         (element) => element.phone == phone && element.password == password,
