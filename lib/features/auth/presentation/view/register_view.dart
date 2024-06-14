@@ -78,7 +78,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/dashboard_bg.png'),
+          image: AssetImage('assets/images/dashboard_bg.jpg'),
           fit: BoxFit.cover,
         ),
       ),
