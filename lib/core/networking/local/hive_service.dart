@@ -6,12 +6,14 @@ import 'package:path_provider/path_provider.dart';
 
 final hiveServiceProvider = Provider((ref) => HiveService());
 
+// Service class to handle Hive operations
 class HiveService {
+  // Initialize Hive and register adapters
   Future<void> init() async {
     var directory = await getApplicationDocumentsDirectory();
     Hive.init(directory.path);
 
-    // Register Adapters
+    // Register Adapters for Hive models
     // Hive.registerAdapter(ProductHiveModelAdapter());
     // Hive.registerAdapter(DesignHiveModelAdapter());
     Hive.registerAdapter(AuthHiveModelAdapter());
@@ -42,11 +44,13 @@ class HiveService {
   //   return designs;
   // }
 
+  // Add a user to the Hive box
   Future<void> addUser(AuthHiveModel user) async {
     var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.userBox);
     await box.put(user.userId, user);
   }
 
+  // Get all users from the Hive box
   Future<List<AuthHiveModel>> getAllUsers() async {
     var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.userBox);
     var users = box.values.toList();
@@ -54,12 +58,59 @@ class HiveService {
     return users;
   }
 
-  //Login
-  Future<AuthHiveModel?> login(String email, String password) async {
+  // Login method supporting both email and phone
+  Future<AuthHiveModel?> login(
+      {String? email, String? phone, required String password}) async {
+    var box = await Hive.openBox<AuthHiveModel>(
+        HiveTableConstant.userBox); // Open the Hive box that contains user data
+
+    //   var user = box.values.firstWhere(
+    //       (element) => element.email == email && element.password == password);
+    //   box.close();
+    //   return user;
+    // }
+
+    // Declare a variable to store the user if found
+    AuthHiveModel? user;
+
+    // Check if the login attempt is with an email
+    if (email != null) {
+      // Try to find a user with the matching email and password
+      user = box.values.firstWhere(
+        (element) => element.email == email && element.password == password,
+        orElse: () => AuthHiveModel.empty(), // Return null if no user found
+      );
+    }
+    // Check if the login attempt is with a phone number
+    else if (phone != null) {
+      // Try to find a user with the matching phone and password
+      user = box.values.firstWhere(
+        (element) => element.phone == phone && element.password == password,
+        orElse: () => AuthHiveModel.empty(), // Return null if no user found
+      );
+    }
+
+    // Return the found user or null if no user was found
+    return user;
+  }
+
+// Get user by email
+  Future<AuthHiveModel> getUserByEmail(String email) async {
     var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.userBox);
     var user = box.values.firstWhere(
-        (element) => element.email == email && element.password == password);
-    box.close();
+      (element) => element.email == email,
+      orElse: () => AuthHiveModel.empty(),
+    );
+    return user;
+  }
+
+// Get user by phone
+  Future<AuthHiveModel> getUserByPhone(String phone) async {
+    var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.userBox);
+    var user = box.values.firstWhere(
+      (element) => element.phone == phone,
+      orElse: () => AuthHiveModel.empty(),
+    );
     return user;
   }
 }

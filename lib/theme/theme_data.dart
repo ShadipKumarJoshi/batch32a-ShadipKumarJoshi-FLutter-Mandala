@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
-      primarySwatch: Colors.red,
+      primarySwatch: Colors.amber,
       scaffoldBackgroundColor: Colors.transparent,
       fontFamily: 'Montserrat',
       elevatedButtonTheme: ElevatedButtonThemeData(

@@ -379,28 +379,22 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                                                 authViewModelProvider.notifier)
                                             .registerUser(user);
 
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                                'Congratulation! Your account is successfully created. Login again to access your account.'),
-                                            backgroundColor: Colors.green,
-                                          ),
-                                        );
-                                        Future.delayed(
-                                            const Duration(seconds: 1), () {
-                                          ref
-                                              .read(registerViewModelProvider
-                                                  .notifier)
-                                              .openLoginView();
-                                          // Navigator.pushReplacement(
-                                          //   context,
-                                          //   MaterialPageRoute(
-                                          //     builder: (_) =>
-                                          //         const LoginView(),
-                                          //   ),
-                                          // );
-                                        });
+                                        // ScaffoldMessenger.of(context)
+                                        //     .showSnackBar(
+                                        //   const SnackBar(
+                                        //     content: Text(
+                                        //         'Congratulation! Your account is successfully created. Login again to access your account.'),
+                                        //     backgroundColor: Colors.green,
+                                        //   ),
+                                        // );
+
+                                        // Navigator.pushReplacement(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //     builder: (_) =>
+                                        //         const LoginView(),
+                                        //   ),
+                                        // );
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
