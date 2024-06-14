@@ -2,12 +2,12 @@
 
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+import 'package:final_assignment/core/common/colors.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/cart_view.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/design_view.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/favorite_view.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/home_view.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/bottom_view/menu_view.dart';
-import 'package:final_assignment/common_widget/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,7 +19,6 @@ class DashboardView extends ConsumerStatefulWidget {
 }
 
 class _DashboardViewState extends ConsumerState<DashboardView> {
-
   // to highlight the navbar
   int _selectedIndex = 0;
 
@@ -79,7 +78,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
                 Container(
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/nav_bg.png'),
+                      image: AssetImage('assets/images/nav_bg.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -119,8 +118,24 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
         ),
         centerTitle: true,
       ),
+      body: Stack(
+        children: [
+          // Background image
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                    'assets/images/dashboard_bg.jpg'), // Replace with your background image asset
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          // Foreground content
+          lstBottomView[_selectedIndex],
+        ],
+      ),
 
-      body: lstBottomView[_selectedIndex],
+      // body: lstBottomView[_selectedIndex],
 
       // Curved Navigation Bar
       bottomNavigationBar: CurvedNavigationBar(

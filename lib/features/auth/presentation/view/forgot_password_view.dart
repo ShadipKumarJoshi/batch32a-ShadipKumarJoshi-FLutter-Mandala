@@ -1,6 +1,6 @@
-import 'package:final_assignment/features/auth/presentation/viewmodel/forgot_password_view_model.dart';
-import 'package:final_assignment/common_widget/colors.dart';
+import 'package:final_assignment/core/common/colors.dart';
 import 'package:final_assignment/core/utils/validation.dart';
+import 'package:final_assignment/features/auth/presentation/viewmodel/forgot_password_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -39,7 +39,7 @@ class _ForgotPasswordViewState extends ConsumerState<ForgotPasswordView> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/dashboard_bg.png'),
+          image: AssetImage('assets/images/dashboard_bg.jpg'),
           fit: BoxFit.cover,
         ),
       ),
