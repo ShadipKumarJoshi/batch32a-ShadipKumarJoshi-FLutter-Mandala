@@ -2,6 +2,7 @@ import 'package:final_assignment/core/common/my_snackbar.dart';
 import 'package:final_assignment/features/auth/domain/entity/auth_entity.dart';
 import 'package:final_assignment/features/auth/domain/usecases/auth_usecase.dart';
 import 'package:final_assignment/features/auth/presentation/navigator/login_navigator.dart';
+import 'package:final_assignment/features/auth/presentation/navigator/register_navigator.dart';
 import 'package:final_assignment/features/auth/presentation/state/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,13 +11,17 @@ final authViewModelProvider = StateNotifierProvider<AuthViewModel, AuthState>(
   (ref) => AuthViewModel(
     ref.read(loginViewNavigatorProvider),
     ref.read(authUseCaseProvider),
+    ref.read(registerViewNavigatorProvider),
   ),
 );
 
 class AuthViewModel extends StateNotifier<AuthState> {
-  AuthViewModel(this.navigator, this.authUseCase) : super(AuthState.initial());
+  AuthViewModel(
+      this.loginNavigator, this.authUseCase, this.registerViewNavigator)
+      : super(AuthState.initial());
   final AuthUseCase authUseCase;
-  final LoginViewNavigator navigator;
+  final LoginViewNavigator loginNavigator;
+  final RegisterViewNavigator registerViewNavigator;
 
   // Future<void> uploadImage(File? file) async {
   //   state = state.copyWith(isLoading: true);
@@ -46,6 +51,9 @@ class AuthViewModel extends StateNotifier<AuthState> {
       (success) {
         state = state.copyWith(isLoading: false, error: null);
         showMySnackBar(message: "Successfully registered");
+        Future.delayed(const Duration(seconds: 1), () {
+          registerViewNavigator.openLoginView();
+        });
       },
     );
   }
@@ -69,10 +77,10 @@ class AuthViewModel extends StateNotifier<AuthState> {
   }
 
   void openRegisterView() {
-    navigator.openRegisterView();
+    loginNavigator.openRegisterView();
   }
 
   void openDashboardView() {
-    navigator.openDashboardView();
+    loginNavigator.openDashboardView();
   }
 }

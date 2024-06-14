@@ -20,6 +20,35 @@ class AuthLocalDataSource {
 
   Future<Either<Failure, bool>> registerUser(AuthEntity user) async {
     try {
+      final hiveUser = _authHiveModel.toHiveModel(user);
+
+      // Check if user with the same email exists
+      final userByEmail = await _hiveService.getUserByEmail(hiveUser.email);
+      if (userByEmail.email.isNotEmpty) {
+        return Left(Failure(error: 'Email is already registered!'));
+      }
+
+      // Check if user with the same phone exists
+      final userByPhone = await _hiveService.getUserByPhone(hiveUser.phone);
+      if (userByPhone.phone.isNotEmpty) {
+        return Left(Failure(error: 'Phone number is already registered!'));
+      }
+
+      // final userByEmail = await _hiveService.getUserByEmail(hiveUser.email);
+      // if (userByEmail!.email.isNotEmpty) {
+      //   return Left(Failure(error: 'User Already Exists'));
+      // }
+
+      // if (userByEmail != null) {
+      //   return Left(Failure(error: 'Email is already registered!'));
+      // }
+      //If already email throw error
+      // final userByEmail = await _hiveService.getUserByEmail(user.email);
+      // if (userByEmail!.email.isNotEmpty) {
+      //   return Left(Failure(error: 'User already exist'));
+      // }
+
+      // If neither email nor phone exists, proceed with adding the user
       await _hiveService.addUser(_authHiveModel.toHiveModel(user));
       return const Right(true);
     } catch (e) {
@@ -27,12 +56,36 @@ class AuthLocalDataSource {
     }
   }
 
+  // Future<Either<Failure, bool>> loginUser(
+  //   String email,
+  //   String password,
+  // ) async {
+  //   try {
+  //     AuthHiveModel? users =
+  //         await _hiveService.login(email: email, password: password);
+  //     return const Right(true);
+  //   } catch (e) {
+  //     return Left(Failure(error: e.toString()));
+  //   }
+  // }
+
   Future<Either<Failure, bool>> loginUser(
     String email,
     String password,
   ) async {
     try {
-      AuthHiveModel? users = await _hiveService.login(email, password);
+      // Attempt login with email
+      AuthHiveModel? user =
+          await _hiveService.login(email: email, password: password);
+
+      // If no user found by email, attempt login with phone number
+      user ??= await _hiveService.login(phone: email, password: password);
+
+      // Check if login was successful
+      if (user!.email.isEmpty) {
+        return Left(Failure(error: 'Invalid credentials'));
+      }
+
       return const Right(true);
     } catch (e) {
       return Left(Failure(error: e.toString()));
