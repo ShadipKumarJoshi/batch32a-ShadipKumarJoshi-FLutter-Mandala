@@ -14,6 +14,7 @@ class ApiEndpoints {
   static const String deleteUser = "auth/deleteUser/";
   static const String imageUrl = "http://10.0.2.2:8000/uploads/";
   // static const String uploadImage = "auth/uploadImage";
+  static const String currentUser = "auth/getMe";
 
   // ====================== Product Routes ======================
   static const String createProduct = "product/createProduct";
