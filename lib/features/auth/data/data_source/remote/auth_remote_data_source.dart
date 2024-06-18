@@ -54,7 +54,7 @@ class AuthRemoteDataSource {
     }
   }
 
-  // Upload image using multipart
+  // // Upload image using multipart
   // Future<Either<Failure, String>> uploadProfilePicture(
   //   File image,
   // ) async {
@@ -98,11 +98,49 @@ class AuthRemoteDataSource {
         },
       );
       if (response.statusCode == 200) {
-        //retrieve token from response
         String token = response.data["token"];
         // Save token to shared prefs
         await userSharedPrefs.setUserToken(token);
         return const Right(true);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, AuthEntity>> getCurrentUser() async {
+    try {
+      // Get the token from shared prefs
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+            (l) => token = null,
+            (r) => token = r!,
+      );
+
+      var response = await dio.get(
+        ApiEndpoints.currentUser,
+        options: Options(headers: {
+          'Authorization': 'Bearer $token',
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        GetCurrentUserDto getCurrentUserDto = GetCurrentUserDto.fromJson(response.data);
+
+        return Right(getCurrentUserDto.toEntity());
       } else {
         return Left(
           Failure(
