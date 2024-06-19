@@ -9,14 +9,14 @@ class GetCurrentUserDto {
   final String id;
   final String fullname;
   final String username;
-  final String phone;
+  final String phoneNumber;
   final String email;
 
   GetCurrentUserDto({
     required this.id,
     required this.fullname,
     required this.username,
-    required this.phone,
+    required this.phoneNumber,
     required this.email,
   });
 
@@ -25,7 +25,7 @@ class GetCurrentUserDto {
         id: id,
         fullname: fullname,
         username: username,
-        phone: phone,
+        phoneNumber: phoneNumber,
         email: email,
         password: '');
   }

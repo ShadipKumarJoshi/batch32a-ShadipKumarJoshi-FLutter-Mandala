@@ -3,18 +3,18 @@ class ApiEndpoints {
 
   static const Duration connectionTimeout = Duration(seconds: 1000);
   static const Duration receiveTimeout = Duration(seconds: 1000);
-  static const String baseUrl = "http://10.0.2.2:8000/api/v1/";
-  //static const String baseUrl = "http://192.168.4.4:8000/api/v1/";
+  // static const String baseUrl = "http://10.0.2.2:8000/api/v1/";
+  static const String baseUrl = "http://192.168.137.1:8000/api/v1/";
 
-  // ====================== Auth Routes ======================
-  static const String login = "auth/loginUser";
-  static const String register = "auth/createUser";
-  static const String getUser = "auth/getUser/";
-  static const String updateUser = "auth/updateUser/";
-  static const String deleteUser = "auth/deleteUser/";
+  // ====================== user Routes ======================
+  static const String login = "user/loginUser";
+  static const String register = "user/createUser";
+  static const String getUser = "user/getUser/";
+  static const String updateUser = "user/updateUser/";
+  static const String deleteUser = "user/deleteUser/";
   static const String imageUrl = "http://10.0.2.2:8000/uploads/";
-  // static const String uploadImage = "auth/uploadImage";
-  static const String currentUser = "auth/getMe";
+  // static const String uploadImage = "user/uploadImage";
+  static const String currentUser = "user/getMe";
 
   // ====================== Product Routes ======================
   static const String createProduct = "product/createProduct";

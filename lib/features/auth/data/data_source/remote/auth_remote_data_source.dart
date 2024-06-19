@@ -30,7 +30,7 @@ class AuthRemoteDataSource {
         data: {
           "fullName": user.fullname,
           "username": user.username,
-          "phone": user.phone,
+          "phoneNumber": user.phoneNumber,
           "email": user.email,
           "password": user.password,
         },
