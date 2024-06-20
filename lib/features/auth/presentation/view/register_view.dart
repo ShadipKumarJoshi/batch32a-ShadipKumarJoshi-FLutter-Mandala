@@ -92,7 +92,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
-                // AuthEntity auth=AuthEntity(fullname: fullname, username: username, phone: phone, email: email, password: password)
+                // AuthEntity auth=AuthEntity(fullname: fullname, username: username, phoneNumber: phoneNumber, email: email, password: password)
                 // ref.read(registerViewModelProvider.notifier).openLoginView();
 
                 ref.read(registerViewModelProvider.notifier).openLoginView();
@@ -247,7 +247,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                                     ),
                                   ),
                                   validator: (value) =>
-                                      validatePhone(value ?? ''),
+                                      validatePhoneNumber(value ?? ''),
                                 ),
                                 const SizedBox(height: 10),
                                 TextFormField(
@@ -369,7 +369,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                                         var user = AuthEntity(
                                           fullname: _fullNameController.text,
                                           username: _usernameController.text,
-                                          phone: _phoneNumberController.text,
+                                          phoneNumber: _phoneNumberController.text,
                                           email: _emailController.text,
                                           password: _passwordController.text,
                                         );

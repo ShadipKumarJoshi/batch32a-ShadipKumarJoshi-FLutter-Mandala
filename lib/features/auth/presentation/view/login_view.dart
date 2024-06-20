@@ -17,12 +17,12 @@ class _LoginViewState extends ConsumerState<LoginView> {
   bool _passwordVisible = false;
 
   final _formKey = GlobalKey<FormState>();
-  final _emailOrPhoneController = TextEditingController();
+  final _emailOrPhoneNumberController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    _emailOrPhoneController.dispose();
+    _emailOrPhoneNumberController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -132,7 +132,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                             child: Column(
                               children: [
                                 TextFormField(
-                                  controller: _emailOrPhoneController,
+                                  controller: _emailOrPhoneNumberController,
                                   style: const TextStyle(color: Colors.black),
                                   decoration: InputDecoration(
                                       fillColor: Colors.grey.shade100,
@@ -143,7 +143,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                         borderRadius: BorderRadius.circular(50),
                                       )),
                                   validator: (value) =>
-                                      validateEmailOrPhone(value ?? ''),
+                                      validateEmailOrPhoneNumber(value ?? ''),
                                 ),
                                 const SizedBox(height: 10),
                                 TextFormField(
@@ -234,7 +234,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                       ref
                                           .read(authViewModelProvider.notifier)
                                           .loginUser(
-                                            _emailOrPhoneController.text,
+                                            _emailOrPhoneNumberController.text,
                                             _passwordController.text,
                                           );
 

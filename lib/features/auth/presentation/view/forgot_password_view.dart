@@ -13,11 +13,11 @@ class ForgotPasswordView extends ConsumerStatefulWidget {
 
 class _ForgotPasswordViewState extends ConsumerState<ForgotPasswordView> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailOrPhoneController = TextEditingController();
+  final TextEditingController _emailOrPhoneNumberController = TextEditingController();
 
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
-      final contactMedium = _emailOrPhoneController.text;
+      final contactMedium = _emailOrPhoneNumberController.text;
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -30,7 +30,7 @@ class _ForgotPasswordViewState extends ConsumerState<ForgotPasswordView> {
 
   @override
   void dispose() {
-    _emailOrPhoneController.dispose();
+    _emailOrPhoneNumberController.dispose();
     super.dispose();
   }
 
@@ -157,7 +157,7 @@ class _ForgotPasswordViewState extends ConsumerState<ForgotPasswordView> {
                             child: Column(
                               children: [
                                 TextFormField(
-                                  controller: _emailOrPhoneController,
+                                  controller: _emailOrPhoneNumberController,
                                   style: const TextStyle(color: Colors.black),
                                   decoration: InputDecoration(
                                     fillColor: Colors.grey.shade100,
@@ -169,7 +169,7 @@ class _ForgotPasswordViewState extends ConsumerState<ForgotPasswordView> {
                                     ),
                                   ),
                                   validator: (value) =>
-                                      validateEmailOrPhone(value ?? ''),
+                                      validateEmailOrPhoneNumber(value ?? ''),
                                 ),
                                 const SizedBox(height: 20),
                                 ElevatedButton(

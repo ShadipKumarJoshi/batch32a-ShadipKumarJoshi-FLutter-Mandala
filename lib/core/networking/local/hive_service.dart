@@ -58,9 +58,9 @@ class HiveService {
     return users;
   }
 
-  // Login method supporting both email and phone
+  // Login method supporting both email and phoneNumber
   Future<AuthHiveModel?> login(
-      {String? email, String? phone, required String password}) async {
+      {String? email, String? phoneNumber, required String password}) async {
     var box = await Hive.openBox<AuthHiveModel>(
         HiveTableConstant.userBox); // Open the Hive box that contains user data
 
@@ -81,11 +81,11 @@ class HiveService {
         orElse: () => AuthHiveModel.empty(), // Return null if no user found
       );
     }
-    // Check if the login attempt is with a phone number
+    // Check if the login attempt is with a phoneNumber number
     else {
-      // Try to find a user with the matching phone and password
+      // Try to find a user with the matching phoneNumber and password
       user = box.values.firstWhere(
-        (element) => element.phone == phone && element.password == password,
+        (element) => element.phoneNumber == phoneNumber && element.password == password,
         orElse: () => AuthHiveModel.empty(), // Return null if no user found
       );
     }
@@ -105,10 +105,10 @@ class HiveService {
   }
 
 // Get user by phone
-  Future<AuthHiveModel> getUserByPhone(String phone) async {
+  Future<AuthHiveModel> getUserByPhoneNumber(String phoneNumber) async {
     var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.userBox);
     var user = box.values.firstWhere(
-      (element) => element.phone == phone,
+      (element) => element.phoneNumber == phoneNumber,
       orElse: () => AuthHiveModel.empty(),
     );
     return user;

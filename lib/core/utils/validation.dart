@@ -5,14 +5,14 @@ bool isEmailValid(String email) {
   return emailRegExp.hasMatch(email);
 }
 
-bool isPhoneNumberValid(String phone) {
-  final RegExp phoneRegExp = RegExp(
+bool isPhoneNumberValid(String phoneNumber) {
+  final RegExp phoneNumberRegExp = RegExp(
     r'^9\d{9}$',
   );
-  return phoneRegExp.hasMatch(phone);
+  return phoneNumberRegExp.hasMatch(phoneNumber);
 }
 
-String? validateEmailOrPhone(String value) {
+String? validateEmailOrPhoneNumber(String value) {
   if (value.isEmpty) {
     return 'Please enter your email or phone number!';
   } else if (!isEmailValid(value) && !isPhoneNumberValid(value)) {
@@ -30,7 +30,7 @@ String? validateEmail(String value) {
   return null;
 }
 
-String? validatePhone(String value) {
+String? validatePhoneNumber(String value) {
   if (value.isEmpty) {
     return 'Please enter your phone number!';
   } else if (!isPhoneNumberValid(value)) {

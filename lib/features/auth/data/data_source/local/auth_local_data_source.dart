@@ -28,9 +28,9 @@ class AuthLocalDataSource {
         return Left(Failure(error: 'Email is already registered!'));
       }
 
-      // Check if user with the same phone exists
-      final userByPhone = await _hiveService.getUserByPhone(hiveUser.phone);
-      if (userByPhone.phone.isNotEmpty) {
+      // Check if user with the same phoneNumber exists
+      final userByPhoneNumber = await _hiveService.getUserByPhoneNumber(hiveUser.phoneNumber);
+      if (userByPhoneNumber.phoneNumber.isNotEmpty) {
         return Left(Failure(error: 'Phone number is already registered!'));
       }
 
@@ -78,8 +78,8 @@ class AuthLocalDataSource {
       AuthHiveModel? user =
           await _hiveService.login(email: email, password: password);
 
-      // If no user found by email, attempt login with phone number
-      user ??= await _hiveService.login(phone: email, password: password);
+      // If no user found by email, attempt login with phoneNumber number
+      user ??= await _hiveService.login(phoneNumber: email, password: password);
 
       // Check if login was successful
       if (user!.email.isEmpty) {
