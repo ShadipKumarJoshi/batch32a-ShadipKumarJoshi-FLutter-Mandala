@@ -29,7 +29,7 @@ class AuthRemoteDataSource {
         ApiEndpoints.register,
         data: {
           "fullName": user.fullname,
-          "username": user.username,
+          "userName": user.username,
           "phoneNumber": user.phoneNumber,
           "email": user.email,
           "password": user.password,
@@ -94,7 +94,7 @@ class AuthRemoteDataSource {
       Response response = await dio.post(
         ApiEndpoints.login,
         data: {
-          "email": email,
+          "emailOrPhoneNumber": email,
           "password": password,
         },
       );

@@ -6,7 +6,7 @@ part 'auth_api_model.g.dart';
 @JsonSerializable()
 class AuthApiModel {
   @JsonKey(name: '_id')
-  final String id;
+  final String? id;
   final String fullname;
   final String username;
   final String phoneNumber;
@@ -14,7 +14,7 @@ class AuthApiModel {
   final String? password;
 
   AuthApiModel({
-    required this.id,
+    this.id,
     required this.fullname,
     required this.username,
     required this.phoneNumber,
