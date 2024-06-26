@@ -1,4 +1,4 @@
-import 'package:final_assignment/features/dashboard/presentation/navigator/bottom_navigator/cart_navigator.dart';
+import 'package:final_assignment/features/cart/presentation/navigator/cart_navigator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final cartViewModelProvider = StateNotifierProvider<CartViewModel, void>(

@@ -1,4 +1,4 @@
-import 'package:final_assignment/features/dashboard/presentation/navigator/bottom_navigator/favorite_navigator.dart';
+import 'package:final_assignment/features/favorite/presentation/navigator/favorite_navigator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final favoriteViewModelProvider = StateNotifierProvider<FavoriteViewModel, void>(

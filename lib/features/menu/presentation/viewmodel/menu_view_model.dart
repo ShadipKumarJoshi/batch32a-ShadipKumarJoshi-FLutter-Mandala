@@ -1,4 +1,4 @@
-import 'package:final_assignment/features/dashboard/presentation/navigator/bottom_navigator/menu_navigator.dart';
+import 'package:final_assignment/features/menu/presentation/navigator/menu_navigator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final menuViewModelProvider = StateNotifierProvider<MenuViewModel, void>(
