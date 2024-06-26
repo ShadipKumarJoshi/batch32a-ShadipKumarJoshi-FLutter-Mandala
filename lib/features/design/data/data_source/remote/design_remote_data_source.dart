@@ -8,20 +8,51 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final designRemoteDataSourceProvider = Provider.autoDispose(
     (ref) => DesignRemoteDataSource(ref.read(httpServiceProvider)));
+// dio: ref.read(httpServiceProvider),
+//     userSharedPrefs: ref.read(userSharedPrefsProvider),
+//   ),
+// );
 
 class DesignRemoteDataSource {
   final Dio _dio;
+  // final UserSharedPrefs userSharedPrefs;
+
   DesignRemoteDataSource(this._dio);
   Future<Either<Failure, List<DesignApiModel>>> getDesigns(int page) async {
-    // ???????????????????????
     try {
+      // Get the token from shared preferences (local storage)
+      // String? token;
+      // var data = await _userSharedPrefs.getUserToken();
+      // data.fold(
+      //   (l) => token = null,
+      //   (r) => token = r!,
+      // );
+
+      // // If token is null, return an error
+      // if (token == null) {
+      //   return Left(Failure(error: 'Token is missing'));
+      // }
+
+      // Make the API request with the token in the headers
+
       final response = await _dio.get(
         ApiEndpoints.getUserDesigns,
+
+        // ??????????????????/ token from localStorage
         queryParameters: {
           '_page': page,
           '_limit': ApiEndpoints.limitPage,
         },
+
+// options: Options(
+//           headers: {
+//             'Authorization': 'Bearer $token',
+//           },
+//         ),
       );
+
+      // Parse the response data into a list of DesignApiModel
+
       final data = response.data as List;
       final design = data.map((e) => DesignApiModel.fromJson(e)).toList();
       return Right(design);
