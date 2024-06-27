@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:final_assignment/app/constants/api_endpoint.dart';
@@ -35,7 +33,7 @@ class AuthRemoteDataSource {
           "password": user.password,
         },
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return const Right(true);
       } else {
         return Left(
@@ -77,7 +75,7 @@ class AuthRemoteDataSource {
 
   //     return Right(response.data["data"]);
   //   } on DioException catch (e) {
-  //     return Left(
+  //     return Left(`
   //       Failure(
   //         error: e.error.toString(),
   //         statusCode: e.response?.statusCode.toString() ?? '0',
@@ -98,7 +96,7 @@ class AuthRemoteDataSource {
           "password": password,
         },
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         String token = response.data["token"];
         // Save token to shared prefs
         await userSharedPrefs.setUserToken(token);
@@ -127,8 +125,8 @@ class AuthRemoteDataSource {
       String? token;
       var data = await userSharedPrefs.getUserToken();
       data.fold(
-            (l) => token = null,
-            (r) => token = r!,
+        (l) => token = null,
+        (r) => token = r!,
       );
 
       var response = await dio.get(
@@ -138,8 +136,9 @@ class AuthRemoteDataSource {
         }),
       );
 
-      if (response.statusCode == 200) {
-        GetCurrentUserDto getCurrentUserDto = GetCurrentUserDto.fromJson(response.data);
+      if (response.statusCode == 201) {
+        GetCurrentUserDto getCurrentUserDto =
+            GetCurrentUserDto.fromJson(response.data);
 
         return Right(getCurrentUserDto.toEntity());
       } else {

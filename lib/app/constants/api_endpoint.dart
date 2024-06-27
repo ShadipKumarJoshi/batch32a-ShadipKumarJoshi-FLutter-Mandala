@@ -1,4 +1,5 @@
 class ApiEndpoints {
+// private constructor to prevents the instantiation of the ApiEndpoints class, enforcing it to be used only as a static utility class.
   ApiEndpoints._();
 
   static const Duration connectionTimeout = Duration(seconds: 1000);
@@ -22,11 +23,18 @@ class ApiEndpoints {
   static const String getSingleProduct = "product/getSingleProduct/";
   static const String updateProduct = "product/updateProduct/";
   static const String deleteProduct = "product/deleteProduct/";
+  static const String getPaginationProducts = "product/getPaginationProducts/";
 
   // ====================== Design Routes ======================
   static const String createDesign = "design/createDesign";
   static const String deleteDesign = "design/deleteDesign";
+  static const String getAllDesigns = "design/getAllDesigns";
   static const String getUserDesigns = "design/getUserDesigns";
   static const String getSingleDesign = "design/getSingleDesign";
   static const String updateDesign = "design/updateDesign/";
+  static const String getPaginationDesigns = "design/getPaginationDesigns/";
+  static const String designImage = "http://192.168.137.1:8000/designs/";
+
+// sets the default number of items to be retrieved per page in paginated API requests.
+  static const limitPage = 10;
 }
