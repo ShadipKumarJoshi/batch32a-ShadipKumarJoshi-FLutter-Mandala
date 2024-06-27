@@ -66,11 +66,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                           final design = designState.designs[index];
 
                           return DesignCard(
-                            designName: design.designName,
-                            designImage: design.designImage,
-                            designPrice: design.designPrice,
-                            designCategory: design.designCategory,
-                            designDescription: design.designDescription,
+                            designEntity: design,
                           );
                         },
                       );

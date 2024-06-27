@@ -65,12 +65,8 @@ class _DesignViewState extends ConsumerState<DesignView> {
                         itemBuilder: (context, index) {
                           final design = designState.designs[index];
 
-                          return DesignCard(
-                            designName: design.designName,
-                            designImage: design.designImage,
-                            designPrice: design.designPrice,
-                            designCategory: design.designCategory,
-                            designDescription: design.designDescription,
+                          return DesignCard(  
+                            designEntity: design,
                           );
                         },
                       );

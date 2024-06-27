@@ -32,9 +32,9 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
   ];
 
   // Method to get the color of the icon based on the selected index
-  Color _getIconColor(int index) {
-    return _selectedIndex == index ? Colors.black : Colors.white;
-  }
+  // Color _getIconColor(int index) {
+  //   return _selectedIndex == index ? Colors.black : Colors.white;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -139,27 +139,28 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
 
       // Curved Navigation Bar
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         color: goldColor, // Set the navigation bar color to gold
-        items: [
+        items: const [
           CurvedNavigationBarItem(
-            child: Icon(Icons.home, color: _getIconColor(0)),
+            // child: Icon(Icons.home, color: _getIconColor(0)),
+            child: Icon(Icons.home, color: Colors.black),
             label: 'Home',
           ),
           CurvedNavigationBarItem(
-            child: Icon(Icons.format_paint, color: _getIconColor(1)),
+            child: Icon(Icons.format_paint, color: Colors.black),
             label: 'Design',
           ),
           CurvedNavigationBarItem(
-            child: Icon(Icons.favorite, color: _getIconColor(2)),
+            child: Icon(Icons.favorite, color: Colors.black),
             label: 'Favorite',
           ),
           CurvedNavigationBarItem(
-            child: Icon(Icons.shopping_cart, color: _getIconColor(3)),
+            child: Icon(Icons.shopping_cart, color: Colors.black),
             label: 'Cart',
           ),
           CurvedNavigationBarItem(
-            child: Icon(Icons.menu, color: _getIconColor(4)),
+            child: Icon(Icons.menu, color: Colors.black),
             label: 'Menu',
           ),
         ],

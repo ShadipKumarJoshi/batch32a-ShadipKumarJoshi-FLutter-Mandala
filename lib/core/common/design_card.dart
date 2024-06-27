@@ -1,88 +1,60 @@
+import 'package:final_assignment/app/constants/api_endpoint.dart';
+import 'package:final_assignment/features/design/domain/entity/design_entity.dart';
 import 'package:flutter/material.dart';
 
 class DesignCard extends StatelessWidget {
-  final String designName;
-  final String designImage;
-  final double designPrice;
-  final String designCategory;
-  final String designDescription;
+  const DesignCard({super.key, required this.designEntity});
 
-  const DesignCard({
-    required this.designName,
-    required this.designImage,
-    required this.designPrice,
-    required this.designCategory,
-    required this.designDescription,
-    super.key,
-  });
+  final DesignEntity designEntity;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      elevation: 5,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Display design image
-          ClipRRect(
-            borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(10.0)),
-            child: Image.network(
-              designImage,
-              height: 150,
-              width: double.infinity,
+    return SizedBox(
+      width: 200,
+      child: Card(
+        child: Column(
+          children: [
+            Image.network(
+              '${ApiEndpoints.getAllDesigns}/${designEntity.designImage}',
+              // '${ApiEndpoints.designImage}${petEntity.designImage}',
               fit: BoxFit.cover,
+              height: 150,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Display design name
-                Text(
-                  designName,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 5),
-                // Display design price
-                Text(
-                  '\$${designPrice.toStringAsFixed(2)}',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey[700],
-                  ),
-                ),
-                const SizedBox(height: 5),
-                // Display design category
-                Text(
-                  designCategory,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey[600],
-                  ),
-                ),
-                const SizedBox(height: 5),
-                // Display design description
-                Text(
-                  designDescription,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey[600],
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+            const SizedBox(
+              height: 10,
             ),
-          ),
-        ],
+            Text(
+              designEntity.designName,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              designEntity.designPrice.toString(),
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w100,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              designEntity.designDescription,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w100,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
       ),
     );
   }
