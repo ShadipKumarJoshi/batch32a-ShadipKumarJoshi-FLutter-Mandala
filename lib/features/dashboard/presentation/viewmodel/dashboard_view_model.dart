@@ -19,7 +19,7 @@ class DashboardViewModel extends StateNotifier<void> {
   }
 
   void openHomeView() {
-    navigator.openHomeView();
+    navigator.openCustomizeView();
   }
 
   void openDesignView() {

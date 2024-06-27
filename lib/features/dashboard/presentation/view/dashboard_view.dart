@@ -4,9 +4,9 @@ import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:final_assignment/core/common/colors.dart';
 import 'package:final_assignment/features/cart/presentation/view/cart_view.dart';
+import 'package:final_assignment/features/customize/presentation/view/customize_view.dart';
 import 'package:final_assignment/features/design/presentation/view/design_view.dart';
 import 'package:final_assignment/features/favorite/presentation/view/favorite_view.dart';
-import 'package:final_assignment/features/home/presentation/view/home_view.dart';
 import 'package:final_assignment/features/menu/presentation/view/menu_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,8 +24,8 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
 
   // list creation for highlighting View icon
   final List<Widget> lstBottomView = [
-    const HomeView(),
     const DesignView(),
+    const CustomizeView(),
     const FavoriteView(),
     const CartView(),
     const MenuView()
@@ -139,29 +139,35 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
 
       // Curved Navigation Bar
       bottomNavigationBar: CurvedNavigationBar(
+        buttonBackgroundColor: Colors.green,
         backgroundColor: Colors.white,
         color: goldColor, // Set the navigation bar color to gold
         items: const [
           CurvedNavigationBarItem(
-            // child: Icon(Icons.home, color: _getIconColor(0)),
-            child: Icon(Icons.home, color: Colors.black),
-            label: 'Home',
-          ),
-          CurvedNavigationBarItem(
             child: Icon(Icons.format_paint, color: Colors.black),
             label: 'Design',
+            labelStyle: TextStyle(fontSize: 11),
+          ),
+          CurvedNavigationBarItem(
+            // child: Icon(Icons.home, color: _getIconColor(0)),
+            child: Icon(Icons.home, color: Colors.black),
+            label: 'Customize',
+            labelStyle: TextStyle(fontSize: 11),
           ),
           CurvedNavigationBarItem(
             child: Icon(Icons.favorite, color: Colors.black),
             label: 'Favorite',
+            labelStyle: TextStyle(fontSize: 11),
           ),
           CurvedNavigationBarItem(
             child: Icon(Icons.shopping_cart, color: Colors.black),
             label: 'Cart',
+            labelStyle: TextStyle(fontSize: 11),
           ),
           CurvedNavigationBarItem(
             child: Icon(Icons.menu, color: Colors.black),
             label: 'Menu',
+            labelStyle: TextStyle(fontSize: 11),
           ),
         ],
 

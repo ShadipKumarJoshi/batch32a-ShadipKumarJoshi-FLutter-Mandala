@@ -1,7 +1,8 @@
 // SubView
 
-import 'package:final_assignment/core/common/design_card.dart';
+import 'package:final_assignment/core/common/colors.dart';
 import 'package:final_assignment/features/design/presentation/viewmodel/design_view_model.dart';
+import 'package:final_assignment/features/design/presentation/widgets/design_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -47,6 +48,23 @@ class _DesignViewState extends ConsumerState<DesignView> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
+                const Center(
+                  child: Text(
+                    'Designs',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                      shadows: [
+                        Shadow(
+                          offset: Offset(2.0, 2.0),
+                          blurRadius: 3.0,
+                          color: goldColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Expanded(
                   child: Consumer(
                     builder: (context, ref, child) {
@@ -65,7 +83,7 @@ class _DesignViewState extends ConsumerState<DesignView> {
                         itemBuilder: (context, index) {
                           final design = designState.designs[index];
 
-                          return DesignCard(  
+                          return DesignCard(
                             designEntity: design,
                           );
                         },
@@ -81,12 +99,12 @@ class _DesignViewState extends ConsumerState<DesignView> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircularProgressIndicator(color: Colors.red),
-                    ],
-                  ),
+                  // const Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     CircularProgressIndicator(color: Colors.red),
+                  //   ],
+                  // ),
                 }
               ],
             ),
