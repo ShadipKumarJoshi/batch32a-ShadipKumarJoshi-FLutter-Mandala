@@ -1,42 +1,46 @@
-import 'package:final_assignment/features/design/data/data_source/remote/design_remote_data_source.dart';
+import 'package:final_assignment/features/design/domain/usecases/design_usecase.dart';
 import 'package:final_assignment/features/design/presentation/state/design_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final designViewModelProvider =
-    StateNotifierProvider<DesignViewModel, DesignState>((ref) {
-  final designRemoteDataSource = ref.read(designRemoteDataSourceProvider);
-  return DesignViewModel(designRemoteDataSource);
-});
+final designViewModelProvider = StateNotifierProvider<DesignViewModel, DesignState>(
+  (ref) => DesignViewModel(
+    designUseCase: ref.read(designUseCaseProvider),
+  ),
+);
 
 class DesignViewModel extends StateNotifier<DesignState> {
-  final DesignRemoteDataSource _designRemoteDataSource;
-  DesignViewModel(this._designRemoteDataSource) : super(DesignState.initial()) {
-    getDesigns();
+  DesignViewModel({required this.designUseCase}) : super(DesignState.initial()) {
+    fetchDesigns();
   }
+
+  final DesignUseCase designUseCase;
 
   Future resetState() async {
     state = DesignState.initial();
-    getDesigns();
+    fetchDesigns();
   }
 
-  Future getDesigns() async {
+  Future fetchDesigns() async {
     state = state.copyWith(isLoading: true);
     final currentState = state;
     final page = currentState.page + 1;
-    final design = currentState.design;
-    final hasReachedMax = currentState.hasMaxReached;
+    final designs = currentState.designs;
+    final hasReachedMax = currentState.hasReachedMax;
     if (!hasReachedMax) {
       // get data from data source
-      final result = await _designRemoteDataSource.getDesigns(page);
+      final result = await designUseCase.getPaginationDesigns(page, 6);
       result.fold(
-        (failure) =>
-            state = state.copyWith(hasMaxReached: true, isLoading: false),
+        (failure) => state = state.copyWith(
+          hasReachedMax: true,
+          isLoading: false,
+          error: failure.error,
+        ),
         (data) {
           if (data.isEmpty) {
-            state = state.copyWith(hasMaxReached: true);
+            state = state.copyWith(hasReachedMax: true);
           } else {
             state = state.copyWith(
-              design: [...design, ...data],
+              designs: [...designs, ...data],
               page: page,
               isLoading: false,
             );
@@ -46,15 +50,3 @@ class DesignViewModel extends StateNotifier<DesignState> {
     }
   }
 }
-
-
-
-
-
-// ???????????????????/
-// class DesignViewModel extends StateNotifier<void> {
-//   DesignViewModel(this.navigator) : super(null);
-
-//   final DesignViewNavigator navigator;
-
-//   }

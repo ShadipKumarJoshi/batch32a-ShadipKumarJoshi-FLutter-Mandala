@@ -1,38 +1,43 @@
-import 'package:final_assignment/features/design/data/model/design_api_model.dart';
+import 'package:final_assignment/features/design/domain/entity/design_entity.dart';
 
 class DesignState {
-  final List<DesignApiModel> design;
   final bool isLoading;
-  final bool hasMaxReached;
+  final String error;
+  final List<DesignEntity> designs;
+  final bool hasReachedMax;
   final int page;
 
-  const DesignState({
-    required this.design,
-    required this.isLoading,
-    required this.hasMaxReached,
-    required this.page,
-  });
-
   factory DesignState.initial() {
-    return const DesignState(
-      design: [],
+    return DesignState(
       isLoading: false,
-      hasMaxReached: false,
+      error: '',
+      designs: [],
       page: 0,
+      hasReachedMax: false,
     );
   }
 
+  DesignState({
+    required this.isLoading,
+    required this.error,
+    required this.designs,
+    required this.page,
+    required this.hasReachedMax,
+  });
+
   DesignState copyWith({
-    List<DesignApiModel>? design,
     bool? isLoading,
-    bool? hasMaxReached,
+    String? error,
+    List<DesignEntity>? designs,
     int? page,
+    bool? hasReachedMax,
   }) {
     return DesignState(
-      design: design ?? this.design,
       isLoading: isLoading ?? this.isLoading,
-      hasMaxReached: hasMaxReached ?? this.hasMaxReached,
+      error: error ?? this.error,
+      designs: designs ?? this.designs,
       page: page ?? this.page,
+      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
     );
   }
 }

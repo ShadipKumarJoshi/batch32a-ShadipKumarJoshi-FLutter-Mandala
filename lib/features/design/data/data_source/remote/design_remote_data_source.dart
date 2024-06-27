@@ -3,62 +3,61 @@ import 'package:dio/dio.dart';
 import 'package:final_assignment/app/constants/api_endpoint.dart';
 import 'package:final_assignment/core/failure/failure.dart';
 import 'package:final_assignment/core/networking/remote/http_service.dart';
+import 'package:final_assignment/features/design/data/dto/pagination_dto.dart';
 import 'package:final_assignment/features/design/data/model/design_api_model.dart';
+import 'package:final_assignment/features/design/domain/entity/design_entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final designRemoteDataSourceProvider = Provider.autoDispose(
-    (ref) => DesignRemoteDataSource(ref.read(httpServiceProvider)));
-// dio: ref.read(httpServiceProvider),
-//     userSharedPrefs: ref.read(userSharedPrefsProvider),
-//   ),
-// );
+import '../../../../../core/shared_prefs/user_shared_prefs.dart';
+
+final designRemoteDataSourceProvider = Provider<DesignRemoteDataSource>((ref) {
+  final dio = ref.watch(httpServiceProvider);
+  final designApiModel = ref.watch(designApiModelProvider);
+  final userSharedPrefs = ref.watch(userSharedPrefsProvider);
+  return DesignRemoteDataSource(
+    dio: dio,
+    designApiModel: designApiModel,
+    userSharedPrefs: userSharedPrefs,
+  );
+});
 
 class DesignRemoteDataSource {
-  final Dio _dio;
-  // final UserSharedPrefs userSharedPrefs;
+  final Dio dio;
+  final DesignApiModel designApiModel;
+  final UserSharedPrefs userSharedPrefs;
 
-  DesignRemoteDataSource(this._dio);
-  Future<Either<Failure, List<DesignApiModel>>> getDesigns(int page) async {
+  DesignRemoteDataSource({
+    required this.dio,
+    required this.designApiModel,
+    required this.userSharedPrefs,
+  });
+
+  Future<Either<Failure, List<DesignEntity>>> getPaginationDesigns(
+      {required int page, required int limit}) async {
     try {
-      // Get the token from shared preferences (local storage)
-      // String? token;
-      // var data = await _userSharedPrefs.getUserToken();
-      // data.fold(
-      //   (l) => token = null,
-      //   (r) => token = r!,
-      // );
-
-      // // If token is null, return an error
-      // if (token == null) {
-      //   return Left(Failure(error: 'Token is missing'));
-      // }
-
-      // Make the API request with the token in the headers
-
-      final response = await _dio.get(
-        ApiEndpoints.getUserDesigns,
-
-        // ??????????????????/ token from localStorage
+      final token = await userSharedPrefs.getUserToken();
+      token.fold((l) => throw Failure(error: l.error), (r) => r);
+      final response = await dio.get(
+        ApiEndpoints.getPaginationDesigns,
         queryParameters: {
-          '_page': page,
-          '_limit': ApiEndpoints.limitPage,
+          'page': page,
+          'limit': limit,
         },
-
-// options: Options(
-//           headers: {
-//             'Authorization': 'Bearer $token',
-//           },
-//         ),
+        options: Options(
+          headers: {
+            'authorization': 'Bearer $token',
+          },
+        ),
       );
-
-      // Parse the response data into a list of DesignApiModel
-
-      final data = response.data as List;
-      final design = data.map((e) => DesignApiModel.fromJson(e)).toList();
-      return Right(design);
+      if (response.statusCode == 201) {
+        final paginationDto = PaginationDto.fromJson(response.data);
+        return Right(designApiModel.toEntities(paginationDto.designs));
+      }
+      return Left(Failure(
+          error: response.data['message'],
+          statusCode: response.statusCode.toString()));
     } on DioException catch (e) {
-      // return Left(Failure(message: e.message.toString()));
-      return Left(Failure(error: e.message.toString()));
+      return Left(Failure(error: e.error.toString()));
     }
   }
 }

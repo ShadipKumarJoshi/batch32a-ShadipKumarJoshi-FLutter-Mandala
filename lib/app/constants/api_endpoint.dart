@@ -32,7 +32,7 @@ class ApiEndpoints {
   static const String getUserDesigns = "design/getUserDesigns";
   static const String getSingleDesign = "design/getSingleDesign";
   static const String updateDesign = "design/updateDesign/";
-  static const String getPaginationDesigns = "product/getPaginationDesigns/";
+  static const String getPaginationDesigns = "design/getPaginationDesigns/";
 
 // sets the default number of items to be retrieved per page in paginated API requests.
   static const limitPage = 10;

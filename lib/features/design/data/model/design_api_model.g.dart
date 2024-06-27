@@ -8,13 +8,13 @@ part of 'design_api_model.dart';
 
 DesignApiModel _$DesignApiModelFromJson(Map<String, dynamic> json) =>
     DesignApiModel(
-      id: json['_id'] as String,
+      id: json['_id'] as String?,
       designName: json['designName'] as String,
       designPrice: (json['designPrice'] as num).toDouble(),
       designCategory: json['designCategory'] as String,
       designDescription: json['designDescription'] as String,
       designImage: json['designImage'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      createdAt: json['createdAt'] as String,
       createdBy: json['createdBy'] as String,
     );
 
@@ -26,6 +26,6 @@ Map<String, dynamic> _$DesignApiModelToJson(DesignApiModel instance) =>
       'designCategory': instance.designCategory,
       'designDescription': instance.designDescription,
       'designImage': instance.designImage,
-      'createdAt': instance.createdAt.toIso8601String(),
+      'createdAt': instance.createdAt,
       'createdBy': instance.createdBy,
     };

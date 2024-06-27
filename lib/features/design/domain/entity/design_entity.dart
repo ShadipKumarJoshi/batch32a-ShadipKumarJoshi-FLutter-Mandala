@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 class DesignEntity extends Equatable {
-  final String id;
+  final String? id;
   final String designName;
   final double designPrice;
   final String designCategory;
   final String designDescription;
   final String designImage;
-  final DateTime createdAt;
+  final String createdAt;
   final String createdBy;
 
   const DesignEntity({
@@ -21,9 +21,9 @@ class DesignEntity extends Equatable {
     required this.createdBy,
   });
 
- @override
+  @override
   List<Object?> get props => [
-        id,  
+        id,
         designName,
         designPrice,
         designCategory,
