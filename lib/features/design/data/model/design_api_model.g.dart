@@ -14,7 +14,7 @@ DesignApiModel _$DesignApiModelFromJson(Map<String, dynamic> json) =>
       designCategory: json['designCategory'] as String,
       designDescription: json['designDescription'] as String,
       designImage: json['designImage'] as String,
-      createdAt: json['createdAt'] as String,
+      createAt: json['createAt'] as String,
       createdBy: json['createdBy'] as String,
     );
 
@@ -26,6 +26,6 @@ Map<String, dynamic> _$DesignApiModelToJson(DesignApiModel instance) =>
       'designCategory': instance.designCategory,
       'designDescription': instance.designDescription,
       'designImage': instance.designImage,
-      'createdAt': instance.createdAt,
+      'createAt': instance.createAt,
       'createdBy': instance.createdBy,
     };

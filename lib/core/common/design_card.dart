@@ -12,48 +12,50 @@ class DesignCard extends StatelessWidget {
     return SizedBox(
       width: 200,
       child: Card(
-        child: Column(
-          children: [
-            Image.network(
-              '${ApiEndpoints.getAllDesigns}/${designEntity.designImage}',
-              // '${ApiEndpoints.designImage}${petEntity.designImage}',
-              fit: BoxFit.cover,
-              height: 150,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              designEntity.designName,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Image.network(
+                '${ApiEndpoints.designImage}${designEntity.designImage}',
+                // '${ApiEndpoints.designImage}${petEntity.designImage}',
+                fit: BoxFit.cover,
+                height: 150,
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              designEntity.designPrice.toString(),
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w100,
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              designEntity.designDescription,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w100,
+              Text(
+                designEntity.designName,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-          ],
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                designEntity.designPrice.toString(),
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w100,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                designEntity.designDescription,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w100,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
         ),
       ),
     );

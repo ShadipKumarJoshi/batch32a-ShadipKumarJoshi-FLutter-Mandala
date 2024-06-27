@@ -12,35 +12,35 @@ final designApiModelProvider = Provider<DesignApiModel>((ref) {
 @JsonSerializable()
 class DesignApiModel extends Equatable {
   @JsonKey(name: '_id')
-  final String? id; 
+  final String? id;
   final String designName;
   final double designPrice;
   final String designCategory;
   final String designDescription;
   final String designImage;
-  final String createdAt; 
-  final String createdBy; 
+  final String createAt;
+  final String createdBy;
 
   const DesignApiModel({
-    required this.id,   
+    required this.id,
     required this.designName,
     required this.designPrice,
     required this.designCategory,
     required this.designDescription,
     required this.designImage,
-    required this.createdAt,
+    required this.createAt,
     required this.createdBy,
   });
 
   // Empty constructor
   const DesignApiModel.empty()
-      : id = '',  
+      : id = '',
         designName = '',
         designPrice = 0.0,
         designCategory = '',
         designDescription = '',
         designImage = '',
-        createdAt = '',
+        createAt = '',
         createdBy = '';
 
   factory DesignApiModel.fromJson(Map<String, dynamic> json) =>
@@ -57,7 +57,7 @@ class DesignApiModel extends Equatable {
       designCategory: designCategory,
       designDescription: designDescription,
       designImage: designImage,
-      createdAt: createdAt,
+      createdAt: createAt,
       createdBy: createdBy,
     );
   }
@@ -71,7 +71,7 @@ class DesignApiModel extends Equatable {
       designCategory: entity.designCategory,
       designDescription: entity.designDescription,
       designImage: entity.designImage,
-      createdAt: entity.createdAt,
+      createAt: entity.createdAt,
       createdBy: entity.createdBy,
     );
   }
@@ -88,13 +88,13 @@ class DesignApiModel extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,  
+        id,
         designName,
         designPrice,
         designCategory,
         designDescription,
         designImage,
-        createdAt,
+        createAt,
         createdBy,
       ];
 }

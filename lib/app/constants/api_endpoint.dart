@@ -33,6 +33,7 @@ class ApiEndpoints {
   static const String getSingleDesign = "design/getSingleDesign";
   static const String updateDesign = "design/updateDesign/";
   static const String getPaginationDesigns = "design/getPaginationDesigns/";
+  static const String designImage = "http://192.168.137.1:8000/designs/";
 
 // sets the default number of items to be retrieved per page in paginated API requests.
   static const limitPage = 10;
