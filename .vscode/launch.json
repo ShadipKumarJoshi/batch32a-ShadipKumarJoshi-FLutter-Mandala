@@ -25,13 +25,13 @@
             "name": "Smartphone",
             "request": "launch",
             "type": "dart",
-            "deviceId": "5554"
+            "deviceId": "RZ8N82FFHRR"
         },
         {
             "name": "Tablet",
             "request": "launch",
             "type": "dart",
-            "deviceId": "emulator-5556"
+            "deviceId": "Medium Tablet API VanillaIceCream"
         }
     ],
     "compounds": [

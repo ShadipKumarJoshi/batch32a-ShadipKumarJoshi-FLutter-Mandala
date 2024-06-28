@@ -35,8 +35,9 @@ class DesignCard extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                designEntity.designPrice.toString(),
+                'Rs. ${designEntity.designPrice}',
                 style: const TextStyle(
+                  color: Colors.red,
                   fontSize: 14,
                   fontWeight: FontWeight.w100,
                 ),
@@ -45,9 +46,9 @@ class DesignCard extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                designEntity.designDescription,
+                'Category: ${designEntity.designCategory}',
                 style: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 10,
                   fontWeight: FontWeight.w100,
                 ),
               ),

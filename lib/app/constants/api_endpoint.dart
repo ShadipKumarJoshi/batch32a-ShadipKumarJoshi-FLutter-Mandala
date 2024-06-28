@@ -4,8 +4,8 @@ class ApiEndpoints {
 
   static const Duration connectionTimeout = Duration(seconds: 1000);
   static const Duration receiveTimeout = Duration(seconds: 1000);
-  // static const String baseUrl = "http://10.0.2.2:8000/api/v1/";
-  static const String baseUrl = "http://192.168.137.1:8000/api/";
+  static const String baseUrl = "http://10.0.2.2:8000/api/";
+  // static const String baseUrl = "http://192.168.137.1:8000/api/";
 
   // ====================== user Routes ======================
   static const String login = "user/loginUser";
@@ -33,7 +33,8 @@ class ApiEndpoints {
   static const String getSingleDesign = "design/getSingleDesign";
   static const String updateDesign = "design/updateDesign/";
   static const String getPaginationDesigns = "design/getPaginationDesigns/";
-  static const String designImage = "http://192.168.137.1:8000/designs/";
+  // static const String designImage = "http://192.168.137.1:8000/designs/";
+  static const String designImage = "http://10.0.2.2:8000/designs/";
 
 // sets the default number of items to be retrieved per page in paginated API requests.
   static const limitPage = 10;

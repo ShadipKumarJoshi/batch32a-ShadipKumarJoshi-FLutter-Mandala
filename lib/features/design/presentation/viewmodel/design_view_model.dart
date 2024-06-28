@@ -2,14 +2,16 @@ import 'package:final_assignment/features/design/domain/usecases/design_usecase.
 import 'package:final_assignment/features/design/presentation/state/design_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final designViewModelProvider = StateNotifierProvider<DesignViewModel, DesignState>(
+final designViewModelProvider =
+    StateNotifierProvider<DesignViewModel, DesignState>(
   (ref) => DesignViewModel(
     designUseCase: ref.read(designUseCaseProvider),
   ),
 );
 
 class DesignViewModel extends StateNotifier<DesignState> {
-  DesignViewModel({required this.designUseCase}) : super(DesignState.initial()) {
+  DesignViewModel({required this.designUseCase})
+      : super(DesignState.initial()) {
     fetchDesigns();
   }
 
@@ -28,7 +30,7 @@ class DesignViewModel extends StateNotifier<DesignState> {
     final hasReachedMax = currentState.hasReachedMax;
     if (!hasReachedMax) {
       // get data from data source
-      final result = await designUseCase.getPaginationDesigns(page, 6);
+      final result = await designUseCase.getPaginationDesigns(page, 12);
       result.fold(
         (failure) => state = state.copyWith(
           hasReachedMax: true,
