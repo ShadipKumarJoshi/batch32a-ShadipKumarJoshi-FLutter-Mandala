@@ -150,7 +150,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
           ),
           CurvedNavigationBarItem(
             // child: Icon(Icons.home, color: _getIconColor(0)),
-            child: Icon(Icons.home, color: Colors.black),
+            child: Icon(Icons.palette, color: Colors.black),
             label: 'Customize',
             labelStyle: TextStyle(fontSize: 11),
           ),

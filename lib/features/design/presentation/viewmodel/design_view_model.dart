@@ -30,7 +30,7 @@ class DesignViewModel extends StateNotifier<DesignState> {
     final hasReachedMax = currentState.hasReachedMax;
     if (!hasReachedMax) {
       // get data from data source
-      final result = await designUseCase.getPaginationDesigns(page, 6);
+      final result = await designUseCase.getPaginationDesigns(page, 12);
       result.fold(
         (failure) => state = state.copyWith(
           hasReachedMax: true,

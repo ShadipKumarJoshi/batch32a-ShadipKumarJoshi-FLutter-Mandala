@@ -23,7 +23,7 @@ class _DesignViewState extends ConsumerState<DesignView> {
 
   @override
   Widget build(BuildContext context) {
-    final designState = ref.watch(designViewModelProvider);
+    final designState = ref.watch(  designViewModelProvider);
 
     return NotificationListener(
       onNotification: (notification) {
@@ -67,18 +67,40 @@ class _DesignViewState extends ConsumerState<DesignView> {
                 ),
                 Expanded(
                   child: Consumer(
+                    // builder: (context, ref, child) {
+                    //   final designState = ref.watch(designViewModelProvider);
+                    //   return GridView.builder(
+                    //     physics: const AlwaysScrollableScrollPhysics(),
+                    //     controller: _scrollController,
+                    //     itemCount: designState.designs.length,
+                    //     gridDelegate:
+                    //         const SliverGridDelegateWithFixedCrossAxisCount(
+                    //       crossAxisCount: 2, // Two items per row
+                    //       crossAxisSpacing: 8.0, // Space between columns
+                    //       mainAxisSpacing: 8.0, // Space between rows
+                    //       childAspectRatio: 0.7, // Aspect ratio of each item
+                    //     ),
                     builder: (context, ref, child) {
                       final designState = ref.watch(designViewModelProvider);
+                      final orientation = MediaQuery.of(context).orientation;
+                      final screenWidth = MediaQuery.of(context).size.width;
+
+                      int crossAxisCount;
+                      if (orientation == Orientation.portrait) {
+                        crossAxisCount = (screenWidth > 600) ? 4 : 2;
+                      } else {
+                        crossAxisCount = (screenWidth > 600) ? 6 : 4;
+                      }
+
                       return GridView.builder(
                         physics: const AlwaysScrollableScrollPhysics(),
                         controller: _scrollController,
                         itemCount: designState.designs.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2, // Two items per row
-                          crossAxisSpacing: 8.0, // Space between columns
-                          mainAxisSpacing: 8.0, // Space between rows
-                          childAspectRatio: 0.7, // Aspect ratio of each item
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: crossAxisCount,
+                          crossAxisSpacing: 8.0,
+                          mainAxisSpacing: 8.0,
+                          childAspectRatio: 0.7,
                         ),
                         itemBuilder: (context, index) {
                           final design = designState.designs[index];
