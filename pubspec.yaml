@@ -55,6 +55,7 @@ dependencies:
   # build_runner: ^2.4.11
   # flutter_lints: ^4.0.0
   json_annotation: ^4.9.0
+  connectivity_plus: ^4.0.1
 
 
 dev_dependencies:
