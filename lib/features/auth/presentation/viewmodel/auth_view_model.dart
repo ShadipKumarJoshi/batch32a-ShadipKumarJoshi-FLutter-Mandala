@@ -46,10 +46,12 @@ class AuthViewModel extends StateNotifier<AuthState> {
           isLoading: false,
           error: failure.error,
         );
+        // TEST NOTE
         // showMySnackBar(message: failure.error, color: Colors.red);
       },
       (success) {
         state = state.copyWith(isLoading: false, error: null);
+        // TEST NOTE
         // showMySnackBar(message: "Successfully registered");
         Future.delayed(const Duration(seconds: 1), () {
           registerViewNavigator.openLoginView();
@@ -67,6 +69,7 @@ class AuthViewModel extends StateNotifier<AuthState> {
     data.fold(
       (failure) {
         state = state.copyWith(isLoading: false, error: failure.error);
+        // TEST NOTE
         // showMySnackBar(message: failure.error, color: Colors.red);
       },
       (success) {
