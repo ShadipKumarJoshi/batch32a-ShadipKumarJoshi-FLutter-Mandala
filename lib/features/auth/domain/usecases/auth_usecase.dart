@@ -18,23 +18,23 @@ class AuthUseCase {
   // }
 
 
+
   // Future<Either<Failure, bool>> registerUser(AuthEntity user) async {
   //   return await _authRepository.registerUser(user);
 
-    // --- nullable value for register testing
+    // TEST NOTE --- nullable value for register testing
      Future<Either<Failure, bool>> registerUser(AuthEntity? user) async {
     return await _authRepository.registerUser(user!);
 
   }
 
 
-  
 
   // Future<Either<Failure, bool>> loginUser(String email, String password) async {
   //   return await _authRepository.loginUser(email, password);
 
 
-// --- nullable value for  login testing
+// TEST NOTE --- nullable value for  login testing
 
     Future<Either<Failure, bool>> loginUser(String? email, String? password) async {
     return await _authRepository.loginUser(email!, password!);

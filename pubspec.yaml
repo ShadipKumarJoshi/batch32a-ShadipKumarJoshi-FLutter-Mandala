@@ -58,6 +58,12 @@ dependencies:
   connectivity_plus: ^4.0.1
   test_cov_console: ^0.2.2
 
+  local_auth: ^2.2.0
+  all_lint_rules_community: ^0.0.40
+  all_sensors2: ^1.0.1
+  
+  
+
 
 dev_dependencies:
   flutter_test:

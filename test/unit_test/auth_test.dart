@@ -1,6 +1,7 @@
 // STEPS TO TEST AUTH VIEW MODEL
 
-// Step 1:  add dependency of mockito
+// Step 0: first create void main class
+// Step 1:  add dependency of mockito with GenerateNiceMocks
 // Step 2: check what auth VM  is dependent on: Usecase and Navigator
 // Step 3: dart run build_runner build -d  to generate auth_test.mock.dart file
 // node: -d is delete confilcting files
