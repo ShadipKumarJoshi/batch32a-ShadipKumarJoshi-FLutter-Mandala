@@ -61,6 +61,8 @@ dependencies:
   local_auth: ^2.2.0
   all_lint_rules_community: ^0.0.40
   all_sensors2: ^1.0.1
+  awesome_dialog: ^3.2.1
+  flutter_svg: ^2.0.10+1
   
   
 
