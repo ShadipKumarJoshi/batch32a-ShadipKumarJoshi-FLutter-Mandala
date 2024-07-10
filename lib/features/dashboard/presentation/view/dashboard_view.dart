@@ -1,5 +1,10 @@
 // SubView with stateless
 
+import 'dart:async';
+
+import 'package:all_sensors2/all_sensors2.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:final_assignment/core/common/my_snackbar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:final_assignment/core/common/colors.dart';
@@ -8,6 +13,7 @@ import 'package:final_assignment/features/customize/presentation/view/customize_
 import 'package:final_assignment/features/design/presentation/view/design_view.dart';
 import 'package:final_assignment/features/favorite/presentation/view/favorite_view.dart';
 import 'package:final_assignment/features/menu/presentation/view/menu_view.dart';
+import 'package:final_assignment/features/profile/presentation/viewmodel/profile_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -35,6 +41,57 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
   // Color _getIconColor(int index) {
   //   return _selectedIndex == index ? Colors.black : Colors.white;
   // }
+
+
+  // ------ GYROSCOPE CODE ------
+
+  bool showYesNoDialog = true;
+  bool isDialogShowing = false;
+
+  List<double> _gyroscopeValues = [];
+  final List<StreamSubscription<dynamic>> _streamSubscription = [];
+
+  @override
+  void initState() {
+    _streamSubscription.add(gyroscopeEvents!.listen((GyroscopeEvent event) {
+      setState(() {
+        _gyroscopeValues = <double>[event.x, event.y, event.z];
+
+        _checkGyroscopeValues(_gyroscopeValues);
+      });
+    }));
+
+    super.initState();
+  }
+
+  void _checkGyroscopeValues(List<double> values) async {
+    const double threshold = 3; // Example threshold value, adjust as needed
+    if (values.any((value) => value.abs() > threshold)) {
+      if (showYesNoDialog && !isDialogShowing) {
+        isDialogShowing = true;
+        final result = await AwesomeDialog(
+          context: context,
+          dialogType: DialogType.warning,
+          title: 'Logout',
+          desc: 'Are You Sure You Want To Logout?',
+          btnOkOnPress: () {
+            ref.read(profileViewmodelProvider.notifier).logout();
+          },
+          btnCancelOnPress: () {},
+        ).show();
+
+        isDialogShowing = false;
+        if (result) {
+          showMySnackBar(
+            message: 'Logged Out Successfully!',
+            color: Colors.green,
+          );
+        }
+      }
+    }
+  }
+
+  //-----gyroscope code ends here-----
 
   @override
   Widget build(BuildContext context) {
