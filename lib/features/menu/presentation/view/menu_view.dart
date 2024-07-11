@@ -2,23 +2,24 @@
 
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:all_sensors2/all_sensors2.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:final_assignment/core/common/dashboard_Tab_View_Heading.dart';
 import 'package:final_assignment/core/common/my_snackbar.dart';
+import 'package:final_assignment/features/menu/presentation/widgets/menu_sub_menu.dart';
 import 'package:final_assignment/features/profile/presentation/viewmodel/profile_view_model.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MenuView extends ConsumerStatefulWidget {
   const MenuView({super.key});
 
-   @override
-  ConsumerState<MenuView> createState() => _MenuViewState();
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _MenuViewState();
 }
 
 class _MenuViewState extends ConsumerState<MenuView> {
-
- // ------ GYROSCOPE CODE ------
+  // ------ GYROSCOPE CODE ------
 
   bool showYesNoDialog = true;
   bool isDialogShowing = false;
@@ -71,8 +72,52 @@ class _MenuViewState extends ConsumerState<MenuView> {
   @override
   Widget build(BuildContext context) {
     return const SizedBox.expand(
-      child: Center(
-        child: Text('Menu View'),
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Center(
+                child: DashboardTabViewHeading(text: 'Menu'),
+              ),
+              MenuSubMenu(
+                text: 'Dark Mode',
+                icon: Icons.dark_mode,
+                // press: () {   },
+              ),
+              MenuSubMenu(
+                text: 'Enable Finger Print',
+                icon: Icons.fingerprint,
+                // press: () {},
+              ),
+              MenuSubMenu(
+                text: 'Enable Shake to Logout',
+                icon: Icons.logout,
+                // press: () {   },
+              ),
+              MenuSubMenu(
+                text: 'About Us',
+                icon: Icons.info,
+                // press: () {   },
+              ),
+              MenuSubMenu(
+                text: 'Rules and Regulations',
+                icon: Icons.rule,
+                // press: () {   },
+              ),
+              MenuSubMenu(
+                text: 'Contact Us',
+                icon: Icons.message,
+                // press: () {   },
+              ),
+              MenuSubMenu(
+                text: 'Delete Account',
+                icon: Icons.delete,
+                // press: () {   },
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

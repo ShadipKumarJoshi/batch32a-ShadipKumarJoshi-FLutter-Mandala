@@ -1,8 +1,8 @@
 import 'package:final_assignment/core/common/colors.dart';
 import 'package:flutter/material.dart';
 
-class ProfileMenu extends StatelessWidget {
-  const ProfileMenu({
+class MenuSubMenu extends StatelessWidget {
+  const MenuSubMenu({
     super.key,
     required this.text,
     required this.icon,

@@ -1,6 +1,7 @@
 // SubView
 
 import 'package:final_assignment/core/common/colors.dart';
+import 'package:final_assignment/core/common/dashboard_Tab_View_Heading.dart';
 import 'package:final_assignment/features/design/presentation/viewmodel/design_view_model.dart';
 import 'package:final_assignment/features/design/presentation/widgets/design_card.dart';
 import 'package:flutter/material.dart';
@@ -49,22 +50,23 @@ class _DesignViewState extends ConsumerState<DesignView> {
             child: Column(
               children: [
                 const Center(
-                  child: Text(
-                    'Designs',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                      shadows: [
-                        Shadow(
-                          offset: Offset(2.0, 2.0),
-                          blurRadius: 3.0,
-                          color: goldColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                  child: DashboardTabViewHeading(text: 'Designs'),),
+                //   child: Text(
+                //     'Designs',
+                //     style: TextStyle(
+                //       color: Colors.black,
+                //       fontWeight: FontWeight.bold,
+                //       fontSize: 25,
+                //       shadows: [
+                //         Shadow(
+                //           offset: Offset(2.0, 2.0),
+                //           blurRadius: 3.0,
+                //           color: goldColor,
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 Expanded(
                   child: Consumer(
                     // builder: (context, ref, child) {
