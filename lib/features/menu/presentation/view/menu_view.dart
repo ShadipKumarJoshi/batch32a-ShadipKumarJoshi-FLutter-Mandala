@@ -19,6 +19,10 @@ class MenuView extends ConsumerStatefulWidget {
 }
 
 class _MenuViewState extends ConsumerState<MenuView> {
+  bool isDarkModeEnabled = false;
+  bool isFingerprintEnabled = false;
+  bool isShakeToLogoutEnabled = false;
+
   // ------ GYROSCOPE CODE ------
 
   bool showYesNoDialog = true;
@@ -71,49 +75,81 @@ class _MenuViewState extends ConsumerState<MenuView> {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox.expand(
+    return SizedBox.expand(
       child: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Center(
+              const Center(
                 child: DashboardTabViewHeading(text: 'Menu'),
               ),
               MenuSubMenu(
                 text: 'Dark Mode',
                 icon: Icons.dark_mode,
-                // press: () {   },
+                value: isDarkModeEnabled,
+                onToggle: (value) {
+                  setState(() {
+                    isDarkModeEnabled = value;
+                  });
+                },
+                press: () {
+                  setState(() {
+                    isDarkModeEnabled = !isDarkModeEnabled;
+                  });
+                },
               ),
               MenuSubMenu(
                 text: 'Enable Finger Print',
                 icon: Icons.fingerprint,
-                // press: () {},
+                value: isFingerprintEnabled,
+                onToggle: (value) {
+                  setState(() {
+                    isFingerprintEnabled = value;
+                  });
+                },
+                press: () {
+                  setState(() {
+                    isFingerprintEnabled = !isFingerprintEnabled;
+                  });
+                },
               ),
               MenuSubMenu(
                 text: 'Enable Shake to Logout',
                 icon: Icons.logout,
-                // press: () {   },
+                value: isShakeToLogoutEnabled,
+                onToggle: (value) {
+                  setState(() {
+                    isShakeToLogoutEnabled = value;
+                  });
+                },
+                press: () {
+                  setState(() {
+                    isShakeToLogoutEnabled = !isShakeToLogoutEnabled;
+                  });
+                },
               ),
               MenuSubMenu(
                 text: 'About Us',
                 icon: Icons.info,
-                // press: () {   },
+                press: () {},
               ),
               MenuSubMenu(
                 text: 'Rules and Regulations',
                 icon: Icons.rule,
-                // press: () {   },
+                press: () {},
               ),
               MenuSubMenu(
                 text: 'Contact Us',
                 icon: Icons.message,
-                // press: () {   },
+                press: () {},
               ),
               MenuSubMenu(
                 text: 'Delete Account',
+                textColor: Colors.red,
                 icon: Icons.delete,
-                // press: () {   },
+                iconColor: Colors.red,
+                press: () {},
               ),
             ],
           ),

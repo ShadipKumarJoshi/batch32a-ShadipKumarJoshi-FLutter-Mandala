@@ -5,13 +5,21 @@ class MenuSubMenu extends StatelessWidget {
   const MenuSubMenu({
     super.key,
     required this.text,
+    this.textColor = Colors.black,
     required this.icon,
-    this.press,
+    this.iconColor = Colors.black,
+    required this.press,
+    this.value,
+    this.onToggle,
   });
 
   final String text;
+  final Color textColor;
   final IconData icon;
+  final Color iconColor;
   final VoidCallback? press;
+  final bool? value;
+  final ValueChanged<bool>? onToggle;
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +38,16 @@ class MenuSubMenu extends StatelessWidget {
             Icon(
               icon,
               size: 22,
-              color: Colors.black,
+              color: iconColor,
             ),
             const SizedBox(width: 20),
-            Expanded(
-                child: Text(
-              text,
-              style: const TextStyle(color: Colors.black),
-            )),
+            Expanded(child: Text(text, style: TextStyle(color: textColor))),
             // const Icon(Icons.arrow_forward_ios),
+            if (onToggle != null)
+              Switch(
+                value: value ?? false,
+                onChanged: onToggle,
+              ),
           ],
         ),
       ),
