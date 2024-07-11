@@ -1,17 +1,14 @@
 // SubView with stateless
 
-import 'dart:async';
-
-
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:final_assignment/core/common/colors.dart';
 import 'package:final_assignment/features/cart/presentation/view/cart_view.dart';
 import 'package:final_assignment/features/customize/presentation/view/customize_view.dart';
+import 'package:final_assignment/features/dashboard/presentation/viewmodel/dashboard_view_model.dart';
 import 'package:final_assignment/features/design/presentation/view/design_view.dart';
 import 'package:final_assignment/features/favorite/presentation/view/favorite_view.dart';
 import 'package:final_assignment/features/menu/presentation/view/menu_view.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -40,7 +37,6 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
   //   return _selectedIndex == index ? Colors.black : Colors.white;
   // }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +56,9 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
               ),
               child: IconButton(
                 onPressed: () {
-                  // Profile button action
+                  ref
+                      .read(dashboardViewModelProvider.notifier)
+                      .openProfileView();
                 },
                 icon: const Icon(Icons.person),
               ),

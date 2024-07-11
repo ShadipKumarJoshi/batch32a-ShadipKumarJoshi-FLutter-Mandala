@@ -1,6 +1,5 @@
 import 'package:final_assignment/app/navigator_key/navigator_key.dart';
-// import 'package:final_assignment/features/dashboard/presentation/view/dashboard_view.dart';
-import 'package:final_assignment/features/splash/presentation/view/splash_view.dart';
+import 'package:final_assignment/features/dashboard/presentation/view/dashboard_view.dart';
 import 'package:final_assignment/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,8 +15,10 @@ class App extends ConsumerWidget {
       navigatorKey: AppNavigator.navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: getApplicationTheme(),
-      home: const SplashView(),
-      // home: DashboardView(),
+      // home: const SplashView(),
+
+      // home: ProfileView(),
+      home: const DashboardView(),
 
       // themes// this method is not used now/ we use navigatorkey
 

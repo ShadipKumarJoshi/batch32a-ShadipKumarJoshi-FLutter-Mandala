@@ -33,4 +33,8 @@ class DashboardViewModel extends StateNotifier<void> {
   void openMenuView() {
     navigator.openMenuView();
   }
+
+   void openProfileView() {
+    navigator.openProfileView();
+  }
 }

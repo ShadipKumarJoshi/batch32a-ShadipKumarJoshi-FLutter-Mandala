@@ -4,14 +4,14 @@ import 'package:final_assignment/features/edit_profile/presentation/navigator/ed
 import 'package:final_assignment/features/profile/presentation/view/profile_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final profileNavigatorProvider = Provider<ProfileNavigator>((ref) {
-  return ProfileNavigator();
+final profileViewNavigatorProvider = Provider<ProfileViewNavigator>((ref) {
+  return ProfileViewNavigator();
 });
 
-class ProfileNavigator with EditProfileViewRoute, LoginViewRoute {}
+class ProfileViewNavigator with EditProfileViewRoute, LoginViewRoute {}
 
-mixin ProfileRoute {
-  openProfile() {
-    NavigateRoute.popAndPushRoute(const ProfileView());
+mixin ProfileViewRoute {
+  openProfileView() {
+    NavigateRoute.pushRoute(const ProfileView());
   }
 }

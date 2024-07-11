@@ -1,5 +1,5 @@
+import 'package:final_assignment/core/common/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
@@ -9,7 +9,8 @@ class ProfileMenu extends StatelessWidget {
     this.press,
   });
 
-  final String text, icon;
+  final String text;
+  final IconData icon;
   final VoidCallback? press;
 
   @override
@@ -18,22 +19,21 @@ class ProfileMenu extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextButton(
         style: TextButton.styleFrom(
-          foregroundColor: Colors.blueAccent,
           padding: const EdgeInsets.all(20),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          backgroundColor: Colors.blueAccent.withOpacity(0.2),
+          backgroundColor: goldColor,
         ),
         onPressed: press,
         child: Row(
           children: [
-            SvgPicture.asset(
+            Icon(
               icon,
-              width: 22,
+              size: 22,
             ),
             const SizedBox(width: 20),
             Expanded(child: Text(text)),
-            const Icon(Icons.arrow_forward_ios),
+            // const Icon(Icons.arrow_forward_ios),
           ],
         ),
       ),

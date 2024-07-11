@@ -8,7 +8,7 @@ final editProfileViewNavigatorProvider =
   return EditProfileViewNavigator();  
 });
 
-class EditProfileViewNavigator with ProfileRoute {}
+class EditProfileViewNavigator with ProfileViewRoute {}
 
 mixin EditProfileViewRoute {
   openEditProfileView() {

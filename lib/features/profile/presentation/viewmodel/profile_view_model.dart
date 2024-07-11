@@ -13,13 +13,13 @@ final profileViewmodelProvider =
     StateNotifierProvider<ProfileViewmodel, CurrentProfileState>(
         (ref) => ProfileViewmodel(
               authUseCase: ref.watch(authUseCaseProvider),
-              navigator: ref.watch(profileNavigatorProvider),
+              navigator: ref.watch(profileViewNavigatorProvider),
               userSharedPrefs: ref.watch(userSharedPrefsProvider),
             ));
 
 class ProfileViewmodel extends StateNotifier<CurrentProfileState> {
   final AuthUseCase authUseCase;
-  final ProfileNavigator navigator;
+  final ProfileViewNavigator navigator;
   final UserSharedPrefs userSharedPrefs;
   late LocalAuthentication _localAuth;
 
