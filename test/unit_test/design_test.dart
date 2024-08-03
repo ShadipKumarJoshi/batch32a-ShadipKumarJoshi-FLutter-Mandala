@@ -77,7 +77,7 @@ void main() {
 
     expect(designState.designs, equals([]));
     expect(designState.page, equals(0));
-    expect(designState.isLoading, equals(false));
+    expect(designState.isLoading, equals(true));
     expect(designState.hasReachedMax, equals(true));
   });
 

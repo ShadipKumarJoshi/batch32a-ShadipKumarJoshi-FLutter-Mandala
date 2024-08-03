@@ -13,7 +13,9 @@ class ApiEndpoints {
   static const String getUser = "user/getUser/";
   static const String updateUser = "user/updateUser/";
   static const String deleteUser = "user/deleteUser/";
-  static const String imageUrl = "http://10.0.2.2:8000/uploads/";
+  // static const String imageUrl = "http://10.0.2.2:8000/uploads/";
+
+  static const String userImage = "http://192.168.137.1:8000/user/";
   // static const String uploadImage = "user/uploadImage";
   static const String currentUser = "user/getMe";
 
