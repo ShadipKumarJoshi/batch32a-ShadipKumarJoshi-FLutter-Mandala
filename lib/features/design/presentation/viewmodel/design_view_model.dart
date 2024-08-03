@@ -11,7 +11,9 @@ final designViewModelProvider =
 
 class DesignViewModel extends StateNotifier<DesignState> {
   DesignViewModel({required this.designUseCase})
-      : super(DesignState.initial()) {
+      : super(
+          DesignState.initial(),
+        ) {
     fetchDesigns();
   }
 

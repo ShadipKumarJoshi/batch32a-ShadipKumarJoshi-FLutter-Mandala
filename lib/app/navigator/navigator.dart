@@ -1,4 +1,5 @@
 import 'package:final_assignment/app/navigator_key/navigator_key.dart';
+import 'package:final_assignment/features/profile/presentation/view/profile_view.dart';
 import 'package:flutter/material.dart';
 
 // NavigateRoute class has a private constructor (NavigateRoute._()) to prevent direct instantiation.
@@ -22,7 +23,7 @@ class NavigateRoute {
   }
 
   // Just Go Back
-  static void pop() {
+  static void pop(ProfileView profileView) {
     Navigator.pop(
       AppNavigator.navigatorKey.currentState!.context,
     );
