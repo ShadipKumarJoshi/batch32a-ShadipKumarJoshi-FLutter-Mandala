@@ -7,8 +7,8 @@ import 'package:final_assignment/features/cart/presentation/view/cart_view.dart'
 import 'package:final_assignment/features/customize/presentation/view/customize_view.dart';
 import 'package:final_assignment/features/dashboard/presentation/viewmodel/dashboard_view_model.dart';
 import 'package:final_assignment/features/design/presentation/view/design_view.dart';
-import 'package:final_assignment/features/favorite/presentation/view/favorite_view.dart';
 import 'package:final_assignment/features/menu/presentation/view/menu_view.dart';
+import 'package:final_assignment/features/sell/presentation/view/sell_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,8 +26,8 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
   // list creation for highlighting View icon
   final List<Widget> lstBottomView = [
     const DesignView(),
+    const SellView(),
     const CustomizeView(),
-    const FavoriteView(),
     const CartView(),
     const MenuView()
   ];
@@ -50,7 +50,8 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/nav_bg.png'),
+                  image: AssetImage('assets/images/bg.png'),
+                  // image: AssetImage('assets/images/nav_bg.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -81,7 +82,8 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
                 Container(
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/images/nav_bg.png'),
+                      image: AssetImage('assets/images/bg.png'),
+                      // image: AssetImage('assets/images/nav_bg.png'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -89,7 +91,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
                     onPressed: () {
                       // Notification button action
                     },
-                    icon: const Icon(Icons.notifications),
+                    icon: const Icon(Icons.favorite),
                   ),
                 ),
                 Positioned(
@@ -152,14 +154,14 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
             labelStyle: TextStyle(fontSize: 11),
           ),
           CurvedNavigationBarItem(
-            // child: Icon(Icons.home, color: _getIconColor(0)),
-            child: Icon(Icons.palette, color: Colors.black),
-            label: 'Customize',
+            child: Icon(Icons.sell, color: Colors.black),
+            label: 'Sell',
             labelStyle: TextStyle(fontSize: 11),
           ),
           CurvedNavigationBarItem(
-            child: Icon(Icons.favorite, color: Colors.black),
-            label: 'Favorite',
+            // child: Icon(Icons.home, color: _getIconColor(0)),
+            child: Icon(Icons.palette, color: Colors.black),
+            label: 'Customize',
             labelStyle: TextStyle(fontSize: 11),
           ),
           CurvedNavigationBarItem(

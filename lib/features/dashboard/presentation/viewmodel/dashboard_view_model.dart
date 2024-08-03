@@ -26,6 +26,10 @@ class DashboardViewModel extends StateNotifier<void> {
     navigator.openDesignView();
   }
 
+  void openSellView() {
+    navigator.openSellView();
+  }
+
   void openFavoriteView() {
     navigator.openFavoriteView();
   }
@@ -34,7 +38,7 @@ class DashboardViewModel extends StateNotifier<void> {
     navigator.openMenuView();
   }
 
-   void openProfileView() {
+  void openProfileView() {
     navigator.openProfileView();
   }
 }

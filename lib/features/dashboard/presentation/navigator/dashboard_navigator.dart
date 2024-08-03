@@ -6,11 +6,12 @@ import 'package:final_assignment/features/design/presentation/navigator/design_n
 import 'package:final_assignment/features/favorite/presentation/navigator/favorite_navigator.dart';
 import 'package:final_assignment/features/menu/presentation/navigator/menu_navigator.dart';
 import 'package:final_assignment/features/profile/presentation/navigator/profile_navigator.dart';
+import 'package:final_assignment/features/sell/presentation/navigator/sell_navigator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final dashboardViewNavigatorProvider = Provider((ref) => DashboardViewNavigator());
 
-class DashboardViewNavigator with CartViewRoute, DesignViewRoute,FavoriteViewRoute,CustomizeViewRoute,MenuViewRoute,ProfileViewRoute {}
+class DashboardViewNavigator with SellViewRoute, CartViewRoute, DesignViewRoute,FavoriteViewRoute,CustomizeViewRoute,MenuViewRoute,ProfileViewRoute {}
 
 mixin DashboardViewRoute {
   openDashboardView() {

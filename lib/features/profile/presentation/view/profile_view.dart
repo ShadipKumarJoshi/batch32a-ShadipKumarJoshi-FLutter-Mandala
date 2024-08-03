@@ -5,7 +5,6 @@ import 'package:final_assignment/features/profile/presentation/widgets/profile_m
 import 'package:final_assignment/features/profile/presentation/widgets/profile_pic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ProfileView extends ConsumerStatefulWidget {
   const ProfileView({super.key});
@@ -123,36 +122,36 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                     }
                   },
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.blueAccent,
-                      padding: const EdgeInsets.all(20),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      backgroundColor: Colors.blueAccent.withOpacity(0.2),
-                    ),
-                    onPressed: () {},
-                    child: Row(
-                      children: [
-                        SvgPicture.asset(
-                          "assets/icons/dark_mode.svg",
-                          width: 22,
-                        ),
-                        const SizedBox(width: 20),
-                        const Expanded(child: Text("Dark Mode/Light Mode")),
-                        Switch(
-                          value: true,
-                          onChanged: (value) {
-                            value = !value;
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding:
+                //       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                //   child: TextButton(
+                //     style: TextButton.styleFrom(
+                //       foregroundColor: Colors.blueAccent,
+                //       padding: const EdgeInsets.all(20),
+                //       shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(15)),
+                //       backgroundColor: Colors.blueAccent.withOpacity(0.2),
+                //     ),
+                //     onPressed: () {},
+                //     child: Row(
+                //       children: [
+                //         SvgPicture.asset(
+                //           "assets/icons/dark_mode.svg",
+                //           width: 22,
+                //         ),
+                //         const SizedBox(width: 20),
+                //         const Expanded(child: Text("Dark Mode/Light Mode")),
+                //         Switch(
+                //           value: true,
+                //           onChanged: (value) {
+                //             value = !value;
+                //           },
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
