@@ -99,6 +99,9 @@ void main() {
     const correctPassword = 'shadip123';
 
 // NOTE: for (any, any) make auth_usecase (emailOrPhoneNumber and password as nullable wih ?)
+// TEST NOTE
+// COmment the snackbar in auth_view_model.dart and common
+
     when(mockAuthUsecase.loginUser(any, any)).thenAnswer((invocation) {
       final email = invocation.positionalArguments[0] as String;
       final password = invocation.positionalArguments[1] as String;

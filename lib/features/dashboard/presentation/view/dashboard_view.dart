@@ -131,6 +131,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
               image: DecorationImage(
                 image: AssetImage(
                     'assets/images/dashboard_bg.jpg'), // Replace with your background image asset
+                // 'assets/images/dashboard_bg_dark.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
