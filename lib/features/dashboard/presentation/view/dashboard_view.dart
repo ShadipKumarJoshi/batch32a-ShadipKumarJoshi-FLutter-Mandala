@@ -1,5 +1,8 @@
 // SubView with stateless
 
+import 'dart:async';
+
+import 'package:all_sensors2/all_sensors2.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:final_assignment/core/common/colors.dart';
@@ -31,6 +34,65 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
     const CartView(),
     const MenuView()
   ];
+
+// proximity sensor
+  double _proximityValue = 0;
+  bool _isDialogShowing = false;
+  final List<StreamSubscription<dynamic>> _streamSubscription =
+      <StreamSubscription<dynamic>>[];
+
+  @override
+  void initState() {
+    super.initState();
+
+    _streamSubscription.add(
+      proximityEvents!.listen(
+        (ProximityEvent event) {
+          setState(() {
+            _proximityValue = event.proximity;
+            if (_proximityValue < 0.9 && !_isDialogShowing) {
+              _showProximityDialog();
+            } else if (_proximityValue >= 0.9 && _isDialogShowing) {
+              Navigator.of(context).pop();
+              _isDialogShowing = false;
+            }
+          });
+        },
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    for (var subscription in _streamSubscription) {
+      subscription.cancel();
+    }
+    super.dispose();
+  }
+
+  void _showProximityDialog() {
+    _isDialogShowing = true;
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Warning'),
+          content: const Text('You are too close to the proximity sensor!'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _isDialogShowing = false;
+              },
+            ),
+          ],
+        );
+      },
+    ).then((_) {
+      _isDialogShowing = false;
+    });
+  }
 
   // Method to get the color of the icon based on the selected index
   // Color _getIconColor(int index) {
