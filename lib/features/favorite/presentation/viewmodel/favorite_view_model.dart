@@ -1,7 +1,8 @@
 import 'package:final_assignment/features/favorite/presentation/navigator/favorite_navigator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final favoriteViewModelProvider = StateNotifierProvider<FavoriteViewModel, void>(
+final favoriteViewModelProvider =
+    StateNotifierProvider<FavoriteViewModel, void>(
   (ref) => FavoriteViewModel(ref.read(favoriteViewNavigatorProvider)),
 );
 
@@ -13,9 +14,7 @@ class FavoriteViewModel extends StateNotifier<void> {
 
   final FavoriteViewNavigator navigator;
 
-
- 
-
- 
-
+  void openDashboardView() {
+    navigator.openDashboardView();
   }
+}

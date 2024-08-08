@@ -11,7 +11,7 @@ import 'package:final_assignment/features/customize/presentation/view/customize_
 import 'package:final_assignment/features/dashboard/presentation/viewmodel/dashboard_view_model.dart';
 import 'package:final_assignment/features/design/presentation/view/design_view.dart';
 import 'package:final_assignment/features/menu/presentation/view/menu_view.dart';
-import 'package:final_assignment/features/sell/presentation/view/sell_view.dart';
+import 'package:final_assignment/features/sell/presentation/view/sell_design_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -29,7 +29,7 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
   // list creation for highlighting View icon
   final List<Widget> lstBottomView = [
     const DesignView(),
-    const SellView(),
+    const SellDesignView(),
     const CustomizeView(),
     const CartView(),
     const MenuView()

@@ -2,7 +2,7 @@ import 'package:final_assignment/features/cart/presentation/navigator/cart_navig
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final cartViewModelProvider = StateNotifierProvider<CartViewModel, void>(
-  (ref) => CartViewModel(ref.read(cartViewNavigatorProvider)),
+  (ref) => CartViewModel(ref.watch(cartViewNavigatorProvider)),
 );
 
 // This line defines a StateNotifierProvider named cartViewModelProvider.
@@ -13,7 +13,10 @@ class CartViewModel extends StateNotifier<void> {
 
   final CartViewNavigator navigator;
 
-
+  void openDashboardView() {
+    navigator.openDashboardView();
+  }
+  
  
 
  
