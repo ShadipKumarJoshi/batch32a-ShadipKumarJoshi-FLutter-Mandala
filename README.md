@@ -6,7 +6,7 @@ The name of this mobile application is **"MANDALA T-On-Line Prints"** build usin
 
 ## Justification
 ### Background
-	In the modern era, there is a growing desire for individuals to express themselves and have their voices heard, particularly among the younger generation. Social media platforms such as Facebook, Instagram, and Twitter (now known as X) are inundated with a plethora of ideas, photos, and content shared by users for various purposes such as marketing, raising awareness, or simply showcasing their personalities and lifestyles. The emergence of "social influencers" highlights the active participation of individuals in this digital landscape.
+In the modern era, there is a growing desire for individuals to express themselves and have their voices heard, particularly among the younger generation. Social media platforms such as Facebook, Instagram, and Twitter (now known as X) are inundated with a plethora of ideas, photos, and content shared by users for various purposes such as marketing, raising awareness, or simply showcasing their personalities and lifestyles. The emergence of "social influencers" highlights the active participation of individuals in this digital landscape.
 Moreover, there is a noticeable shift towards online shopping, with platforms like Daraz and Facebook's marketplace gaining popularity for purchasing clothing items. The global custom t-shirt printing market is projected to witness significant growth, with an estimated value of USD 4.07 billion in 2023, USD 4.49 billion in 2024, and a forecasted value of USD 8.32 billion by 2030, indicating a compound annual growth rate of 10.74% .
 
  
@@ -49,6 +49,6 @@ This architecture comprises three key components: Model, View, and ViewModel. Th
 
   
 ### Conclusion
-	Mandala T-On-Line Prints offers a digital platform that encourages creativity and uniqueness. Drawing inspiration from mandala art and catering to the desire for personalized items, it serves as a space for artists to display their creations and for customers to personalize their clothing. Through a user-friendly interface, safe transactions, and a dedication to promoting independent artists, Mandala T-On-Line Prints is transforming the world of customized apparel.
+Mandala T-On-Line Prints offers a digital platform that encourages creativity and uniqueness. Drawing inspiration from mandala art and catering to the desire for personalized items, it serves as a space for artists to display their creations and for customers to personalize their clothing. Through a user-friendly interface, safe transactions, and a dedication to promoting independent artists, Mandala T-On-Line Prints is transforming the world of customized apparel.
  
 
