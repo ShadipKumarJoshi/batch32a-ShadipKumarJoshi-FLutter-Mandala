@@ -19,4 +19,8 @@ class SellViewModel extends StateNotifier<void> {
   void openEditSellDesignView() {
     navigator.openEditSellDesignView();
   }
+
+  void openAddDesignView() {
+    navigator.openAddDesignView();
+  }
 }

@@ -151,7 +151,9 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
                   ),
                   child: IconButton(
                     onPressed: () {
-                      // Notification button action
+                      ref
+                          .read(dashboardViewModelProvider.notifier)
+                          .openFavouritesView();
                     },
                     icon: const Icon(Icons.favorite),
                   ),

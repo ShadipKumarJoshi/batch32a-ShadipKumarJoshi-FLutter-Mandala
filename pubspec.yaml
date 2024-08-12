@@ -57,12 +57,16 @@ dependencies:
   json_annotation: ^4.9.0
   connectivity_plus: ^4.0.1
   test_cov_console: ^0.2.2
-
+  khalti_flutter: ^3.0.0
   local_auth: ^2.2.0
   all_lint_rules_community: ^0.0.40
   all_sensors2: ^1.0.1
   awesome_dialog: ^3.2.1
   flutter_svg: ^2.0.10+1
+  lottie: ^3.1.2
+  flutter_staggered_grid_view: ^0.7.0
+  
+  flutter_staggered_animations: ^1.1.1
   
   
 
@@ -104,6 +108,19 @@ flutter:
   assets:
    - assets/images/
    - assets/icons/
+   - assets/lottie/gadget_animation.json
+   - assets/lottie/laptop_animation.json
+   - assets/lottie/accessories_animation.json
+   - assets/lottie/speaker_animation.json
+   - assets/lottie/mobile_animation.json
+   - assets/lottie/search_animation.json
+   - assets/lottie/favourite_animation.json
+   - assets/lottie/image_loading.json
+   - assets/lottie/loading_animation.json
+   - assets/lottie/profile_animation.json
+   - assets/lottie/empty_favourites.json
+   - assets/lottie/shopping_cart.json
+   - assets/lottie/empty_orders.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

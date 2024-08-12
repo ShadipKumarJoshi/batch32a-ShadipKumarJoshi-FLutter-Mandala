@@ -34,8 +34,12 @@ class DashboardViewModel extends StateNotifier<void> {
     navigator.openEditSellDesignView();
   }
 
-  void openFavoriteView() {
-    navigator.openFavoriteView();
+  // void openFavoriteView() {
+  //   navigator.openFavouritesView();
+  // }
+
+  void openFavouritesView() {
+    navigator.openFavouritesView();
   }
 
   void openCustomizeView() {
