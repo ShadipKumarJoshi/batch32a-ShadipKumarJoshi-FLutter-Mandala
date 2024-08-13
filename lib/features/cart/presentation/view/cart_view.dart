@@ -1,4 +1,5 @@
 import 'package:final_assignment/app/constants/api_endpoint.dart';
+import 'package:final_assignment/core/common/dashboard_Tab_View_Heading.dart';
 import 'package:final_assignment/features/cart/domain/entity/cart_entity.dart';
 import 'package:final_assignment/features/cart/presentation/state/cart_state.dart';
 import 'package:final_assignment/features/cart/presentation/viewmodel/cart_view_model.dart';
@@ -30,25 +31,19 @@ class _CartViewState extends ConsumerState<CartView> {
   Widget build(BuildContext context) {
     final cartState = ref.watch(cartViewModelProvider);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your Cart',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: cartState.items.isEmpty
-                  ? _buildEmptyCartView()
-                  : _buildCartItemsList(cartState),
-            ),
-            if (cartState.items.isNotEmpty) _buildOrderSummaryToggle(cartState),
-          ],
-        ),
+    return SizedBox.expand(
+      child: Column(
+        children: [
+          const Center(
+            child: DashboardTabViewHeading(text: 'Cart'),
+          ),
+          Expanded(
+            child: cartState.items.isEmpty
+                ? _buildEmptyCartView()
+                : _buildCartItemsList(cartState),
+          ),
+          if (cartState.items.isNotEmpty) _buildOrderSummaryToggle(cartState),
+        ],
       ),
     );
   }
