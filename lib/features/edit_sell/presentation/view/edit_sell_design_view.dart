@@ -1,19 +1,21 @@
 import 'dart:convert';
 
+import 'package:final_assignment/core/common/dashboard_Tab_View_Heading.dart';
 import 'package:final_assignment/core/shared_prefs/user_shared_prefs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
-class EditSellDesignView extends StatefulWidget {
+class EditSellDesignView extends ConsumerStatefulWidget {
   final Map design;
 
   const EditSellDesignView({super.key, required this.design});
 
   @override
-  State<EditSellDesignView> createState() => _EditSellDesignViewState();
+  ConsumerState<EditSellDesignView> createState() => _EditSellDesignViewState();
 }
 
-class _EditSellDesignViewState extends State<EditSellDesignView> {
+class _EditSellDesignViewState extends ConsumerState<EditSellDesignView> {
   final _formKey = GlobalKey<FormState>();
 
   late TextEditingController _nameController;
@@ -85,75 +87,81 @@ class _EditSellDesignViewState extends State<EditSellDesignView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Design'),
-      ),
-      body: Padding(
+    return SizedBox.expand(
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : Form(
-                key: _formKey,
-                child: ListView(
-                  children: [
-                    TextFormField(
-                      controller: _nameController,
-                      decoration:
-                          const InputDecoration(labelText: 'Design Name'),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter the design name';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: _priceController,
-                      decoration:
-                          const InputDecoration(labelText: 'Design Price'),
-                      keyboardType: TextInputType.number,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter the design price';
-                        }
-                        if (double.tryParse(value) == null) {
-                          return 'Please enter a valid price';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: _categoryController,
-                      decoration:
-                          const InputDecoration(labelText: 'Design Category'),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter the design category';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: _descriptionController,
-                      decoration: const InputDecoration(
-                          labelText: 'Design Description'),
-                      maxLines: 4,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter the design description';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: _editDesign,
-                      child: const Text('Update Design'),
-                    ),
-                  ],
-                ),
+        child: Column(
+          children: [
+            Center(
+               child: DashboardTabViewHeading(text: 'Edit Designs'),),
+              Expanded(
+                child: isLoading
+                    ? const Center(child: CircularProgressIndicator())
+                    : Form(
+                        key: _formKey,
+                        child: ListView(
+                          children: [
+                            TextFormField(
+                              controller: _nameController,
+                              decoration:
+                                  const InputDecoration(labelText: 'Design Name'),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter the design name';
+                                }
+                                return null;
+                              },
+                            ),
+                            TextFormField(
+                              controller: _priceController,
+                              decoration:
+                                  const InputDecoration(labelText: 'Design Price'),
+                              keyboardType: TextInputType.number,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter the design price';
+                                }
+                                if (double.tryParse(value) == null) {
+                                  return 'Please enter a valid price';
+                                }
+                                return null;
+                              },
+                            ),
+                            TextFormField(
+                              controller: _categoryController,
+                              decoration:
+                                  const InputDecoration(labelText: 'Design Category'),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter the design category';
+                                }
+                                return null;
+                              },
+                            ),
+                            TextFormField(
+                              controller: _descriptionController,
+                              decoration: const InputDecoration(
+                                  labelText: 'Design Description'),
+                              maxLines: 4,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter the design description';
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(height: 20),
+                            ElevatedButton(
+                              onPressed: _editDesign,
+                              child: const Text('Update Design'),
+                            ),
+                          ],
+                        ),
+                      ),
               ),
+            
+          ],
+        ),
       ),
     );
   }

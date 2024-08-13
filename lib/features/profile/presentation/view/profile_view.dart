@@ -101,6 +101,15 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 //   },
                 // ),
                 ProfileMenu(
+                  text: "Your Orders",
+                  icon: Icons.shopping_cart,
+                  press: () {
+                    ref
+                          .read(profileViewmodelProvider.notifier)
+                          .openOrderView();
+                  },
+                ),
+                ProfileMenu(
                   text: "Log Out",
                   icon: Icons.logout,
                   press: () {

@@ -72,7 +72,7 @@ class CartApiModel extends Equatable {
     return CartApiModel(
       id: json['_id'],
       products: ProductApiModel.fromJson(json['productId']),
-      designs: DesignApiModel.fromJson(json['productId']),
+      designs: DesignApiModel.fromJson(json['designId']),
       quantity: json['quantity'],
       productSize: json['productSize'],
       productColor: json['productColor'],

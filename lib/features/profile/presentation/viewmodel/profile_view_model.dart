@@ -120,6 +120,10 @@ class ProfileViewmodel extends StateNotifier<CurrentProfileState> {
     navigator.openEditProfileView();
   }
 
+  void openOrderView() {
+    navigator.openOrderView();
+  }
+
   void logout() {
     // userSharedPrefs.removeUserToken();
     navigator.openLoginView();

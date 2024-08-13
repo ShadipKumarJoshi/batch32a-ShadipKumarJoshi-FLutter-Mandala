@@ -108,6 +108,10 @@ flutter:
   assets:
    - assets/images/
    - assets/icons/
+   - assets/fonts/
+   - assets/lottie/
+   - assets/products/
+   - assets/designs/
    - assets/lottie/gadget_animation.json
    - assets/lottie/laptop_animation.json
    - assets/lottie/accessories_animation.json

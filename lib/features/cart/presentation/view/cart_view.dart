@@ -59,7 +59,7 @@ class _CartViewState extends ConsumerState<CartView> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Lottie.asset('assets/lottie/shopping_cart.json',
-              height: 200, width: 200),
+              height: 201, width: 201),
           Text('Your cart is empty',
               style: TextStyle(
                   fontSize: 22,

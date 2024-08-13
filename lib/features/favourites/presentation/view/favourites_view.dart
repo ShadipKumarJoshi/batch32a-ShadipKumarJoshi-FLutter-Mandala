@@ -2,9 +2,9 @@ import 'package:final_assignment/app/constants/api_endpoint.dart';
 import 'package:final_assignment/features/dashboard/presentation/view/dashboard_view.dart';
 import 'package:final_assignment/features/favourites/domain/entity/favourites_entity.dart';
 import 'package:final_assignment/features/favourites/presentation/viewmodel/favourites_view_model.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:lottie/lottie.dart';
 
 class FavouritesView extends ConsumerStatefulWidget {
@@ -52,8 +52,8 @@ class _FavouritesViewState extends ConsumerState<FavouritesView> {
         children: [
           Lottie.asset(
             'assets/lottie/empty_favourites.json',
-            height: 200,
-            width: 200,
+            height: 201,
+            width: 201,
           ),
           const SizedBox(height: 20),
           const Text(
@@ -102,9 +102,10 @@ class _FavouritesViewState extends ConsumerState<FavouritesView> {
   }
 
   void _removeFromFavourites(FavouritesEntity favouriteEntity) {
+    // print("REMOVE ${favouriteEntity.designEntity.id ?? 'No ID found'}");
     ref
         .read(favouritesViewModelProvider.notifier)
-        .removeFromFavourites(favouriteEntity.designEntity.id);
+        .removeFromFavourites(favouriteEntity.designEntity.id!);
   }
 }
 

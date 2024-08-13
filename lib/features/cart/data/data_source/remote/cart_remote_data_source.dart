@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-
 import 'package:final_assignment/app/constants/api_endpoint.dart';
 import 'package:final_assignment/core/failure/failure.dart';
 import 'package:final_assignment/core/networking/remote/http_service.dart';
@@ -44,7 +43,7 @@ class CartRemoteDataSource {
         ),
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return const Right(true);
       }
       return Left(
@@ -73,8 +72,8 @@ class CartRemoteDataSource {
           headers: {'Authorization': 'Bearer $token'},
         ),
       );
-
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
+        // print("Cart debugggg: ${response.data}");
         final getAllCartDto = GetAllCartsDto.fromJson(response.data);
         return Right(cartApiModel.toEntityList(getAllCartDto.carts));
       }
@@ -105,7 +104,7 @@ class CartRemoteDataSource {
         ),
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return const Right(true);
       }
       return Left(
@@ -137,7 +136,7 @@ class CartRemoteDataSource {
         ),
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return const Right(true);
       }
       return Left(
@@ -167,7 +166,7 @@ class CartRemoteDataSource {
         ),
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return const Right(true);
       }
       return Left(
@@ -198,7 +197,7 @@ class CartRemoteDataSource {
         ),
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return const Right(true);
       }
       return Left(

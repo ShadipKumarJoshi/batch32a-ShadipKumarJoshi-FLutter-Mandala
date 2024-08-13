@@ -23,7 +23,7 @@ class _DesignViewState extends ConsumerState<DesignView> {
 
   @override
   Widget build(BuildContext context) {
-    final designState = ref.watch(  designViewModelProvider);
+    final designState = ref.watch(designViewModelProvider);
 
     return NotificationListener(
       onNotification: (notification) {
@@ -49,7 +49,8 @@ class _DesignViewState extends ConsumerState<DesignView> {
             child: Column(
               children: [
                 const Center(
-                  child: DashboardTabViewHeading(text: 'Designs'),),
+                  child: DashboardTabViewHeading(text: 'Designs'),
+                ),
                 //   child: Text(
                 //     'Designs',
                 //     style: TextStyle(
