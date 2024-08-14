@@ -1,7 +1,8 @@
 import 'package:final_assignment/features/customize/presentation/navigator/customize_navigator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final customizeViewModelProvider = StateNotifierProvider<CustomizeViewModel, void>(
+final customizeViewModelProvider =
+    StateNotifierProvider<CustomizeViewModel, void>(
   (ref) => CustomizeViewModel(ref.read(customizeViewNavigatorProvider)),
 );
 
@@ -13,9 +14,12 @@ class CustomizeViewModel extends StateNotifier<void> {
 
   final CustomizeViewNavigator navigator;
 
-
- 
-
- 
-
+  void openDashboardView() {
+    navigator.openDashboardView();
   }
+
+  void openSellDesignView() {
+    navigator.openSellDesignView();
+  }
+  
+}

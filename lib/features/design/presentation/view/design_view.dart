@@ -1,6 +1,5 @@
 // SubView
 
-import 'package:final_assignment/core/common/colors.dart';
 import 'package:final_assignment/core/common/dashboard_Tab_View_Heading.dart';
 import 'package:final_assignment/features/design/presentation/viewmodel/design_view_model.dart';
 import 'package:final_assignment/features/design/presentation/widgets/design_card.dart';
@@ -24,7 +23,7 @@ class _DesignViewState extends ConsumerState<DesignView> {
 
   @override
   Widget build(BuildContext context) {
-    final designState = ref.watch(  designViewModelProvider);
+    final designState = ref.watch(designViewModelProvider);
 
     return NotificationListener(
       onNotification: (notification) {
@@ -50,7 +49,8 @@ class _DesignViewState extends ConsumerState<DesignView> {
             child: Column(
               children: [
                 const Center(
-                  child: DashboardTabViewHeading(text: 'Designs'),),
+                  child: DashboardTabViewHeading(text: 'Designs'),
+                ),
                 //   child: Text(
                 //     'Designs',
                 //     style: TextStyle(

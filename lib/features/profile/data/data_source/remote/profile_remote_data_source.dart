@@ -36,7 +36,7 @@ class ProfileRemoteDataSource {
       final token = await userSharedPrefs.getUserToken();
       token.fold((l) => throw Failure(error: l.error), (r) => r);
       final response = await dio.get(
-        ApiEndpoints.getUser,
+        ApiEndpoints.currentUser,
         options: Options(
           headers: {
             'authorization': 'Bearer $token',

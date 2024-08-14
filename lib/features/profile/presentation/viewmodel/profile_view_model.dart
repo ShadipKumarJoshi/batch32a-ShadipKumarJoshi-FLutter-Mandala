@@ -44,17 +44,14 @@ class ProfileViewmodel extends StateNotifier<CurrentProfileState> {
       data.fold(
         (l) {
           state = state.copyWith(isLoading: false, error: l.error);
-         
         },
         (r) {
-        
           state = state.copyWith(isLoading: false, authEntity: r);
         },
       );
     } catch (e) {
       state = state.copyWith(
           isLoading: false, error: 'Failed to fetch current user.');
-      
     }
   }
 
@@ -115,8 +112,16 @@ class ProfileViewmodel extends StateNotifier<CurrentProfileState> {
   //   );
   // }
 
+  void openDashboardView() {
+    navigator.openDashboardView();
+  }
+
   void openEditProfileView() {
     navigator.openEditProfileView();
+  }
+
+  void openOrderView() {
+    navigator.openOrderView();
   }
 
   void logout() {

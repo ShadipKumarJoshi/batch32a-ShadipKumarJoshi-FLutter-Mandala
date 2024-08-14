@@ -13,9 +13,11 @@ class MenuViewModel extends StateNotifier<void> {
 
   final MenuViewNavigator navigator;
 
-
- 
-
- 
-
+  void openDashboardView() {
+    navigator.openDashboardView();
   }
+
+  void openOrderView() {
+    navigator.openOrderView();
+  }
+}
