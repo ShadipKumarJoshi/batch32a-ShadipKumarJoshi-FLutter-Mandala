@@ -28,6 +28,6 @@ class DashboardViewNavigator
 
 mixin DashboardViewRoute {
   openDashboardView() {
-    NavigateRoute.pushRoute(const DashboardView());
+    NavigateRoute.popAndPushRoute(const DashboardView());
   }
 }

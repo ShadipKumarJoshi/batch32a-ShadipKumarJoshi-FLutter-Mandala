@@ -46,7 +46,7 @@ class OrderRemoteDataSource {
           headers: {'Authorization': 'Bearer $token'},
         ),
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return const Right(true);
       }
       return Left(
@@ -72,12 +72,12 @@ class OrderRemoteDataSource {
         (r) => token = r,
       );
       Response response = await dio.get(
-        'http://10.0.2.2:5000/api/order/user',
+        ApiEndpoints.getOrder,
         options: Options(
           headers: {'Authorization': 'Bearer $token'},
         ),
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         print(response.data);
 
         print(response.data['order'].runtimeType);

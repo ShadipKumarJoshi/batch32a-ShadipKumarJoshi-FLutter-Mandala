@@ -16,7 +16,14 @@ class DesignRemoteRepository implements IDesignRepository {
   DesignRemoteRepository({required this.designRemoteDataSource});
 
   @override
-  Future<Either<Failure, List<DesignEntity>>> getPaginationDesigns(int page, int limit) {
-    return designRemoteDataSource.getPaginationDesigns(page: page, limit: limit);
+  Future<Either<Failure, List<DesignEntity>>> getPaginationDesigns(
+      int page, int limit) {
+    return designRemoteDataSource.getPaginationDesigns(
+        page: page, limit: limit);
+  }
+
+  @override
+  Future<Either<Failure, List<DesignEntity>>> getAllDesigns() {
+    return designRemoteDataSource.getAllDesigns();
   }
 }

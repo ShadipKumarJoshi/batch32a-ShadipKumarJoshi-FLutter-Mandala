@@ -63,10 +63,12 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 // Add profile details here
                 Column(
                   children: [
-                    Text(profileState.authEntity?.username ?? 'test123'),
-                    Text(profileState.authEntity?.fullname ?? 'Test Test'),
+                    Text(profileState.authEntity?.userName ?? 'test123'),
+                    Text(profileState.authEntity?.fullName ?? 'Test Test'),
                     Text(profileState.authEntity?.email ?? 'test@test.com'),
                     Text(profileState.authEntity?.phoneNumber ?? '9876543210'),
+
+                    
                   ],
                 ),
 
@@ -104,9 +106,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                   text: "Your Orders",
                   icon: Icons.shopping_cart,
                   press: () {
-                    ref
-                          .read(profileViewmodelProvider.notifier)
-                          .openOrderView();
+                    ref.read(profileViewmodelProvider.notifier).openOrderView();
                   },
                 ),
                 ProfileMenu(

@@ -11,15 +11,15 @@ final profileApiModelProvider = Provider<ProfileApiModel>((ref) {
 
 @JsonSerializable()
 class ProfileApiModel extends Equatable {
-  final String? id;
   @JsonKey(name: '_id')
-  final String fullName;
-  final String userName;
-  final String phoneNumber;
-  final String email;
-  final String userAddress;
-  final String userOptionalAddress;
-  final String userImage;
+  final String? id;
+  final String? fullName;
+  final String? userName;
+  final String? phoneNumber;
+  final String? email;
+  final String? userAddress;
+  final String? userOptionalAddress;
+  final String? userImage;
 
   const ProfileApiModel({
     this.id,

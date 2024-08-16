@@ -1,24 +1,20 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:final_assignment/app/navigator_key/navigator_key.dart';
-import 'package:final_assignment/core/common/my_snackbar.dart';
 import 'package:final_assignment/core/shared_prefs/user_shared_prefs.dart';
-import 'package:final_assignment/features/auth/domain/usecases/auth_usecase.dart';
 import 'package:final_assignment/features/edit_profile/presentation/state/current_state_profile.dart';
+import 'package:final_assignment/features/profile/domain/usecases/profile_usecase.dart';
 import 'package:final_assignment/features/profile/presentation/navigator/profile_navigator.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:local_auth/local_auth.dart';
 
 final profileViewmodelProvider =
     StateNotifierProvider<ProfileViewmodel, CurrentProfileState>(
         (ref) => ProfileViewmodel(
-              authUseCase: ref.watch(authUseCaseProvider),
+              authUseCase: ref.watch(profileUseCaseProvider),
               navigator: ref.watch(profileViewNavigatorProvider),
               userSharedPrefs: ref.watch(userSharedPrefsProvider),
             ));
 
 class ProfileViewmodel extends StateNotifier<CurrentProfileState> {
-  final AuthUseCase authUseCase;
+  final ProfileUseCase authUseCase;
   final ProfileViewNavigator navigator;
   final UserSharedPrefs userSharedPrefs;
   late LocalAuthentication _localAuth;
@@ -40,7 +36,7 @@ class ProfileViewmodel extends StateNotifier<CurrentProfileState> {
   Future<void> getCurrentUser() async {
     try {
       state = state.copyWith(isLoading: true);
-      final data = await authUseCase.getCurrentUser();
+      final data = await authUseCase.getUser();
       data.fold(
         (l) {
           state = state.copyWith(isLoading: false, error: l.error);

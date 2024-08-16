@@ -105,4 +105,31 @@ class MockDesignUseCase extends _i1.Mock implements _i4.DesignUseCase {
           ),
         )),
       ) as _i5.Future<_i3.Either<_i6.Failure, List<_i7.DesignEntity>>>);
+
+  @override
+  _i5.Future<_i3.Either<_i6.Failure, List<_i7.DesignEntity>>> getAllDesigns() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllDesigns,
+          [],
+        ),
+        returnValue:
+            _i5.Future<_i3.Either<_i6.Failure, List<_i7.DesignEntity>>>.value(
+                _FakeEither_1<_i6.Failure, List<_i7.DesignEntity>>(
+          this,
+          Invocation.method(
+            #getAllDesigns,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i5.Future<_i3.Either<_i6.Failure, List<_i7.DesignEntity>>>.value(
+                _FakeEither_1<_i6.Failure, List<_i7.DesignEntity>>(
+          this,
+          Invocation.method(
+            #getAllDesigns,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i3.Either<_i6.Failure, List<_i7.DesignEntity>>>);
 }

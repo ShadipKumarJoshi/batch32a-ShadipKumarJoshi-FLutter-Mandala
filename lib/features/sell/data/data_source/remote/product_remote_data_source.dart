@@ -10,7 +10,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/shared_prefs/user_shared_prefs.dart';
 
-final productRemoteDataSourceProvider = Provider<ProductRemoteDataSource>((ref) {
+final productRemoteDataSourceProvider =
+    Provider<ProductRemoteDataSource>((ref) {
   final dio = ref.watch(httpServiceProvider);
   final productApiModel = ref.watch(productApiModelProvider);
   final userSharedPrefs = ref.watch(userSharedPrefsProvider);
@@ -34,11 +35,11 @@ class ProductRemoteDataSource {
 
   Future<Either<Failure, List<ProductEntity>>> getAllProduct() async {
     try {
-      final token = await userSharedPrefs.getUserToken();
-      token.fold((l) => throw Failure(error: l.error), (r) => r);
+      String? token;
+      final data = await userSharedPrefs.getUserToken();
+      data.fold((l) => throw Failure(error: l.error), (r) => token = r);
       final response = await dio.get(
         ApiEndpoints.getAllProduct,
-       
         options: Options(
           headers: {
             'authorization': 'Bearer $token',
