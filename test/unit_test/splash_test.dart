@@ -21,7 +21,8 @@ void main() {
     ]);
   });
 
-  test('openLoginView should navigate to Onboarding view after delay', () async {
+  test('openLoginView should navigate to Onboarding view after delay',
+      () async {
     // Act
     container.read(splashViewModelProvider.notifier).openLoginView();
 

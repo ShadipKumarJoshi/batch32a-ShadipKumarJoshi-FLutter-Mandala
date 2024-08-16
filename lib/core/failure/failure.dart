@@ -2,7 +2,7 @@ class Failure {
   final String error;
   final String? statusCode;
 
-  Failure(String s, {
+  Failure({
     required this.error,
     this.statusCode,
   });
