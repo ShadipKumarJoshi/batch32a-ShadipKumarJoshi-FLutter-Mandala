@@ -31,6 +31,7 @@ class ApiEndpoints {
   static const String deleteProduct = "product/deleteProduct/";
   static const String getPaginationProducts = "product/getPaginationProducts/";
   static const String productImage = "http://192.168.137.1:8000/products/";
+  // static const String productImage = "http://10.0.2.2:8000/products/";
 
   // ====================== Design Routes ======================
   static const String createDesign = "design/createDesign";

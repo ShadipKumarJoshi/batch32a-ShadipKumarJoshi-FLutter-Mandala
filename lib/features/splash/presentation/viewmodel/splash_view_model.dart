@@ -16,7 +16,7 @@ class SplashViewModel extends StateNotifier<void> {
 
   //open login page
   void openLoginView() {
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 10), () {
       navigator.openOnboardingView();
       // navigator.openLoginView();
     });
