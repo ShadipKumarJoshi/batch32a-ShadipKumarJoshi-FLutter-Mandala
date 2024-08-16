@@ -16,7 +16,12 @@ class DesignUseCase {
     required this.designRepository,
   });
 
-  Future<Either<Failure, List<DesignEntity>>> getPaginationDesigns(int page, int limit) {
+  Future<Either<Failure, List<DesignEntity>>> getPaginationDesigns(
+      int page, int limit) {
     return designRepository.getPaginationDesigns(page, limit);
+  }
+
+  Future<Either<Failure, List<DesignEntity>>> getAllDesigns() {
+    return designRepository.getAllDesigns();
   }
 }

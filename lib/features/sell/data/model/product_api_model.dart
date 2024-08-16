@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'product_api_model.g.dart';
 
 final productApiModelProvider = Provider<ProductApiModel>((ref) {
-  return const ProductApiModel.empty();
+  return ProductApiModel.empty();
 });
 
 @JsonSerializable()
@@ -15,34 +15,32 @@ class ProductApiModel extends Equatable {
   final String? id;
   final String productCategory;
   final double productPrice;
-  final String productSize;
-  final String productColor;
+  final List<String> productSize;
+  final List<String> productColor;
   final String productDescription;
   final String productImage;
-  final String createdAt;
+  final String createAt;
 
-  const ProductApiModel({
-    required this.id,
-    required this.productCategory, 
-    required this.productPrice, 
-    required this.productSize, 
-    required this.productColor, 
-    required this.productDescription, 
-    required this.productImage, 
-    required this.createdAt
-  });
+  const ProductApiModel(
+      {required this.id,
+      required this.productCategory,
+      required this.productPrice,
+      required this.productSize,
+      required this.productColor,
+      required this.productDescription,
+      required this.productImage,
+      required this.createAt});
 
   // Empty constructor
-  const ProductApiModel.empty()
+  ProductApiModel.empty()
       : id = '',
         productCategory = '',
         productPrice = 0.0,
-        productSize = '',
-        productColor = '',
+        productSize = [],
+        productColor = [],
         productDescription = '',
         productImage = '',
-        createdAt = '';
-        
+        createAt = '';
 
   factory ProductApiModel.fromJson(Map<String, dynamic> json) =>
       _$ProductApiModelFromJson(json);
@@ -51,16 +49,18 @@ class ProductApiModel extends Equatable {
 
 // To entity
   ProductEntity toEntity() {
+    final size = productSize[0];
+    final color = productColor[0];
+
     return ProductEntity(
       id: id,
       productCategory: productCategory,
       productPrice: productPrice,
-      productSize: productSize,
-      productColor: productColor,
+      productSize: size.split(','),
+      productColor: color.split(','),
       productDescription: productDescription,
       productImage: productImage,
-      createdAt: createdAt,
-      
+      createAt: createAt,
     );
   }
 
@@ -74,8 +74,7 @@ class ProductApiModel extends Equatable {
       productColor: entity.productColor,
       productDescription: entity.productDescription,
       productImage: entity.productImage,
-      createdAt: entity.createdAt,
-      
+      createAt: entity.createAt,
     );
   }
 
@@ -86,7 +85,9 @@ class ProductApiModel extends Equatable {
 
   // From list of entity
   List<ProductApiModel> fromEntities(List<ProductEntity> products) {
-    return products.map((product) => ProductApiModel.fromEntity(product)).toList();
+    return products
+        .map((product) => ProductApiModel.fromEntity(product))
+        .toList();
   }
 
   @override
@@ -98,6 +99,6 @@ class ProductApiModel extends Equatable {
         productColor,
         productDescription,
         productImage,
-        createdAt
+        createAt
       ];
 }

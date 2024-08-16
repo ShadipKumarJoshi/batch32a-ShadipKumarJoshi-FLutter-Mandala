@@ -18,8 +18,8 @@ class ApiEndpoints {
   static const String userImage = "http://192.168.137.1:8000/user/";
   // static const String uploadImage = "user/uploadImage";
   // static const String currentUser = "user/getMe";
-   static const String getMe = "user/getUser";
-   static const String currentUser = "user/getUser";
+  static const String getMe = "user/getUser";
+  static const String currentUser = "user/getUser";
   static const String getToken = "user/getToken";
   static const String verifyUser = "user/verify";
 
@@ -30,6 +30,7 @@ class ApiEndpoints {
   static const String updateProduct = "product/updateProduct/";
   static const String deleteProduct = "product/deleteProduct/";
   static const String getPaginationProducts = "product/getPaginationProducts/";
+  static const String productImage = "http://192.168.137.1:8000/products/";
 
   // ====================== Design Routes ======================
   static const String createDesign = "design/createDesign";
@@ -45,7 +46,7 @@ class ApiEndpoints {
 // sets the default number of items to be retrieved per page in paginated API requests.
   static const limitPage = 10;
 
- // Cart Routes
+  // Cart Routes
   static const String addToCart = "cart/add";
   static const String getCart = "cart/all";
   static const String removeFromCart = "cart/delete/";
@@ -60,6 +61,5 @@ class ApiEndpoints {
 
   // Order Routes
   static const String createOrder = "order/create";
-  static const String getOrder = "order/user";
-
+  static const String getOrder = "order/getUserOrders";
 }

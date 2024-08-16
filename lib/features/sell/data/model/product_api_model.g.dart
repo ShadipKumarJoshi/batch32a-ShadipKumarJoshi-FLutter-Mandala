@@ -11,11 +11,15 @@ ProductApiModel _$ProductApiModelFromJson(Map<String, dynamic> json) =>
       id: json['_id'] as String?,
       productCategory: json['productCategory'] as String,
       productPrice: (json['productPrice'] as num).toDouble(),
-      productSize: json['productSize'] as String,
-      productColor: json['productColor'] as String,
+      productSize: (json['productSize'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      productColor: (json['productColor'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       productDescription: json['productDescription'] as String,
       productImage: json['productImage'] as String,
-      createdAt: json['createdAt'] as String,
+      createAt: json['createAt'] as String,
     );
 
 Map<String, dynamic> _$ProductApiModelToJson(ProductApiModel instance) =>
@@ -27,5 +31,5 @@ Map<String, dynamic> _$ProductApiModelToJson(ProductApiModel instance) =>
       'productColor': instance.productColor,
       'productDescription': instance.productDescription,
       'productImage': instance.productImage,
-      'createdAt': instance.createdAt,
+      'createAt': instance.createAt,
     };

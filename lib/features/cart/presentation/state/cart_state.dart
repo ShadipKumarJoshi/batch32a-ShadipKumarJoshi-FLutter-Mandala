@@ -4,11 +4,13 @@ class CartState {
   final List<CartEntity> items;
   final bool isLoading;
   final String? error;
+  final String? pidx;
 
   CartState({
     required this.items,
     required this.isLoading,
     required this.error,
+    required this.pidx,
   });
 
   factory CartState.initial() {
@@ -16,6 +18,7 @@ class CartState {
       items: [],
       isLoading: false,
       error: null,
+      pidx: null,
     );
   }
 
@@ -28,6 +31,7 @@ class CartState {
       items: items ?? this.items,
       isLoading: isLoading ?? this.isLoading,
       error: error ?? this.error,
+      pidx: pidx,
     );
   }
 

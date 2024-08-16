@@ -33,8 +33,9 @@ class ProfileRemoteDataSource {
 
   Future<Right<dynamic, ProfileEntity>> getUser() async {
     try {
-      final token = await userSharedPrefs.getUserToken();
-      token.fold((l) => throw Failure(error: l.error), (r) => r);
+      String? token;
+      final data = await userSharedPrefs.getUserToken();
+      data.fold((l) => throw Failure(error: l.error), (r) => token = r);
       final response = await dio.get(
         ApiEndpoints.currentUser,
         options: Options(
@@ -44,7 +45,7 @@ class ProfileRemoteDataSource {
         ),
       );
       if (response.statusCode == 201) {
-        final profileDto= ProfileApiModel.fromJson(response.data);
+        final profileDto = ProfileApiModel.fromJson(response.data);
         return Right(profileApiModel.toEntity(profileDto));
       }
       throw Failure(

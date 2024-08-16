@@ -1,8 +1,8 @@
-import 'package:final_assignment/features/auth/domain/entity/auth_entity.dart';
+import 'package:final_assignment/features/profile/domain/entity/profile_entity.dart';
 
 class CurrentProfileState {
   final bool isLoading;
-  final AuthEntity? authEntity;
+  final ProfileEntity? authEntity;
   final String? error;
   final bool isFingerprintEnabled;
 
@@ -22,7 +22,7 @@ class CurrentProfileState {
 
   CurrentProfileState copyWith(
       {bool? isLoading,
-      AuthEntity? authEntity,
+      ProfileEntity? authEntity,
       String? error,
       bool? isFingerprintEnabled}) {
     return CurrentProfileState(

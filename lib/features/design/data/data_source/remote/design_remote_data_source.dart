@@ -32,6 +32,30 @@ class DesignRemoteDataSource {
     required this.userSharedPrefs,
   });
 
+  Future<Either<Failure, List<DesignEntity>>> getAllDesigns() async {
+    try {
+      final token = await userSharedPrefs.getUserToken();
+      token.fold((l) => throw Failure(error: l.error), (r) => r);
+      final response = await dio.get(
+        ApiEndpoints.getAllDesigns,
+        options: Options(
+          headers: {
+            'authorization': 'Bearer $token',
+          },
+        ),
+      );
+      if (response.statusCode == 201) {
+        final paginationDto = PaginationDto.fromJson(response.data);
+        return Right(designApiModel.toEntities(paginationDto.designs));
+      }
+      return Left(Failure(
+          error: response.data['message'],
+          statusCode: response.statusCode.toString()));
+    } on DioException catch (e) {
+      return Left(Failure(error: e.error.toString()));
+    }
+  }
+
   Future<Either<Failure, List<DesignEntity>>> getPaginationDesigns(
       {required int page, required int limit}) async {
     try {

@@ -8,15 +8,15 @@ import 'package:json_annotation/json_annotation.dart';
 part 'cart_api_model.g.dart';
 
 final cartApiModelProvider = Provider<CartApiModel>((ref) {
-  return const CartApiModel.empty();
+  return CartApiModel.empty();
 });
 
 @JsonSerializable()
 class CartApiModel extends Equatable {
   @JsonKey(name: '_id')
   final String? id;
-  final ProductApiModel products;
-  final DesignApiModel designs;
+  final ProductApiModel productId;
+  final DesignApiModel designId;
   final int quantity;
   final String productSize;
   final String productColor;
@@ -25,18 +25,18 @@ class CartApiModel extends Equatable {
 
   const CartApiModel(
       {required this.id,
-      required this.products,
-      required this.designs,
+      required this.productId,
+      required this.designId,
       required this.quantity,
       required this.productSize,
       required this.productColor,
       required this.customizePrice,
       required this.total});
 
-  const CartApiModel.empty()
+  CartApiModel.empty()
       : id = '',
-        products = const ProductApiModel.empty(),
-        designs = const DesignApiModel.empty(),
+        productId = ProductApiModel.empty(),
+        designId = const DesignApiModel.empty(),
         quantity = 0,
         productSize = '',
         productColor = '',
@@ -46,8 +46,8 @@ class CartApiModel extends Equatable {
   CartEntity toEntity() {
     return CartEntity(
       id: id,
-      productEntity: products.toEntity(),
-      designEntity: designs.toEntity(),
+      productEntity: productId.toEntity(),
+      designEntity: designId.toEntity(),
       quantity: quantity,
       productSize: productSize,
       productColor: productColor,
@@ -59,8 +59,8 @@ class CartApiModel extends Equatable {
   factory CartApiModel.fromEntity(CartEntity entity) {
     return CartApiModel(
         id: entity.id,
-        products: ProductApiModel.fromEntity(entity.productEntity),
-        designs: DesignApiModel.fromEntity(entity.designEntity),
+        productId: ProductApiModel.fromEntity(entity.productEntity),
+        designId: DesignApiModel.fromEntity(entity.designEntity),
         quantity: entity.quantity,
         productSize: entity.productSize,
         productColor: entity.productColor,
@@ -71,8 +71,8 @@ class CartApiModel extends Equatable {
   factory CartApiModel.fromJson(Map<String, dynamic> json) {
     return CartApiModel(
       id: json['_id'],
-      products: ProductApiModel.fromJson(json['productId']),
-      designs: DesignApiModel.fromJson(json['designId']),
+      productId: ProductApiModel.fromJson(json['productId']),
+      designId: DesignApiModel.fromJson(json['designId']),
       quantity: json['quantity'],
       productSize: json['productSize'],
       productColor: json['productColor'],
@@ -84,8 +84,8 @@ class CartApiModel extends Equatable {
   Map<String, dynamic> toJson() {
     return {
       '_id': id,
-      'productId': products.id,
-      'designId': designs.id,
+      'productId': productId.id,
+      'designId': designId.id,
       'quantity': quantity,
       'productSize': productSize,
       'productColor': productColor,
@@ -103,5 +103,14 @@ class CartApiModel extends Equatable {
   }
 
   @override
-  List<Object?> get props => [id, products,  designs, quantity, productSize, productColor, customizePrice, total];
+  List<Object?> get props => [
+        id,
+        productId,
+        designId,
+        quantity,
+        productSize,
+        productColor,
+        customizePrice,
+        total
+      ];
 }

@@ -22,10 +22,22 @@ class AuthApiModel {
     required this.password,
   });
 
+  // empty api model
+  factory AuthApiModel.empty() {
+    return AuthApiModel(
+      id: '',
+      fullname: '',
+      username: '',
+      phoneNumber: '',
+      email: '',
+      password: '',
+    );
+  }
+
   factory AuthApiModel.fromJson(Map<String, dynamic> json) =>
       _$AuthApiModelFromJson(json);
 
-  // Map<String, dynamic> toJson() => _$AuthApiModelToJson(this);
+  Map<String, dynamic> toJson() => _$AuthApiModelToJson(this);
 
   // To Entity
   AuthEntity toEntity() {
@@ -36,6 +48,18 @@ class AuthApiModel {
       phoneNumber: phoneNumber,
       email: email,
       password: password ?? '',
+    );
+  }
+
+//   From entity
+  factory AuthApiModel.fromEntity(AuthEntity entity) {
+    return AuthApiModel(
+      id: entity.id,
+      fullname: entity.fullname,
+      username: entity.username,
+      phoneNumber: entity.phoneNumber,
+      email: entity.email,
+      password: entity.password,
     );
   }
 }

@@ -186,9 +186,7 @@ class _CartViewState extends ConsumerState<CartView> {
           .read(cartViewModelProvider.notifier)
           .checkoutCart('cash', cartState.subtotal.toInt() + 50);
     } else if (_selectedPaymentMethod == 'khalti') {
-      ref
-          .read(cartViewModelProvider.notifier)
-          .checkoutCart('khalti', cartState.subtotal.toInt() + 50);
+      _payWithKhalti(cartState);
       // _payWithKhalti(cartState);
     }
   }
@@ -196,18 +194,18 @@ class _CartViewState extends ConsumerState<CartView> {
   void _payWithKhalti(CartState cartState) {
     final config = PaymentConfig(
       amount: cartState.subtotal.toInt() * 100,
-      productIdentity: 'cart-items',
-      productName: 'Cart Items',
-      productUrl: 'https://yourwebsite.com/products',
-      additionalData: {'notes': 'Payment for cart items'},
+      productIdentity: cartState.items.first.designEntity.designName,
+      productName: cartState.items.first.designEntity.designName,
+      productUrl: 'https://example.com/product-url',
+      additionalData: {'custom_field': 'value'},
     );
     KhaltiScope.of(context).pay(
       config: config,
       preferences: [PaymentPreference.khalti],
       onSuccess: (_) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text('Payment Successful!'),
-            backgroundColor: Colors.green));
+        ref
+            .read(cartViewModelProvider.notifier)
+            .checkoutCart('khalti', cartState.subtotal.toInt() + 50);
         ref.read(cartViewModelProvider.notifier).clearCart();
       },
       onFailure: (_) => ScaffoldMessenger.of(context).showSnackBar(
@@ -265,16 +263,47 @@ class CartItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(cartEntity.designEntity.designName,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600)),
-                    const SizedBox(height: 4),
-                    Text('Rs ${cartEntity.total}',
-                        style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black87)),
-                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(cartEntity.designEntity.designName,
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w600)),
+                            const SizedBox(height: 4),
+                            Text('Rs ${cartEntity.total}',
+                                style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black87)),
+                            const SizedBox(height: 8),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Column(children: [
+                              Text(cartEntity.productEntity.productCategory,
+                                  style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600)),
+                              const SizedBox(height: 4),
+                              Text('${cartEntity.productSize}',
+                                  style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black87)),
+                              Text('${cartEntity.productColor}',
+                                  style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black87)),
+                              const SizedBox(height: 8),
+                            ])
+                          ],
+                        )
+                      ],
+                    ),
                     Row(
                       children: [
                         IconButton(

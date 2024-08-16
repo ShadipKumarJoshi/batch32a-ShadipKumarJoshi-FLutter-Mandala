@@ -8,5 +8,7 @@ final designRepositoryProvider =
     Provider<IDesignRepository>((ref) => ref.read(designRemoteRepository));
 
 abstract class IDesignRepository {
-  Future<Either<Failure, List<DesignEntity>>> getPaginationDesigns(int page, int limit);
+  Future<Either<Failure, List<DesignEntity>>> getPaginationDesigns(
+      int page, int limit);
+  Future<Either<Failure, List<DesignEntity>>> getAllDesigns();
 }
