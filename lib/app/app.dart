@@ -19,8 +19,8 @@ class App extends ConsumerWidget {
               navigatorKey: navigator,
               debugShowCheckedModeBanner: false,
               theme: getApplicationTheme(),
-              // home: const SplashView(),
-              home: const LoginView(),
+              home: const SplashView(),
+              // home: const LoginView(),
               localizationsDelegates: const [
                 KhaltiLocalizations.delegate,
               ],

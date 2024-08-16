@@ -67,8 +67,6 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                     Text(profileState.authEntity?.fullName ?? 'Test Test'),
                     Text(profileState.authEntity?.email ?? 'test@test.com'),
                     Text(profileState.authEntity?.phoneNumber ?? '9876543210'),
-
-                    
                   ],
                 ),
 
