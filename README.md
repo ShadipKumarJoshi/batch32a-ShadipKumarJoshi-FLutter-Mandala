@@ -56,10 +56,10 @@
 
 ## Appendix
 ### Previews
-![Explore](./images/explore.png)
-![Customize](./images/customize.png)
-![Cutomize2](./images/customize2.png)
-![Cart](./images/cart.png)
+![i](./images/1.jpg)
+![2](./images/2.jpg)
+![3](./images/3.jpg)
+![4](./images/4.png)
 
 
 
