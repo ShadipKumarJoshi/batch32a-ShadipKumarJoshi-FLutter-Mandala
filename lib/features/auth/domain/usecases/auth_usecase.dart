@@ -17,21 +17,21 @@ class AuthUseCase {
   //   return await _authRepository.uploadProfilePicture(file);
   // }
 
-  Future<Either<Failure, bool>> registerUser(AuthEntity user) async {
-    return await _authRepository.registerUser(user);
+  // Future<Either<Failure, bool>> registerUser(AuthEntity user) async {
+  //   return await _authRepository.registerUser(user);
 
     // TEST NOTE --- nullable value for register testing
-    //  Future<Either<Failure, bool>> registerUser(AuthEntity? user) async {
-    // return await _authRepository.registerUser(user!);
+     Future<Either<Failure, bool>> registerUser(AuthEntity? user) async {
+    return await _authRepository.registerUser(user!);
   }
 
-  Future<Either<Failure, bool>> loginUser(String email, String password) async {
-    return await _authRepository.loginUser(email, password);
+  // Future<Either<Failure, bool>> loginUser(String email, String password) async {
+  //   return await _authRepository.loginUser(email, password);
 
 // TEST NOTE --- nullable value for  login testing
 
-    // Future<Either<Failure, bool>> loginUser(String? email, String? password) async {
-    // return await _authRepository.loginUser(email!, password!);
+    Future<Either<Failure, bool>> loginUser(String? email, String? password) async {
+    return await _authRepository.loginUser(email!, password!);
   }
 
   Future<Either<Failure, AuthEntity>> getCurrentUser() async {
