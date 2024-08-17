@@ -1,7 +1,7 @@
 # Mandala T-On-Line Prints
 **Mandala T-On-Line Prints**, a flutter-based frontend, is an innovative online platform based in Nepal, designed for the customization of prints on garments, with a primary focus on t-shirts, sweatshirts, and hoodies. The platform also serves as a marketplace where artists can showcase and sell their artwork printed on various wearable garments, catering to a diverse audience of art enthusiasts. Inspired by the beauty and intricacy of mandala art, "Mandala T-On-Line Prints" seeks to foster creativity and celebrate individual expression by offering customers unique and personalized clothing options that reflect their personality, ideas, and interests.
 
-[Watch the Demonstration](https://youtube.com/licenses/mit/)
+[Watch the Demonstration](https://youtu.be/D5ouUi3uEBE)
 
 ## Features
 ### User Role
